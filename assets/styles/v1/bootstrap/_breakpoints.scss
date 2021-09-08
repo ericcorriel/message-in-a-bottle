@@ -1,0 +1,24 @@
+// scss-docs-start grid-breakpoints
+$v1-grid-breakpoints: (
+  xxs: 0,
+  xs: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+// 21.06.06 - apparently not necessary for my use case
+// @import '/node_modules/bootstrap/scss/functions';
+// @include _assert-ascending($v1-grid-breakpoints, "$grid-breakpoints");
+// @include _assert-starts-at-zero($v1-grid-breakpoints, "$grid-breakpoints");
+
+$v1-content-width:(
+  xxs: 94%,
+  xs: 378px,
+  sm: 540px,
+  md: 724px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1362px
+)

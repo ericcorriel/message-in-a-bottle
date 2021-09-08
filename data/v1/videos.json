@@ -1,0 +1,4 @@
+export const VIDEOS =
+  [
+    '00/IMG_6826-450-years',
+  ]
