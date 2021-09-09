@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="row">
-      <div v-for="i in 12" class="col">
+      <div v-for="i in 12" :key="`${frame}-${i}`" class="col">
         <VideoEmbed
-          frame="1"
+          :frame="frame"
           :index="i"
           orientation="landscape"
           path="/video"
@@ -15,10 +15,29 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { onBeforeUpdate, onMounted, ref } from "@nuxtjs/composition-api";
 import VideoEmbed from "~/components/video-embed";
 
 export default Vue.extend({
   components: { VideoEmbed },
+  setup() {
+    const frame: Ref<UnwrapRef<number>> = ref(1);
+    function changeFrame() {
+      if (frame.value === 1) frame.value = 2;
+      else frame.value = 1;
+    }
+
+    onMounted(() => {
+      setInterval(function () {
+        changeFrame();
+      }, 1000);
+    });
+
+    return {
+      frame,
+      changeFrame,
+    };
+  },
 });
 </script>
 
