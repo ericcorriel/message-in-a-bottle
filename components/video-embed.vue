@@ -1,9 +1,6 @@
 <template>
   <video width="100%" muted autoplay loop>
-    <source
-      :src="`${path}/${frame}/${index}-${orientation}.mp4`"
-      type="video/mp4"
-    />
+    <source :src="`${path}/bucket/${filename}`" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </template>
@@ -19,6 +16,7 @@ export default defineComponent({
     frame: { type: Number, default: 0 },
     index: { type: Number, default: 0 },
     orientation: { type: String, default: "landscape" },
+    filename: { type: String, default: "" },
   },
 });
 </script>
