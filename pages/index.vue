@@ -1,6 +1,17 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="container" @mousemove="updateBottle()">
+    <div class="row text-container top">
+      <h1>
+        <span>It’s </span>
+        <span id="year">{{ yearAsInt }}</span>
+        <span>and this water bottle is</span>
+        <span id="disintegrated">
+          {{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%
+        </span>
+        <span>disintegrated</span>
+      </h1>
+    </div>
+    <div class="row video-container">
       <div
         v-for="(activeVideo, index) in activeVideos"
         :key="`${activeVideos[index]}`"
@@ -14,16 +25,8 @@
         />
       </div>
     </div>
-    <div class="audio-container">
-      <div>
-        <audio loop autoplay preload controls>
-          <source
-            src="/audio/046866858-tick-tock-tension-loop-3.m4a"
-            type="audio/mpeg"
-          />
-          Your browser does not support the audio tag.
-        </audio>
-      </div>
+    <div class="row text-container bottom">
+      <h2 id="commentary">{{ commentary }}</h2>
     </div>
   </div>
 </template>
@@ -31,68 +34,54 @@
 <script lang="ts">
 import Vue from "vue";
 import {
-  onBeforeUpdate,
   onMounted,
   reactive,
+  Ref,
   ref,
+  UnwrapRef,
 } from "@nuxtjs/composition-api";
 import VideoEmbed from "~/components/video-embed";
+import { commentaries } from "~/data/commentaries";
+import { videos } from "~/data/videos";
 
 export default Vue.extend({
   components: { VideoEmbed },
   setup() {
-    const frame: Ref<UnwrapRef<number>> = ref(1);
-    const videos = [
-      "IMG_6826-450-years-landscape.mp4",
-      "IMG_6834-450-years-landscape.mp4",
-      "IMG_6844-450-years-landscape.mp4",
-      "IMG_6852-450-years-landscape.mp4",
-      "IMG_6827-450-years-landscape.mp4",
-      "IMG_6835-450-years-landscape.mp4",
-      "IMG_6845-450-years-landscape.mp4",
-      "IMG_6853-450-years-landscape.mp4",
-      "IMG_6828-450-years-landscape.mp4",
-      "IMG_6836-450-years-landscape.mp4",
-      "IMG_6846-450-years-landscape.mp4",
-      "IMG_6854-450-years-landscape.mp4",
-      "IMG_6829-450-years-landscape.mp4",
-      "IMG_6837-450-years-landscape.mp4",
-      "IMG_6847-450-years-landscape.mp4",
-      "IMG_6857-450-years-landscape.mp4",
-      "IMG_6830-450-years-landscape.mp4",
-      "IMG_6838-450-years-landscape.mp4",
-      "IMG_6848-450-years-landscape.mp4",
-      "IMG_6858-450-years-landscape.mp4",
-      "IMG_6832-450-years-landscape.mp4",
-      "IMG_6840-450-years-landscape.mp4",
-      "IMG_6849-450-years-landscape.mp4",
-      "IMG_6859-450-years-landscape.mp4",
-      "IMG_6833-450-years-landscape.mp4",
-      "IMG_6841-450-years-landscape.mp4",
-      "IMG_6850-450-years-landscape.mp4",
-      "IMG_6860-450-years-landscape.mp4",
-    ];
+    let frame: Number = 1;
+    let year: Number = new Date().getFullYear();
+    const currentYear = year;
+    const yearsToDisintegrate = 450;
+    const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
+    const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
+    const commentary: Ref<UnwrapRef<String>> = ref("");
+    commentary.value = "Move Your Mouse!";
 
     const activeVideos = reactive([]);
-    for (let i = 0; i < 3; i++) activeVideos.push(videos[i]);
+    for (let i = 0; i < 1; i++) activeVideos.push(videos[i]);
 
-    function changeFrame() {
-      if (frame.value === 1) frame.value = 2;
-      else frame.value = 1;
-    }
     function swapSingleVideo() {
-      activeVideos.unshift(videos[videos.length - 1 - frame.value]);
+      activeVideos.unshift(videos[videos.length - 1 - frame]);
       activeVideos.pop();
     }
+    function updateBottle() {
+      year += 0.25;
+      disintegrated.value = ((year - currentYear) / yearsToDisintegrate) * 100;
+      yearAsInt.value = parseInt(year);
+      commentary.value = commentaries[yearAsInt.value] ?? commentary.value;
+    }
     onMounted(() => {
+      window.addEventListener("mousemove", updateBottle());
       setInterval(function () {
-        frame.value++;
+        frame++;
         swapSingleVideo();
-      }, 1000);
+      }, 10000);
     });
 
     return {
-      frame,
+      yearAsInt,
+      commentary,
+      disintegrated,
+      updateBottle,
       activeVideos,
     };
   },
@@ -102,35 +91,41 @@ export default Vue.extend({
 <style lang="sass" scoped>
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/fonts-and-colors"
+html, p, h1, h2, h3, h4, h5, h6
+  color: #FFFFFF
+
 .container
   height: 100vh
   max-width: 100%
   display: flex
   background-color: #000000
-  justify-content: center
-  position: relative
+  flex-direction: column
   .row
     display: flex
-    flex-direction: column
-    flex-wrap: wrap
+    width: 100vw
+    height: 25vh
+    flex-wrap: nowrap
     justify-content: center
     align-content: center
     align-items: center
-    width: 66%
+    &.text-container
+      p, h1, h2
+        text-align: center
+      #year
+        font-size: 20rem
+        line-height: 0
+      #disintegrated
+        font-size: 10rem
+      #commentary
+        font-size: 6rem
+      &.top
+        align-items: flex-end
+      &.bottom
+        align-items: start
+  .video-container
     opacity: 1
-    //animation: 31s ease-in fadeToBlack
-    @keyframes fadeToBlack
-      from
-        opacity: 1
-      to
-        opacity: 0
+    height: 50vh
     .col
-      order: 0
-      align-items: center
-      display: flex
-      justify-content: center
-      flex: 0 1 auto
-      width: 33%
       margin: 10px
       padding: 0
 .audio-container

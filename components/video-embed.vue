@@ -1,5 +1,5 @@
 <template>
-  <video width="100%" muted autoplay loop>
+  <video muted autoplay loop>
     <source :src="`${path}/bucket/${filename}`" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -20,3 +20,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="sass" scoped>
+video
+  width: 100%
+  object-fit: cover
+  height: 50vh
+</style>
