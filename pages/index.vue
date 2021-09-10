@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @mousemove="updateBottle()">
+  <div class="container">
     <div class="row text-container top">
       <h1>
         <span>It’s </span>
@@ -49,12 +49,14 @@ export default Vue.extend({
   setup() {
     let frame: Number = 1;
     let year: Number = new Date().getFullYear();
+    let scrollPosition: Number;
+    let previousScrollPosition: Number = 0;
     const currentYear = year;
     const yearsToDisintegrate = 450;
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
     const commentary: Ref<UnwrapRef<String>> = ref("");
-    commentary.value = "Move Your Mouse!";
+    commentary.value = "Scroll Down!";
 
     const activeVideos = reactive([]);
     for (let i = 0; i < 1; i++) activeVideos.push(videos[i]);
@@ -63,14 +65,22 @@ export default Vue.extend({
       activeVideos.unshift(videos[videos.length - 1 - frame]);
       activeVideos.pop();
     }
-    function updateBottle() {
-      year += 0.25;
+    function updateBottle(e) {
+      scrollPosition =
+        (window.pageYOffset || document.documentElement.scrollTop) -
+        (document.documentElement.clientTop || 0);
+
+      scrollPosition >= previousScrollPosition
+        ? (year += 0.25)
+        : (year -= 0.25);
       disintegrated.value = ((year - currentYear) / yearsToDisintegrate) * 100;
       yearAsInt.value = parseInt(year);
       commentary.value = commentaries[yearAsInt.value] ?? commentary.value;
+
+      previousScrollPosition = scrollPosition;
     }
     onMounted(() => {
-      window.addEventListener("mousemove", updateBottle());
+      document.addEventListener("scroll", updateBottle);
       setInterval(function () {
         frame++;
         swapSingleVideo();
@@ -95,12 +105,13 @@ html, p, h1, h2, h3, h4, h5, h6
   color: #FFFFFF
 
 .container
-  height: 100vh
+  height: 20000vh
   max-width: 100%
   display: flex
   background-color: #000000
   flex-direction: column
   .row
+    position: fixed
     display: flex
     width: 100vw
     height: 25vh
@@ -119,10 +130,13 @@ html, p, h1, h2, h3, h4, h5, h6
       #commentary
         font-size: 6rem
       &.top
+        top: 0
         align-items: flex-end
       &.bottom
+        top: 75vh
         align-items: start
   .video-container
+    top: 25vh
     opacity: 1
     height: 50vh
     .col

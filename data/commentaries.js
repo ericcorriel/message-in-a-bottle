@@ -8,4 +8,8 @@ export const commentaries = {
   2076: "🙏The United States turns 300–hopefully we're still one country🙏",
   2101: "✊100 year anniversary of 9/11✊",
   2120: "🪦You’re dead🪦",
+  2220: "🪦You’re kids are dead🪦",
+  2320: "🪦You’re grandkids are dead🪦",
+  2420: "🪦You’re grandkids' kids are dead🪦",
+  2071: "Congratulations–the water bottle has completely disintegrated!",
 };
