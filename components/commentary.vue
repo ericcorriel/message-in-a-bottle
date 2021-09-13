@@ -22,7 +22,7 @@ export default defineComponent({
 .row-fixed.text-container
   #commentary
     font-size: 6rem
-    line-height: 1rem
+    line-height: 1em
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
       font-size: 6rem
 
@@ -39,7 +39,7 @@ export default defineComponent({
       font-size: 6rem
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 6rem
+      font-size: 4rem
 
     @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
       font-size: 3.5rem

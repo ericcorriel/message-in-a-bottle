@@ -2,8 +2,8 @@
   <div class="row-fixed text-container top">
     <h1>
       <span class="body-copy">It’s </span>
-      <span id="year" class="number-text">{{ yearAsInt }}</span
-      ><span class="body-copy">and this bottle is</span>
+      <span id="year" class="number-text">{{ yearAsInt }}</span>
+      <span class="body-copy">and this bottle is</span>
       <span id="disintegrated" class="number-text"
         >{{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%</span
       >
@@ -30,29 +30,30 @@ export default defineComponent({
 .text-container
   font-size: 2.5rem
   line-height: 0
-  @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
-    font-size: 2.5rem
+  .body-copy
+    @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
+      font-size: 2.5rem
 
-  @include media-breakpoint-up(xs, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(xs, $v1-grid-breakpoints)
+      font-size: 2.5rem
 
-  @include media-breakpoint-up(sm, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(sm, $v1-grid-breakpoints)
+      font-size: 2.5rem
 
-  @include media-breakpoint-up(md, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(md, $v1-grid-breakpoints)
+      font-size: 2.5rem
 
-  @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      font-size: 1.75rem
 
-  @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(xl, $v1-grid-breakpoints)
+      font-size: 2rem
 
-  @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
-    font-size: 2rem
+    @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
+      font-size: 2rem
 
-  @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
-    font-size: 2.5rem
+    @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
+      font-size: 2.5remg
   #year
     font-size: 20rem
     line-height: 0
@@ -69,10 +70,10 @@ export default defineComponent({
       font-size: 20rem
 
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 6rem
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 8rem
 
     @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
       font-size: 10rem
@@ -94,10 +95,10 @@ export default defineComponent({
       font-size: 10rem
 
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 4rem
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 5rem
 
     @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
       font-size: 6rem
