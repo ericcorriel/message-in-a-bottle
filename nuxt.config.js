@@ -18,7 +18,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "~/assets/styles/v1/fonts-and-colors.scss",
+    "~/assets/styles/v1/fonts-and-colors.sass",
     "~/assets/styles/v1/bootstrap/overrides.sass",
     "~/assets/styles/v1/base.sass",
     "~/assets/styles/v1/styles.sass",
@@ -43,13 +43,8 @@ export default {
   googleFonts: {
     /* module options */
     families: {
-      Roboto: true,
-      "Josefin+Sans": true,
-      Lato: [100, 300],
-      Raleway: {
-        wght: [100, 400],
-        ital: [100],
-      },
+      Oswald: { wght: [500] },
+      "Azeret+Mono": { wght: [600] },
     },
     useStylesheet: true,
   },
