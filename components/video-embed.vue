@@ -7,7 +7,6 @@
 
 <script lang="ts">
 import { defineComponent } from "@nuxtjs/composition-api";
-import { Portrait } from "~/entity/v1/portrait";
 
 export default defineComponent({
   name: "VideoEmbed",

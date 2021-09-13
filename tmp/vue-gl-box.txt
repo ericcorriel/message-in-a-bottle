@@ -1,0 +1,75 @@
+     <client-only>
+          <vgl-renderer antialias>
+            <template #scene>
+              <vgl-scene>
+                <vgl-mesh>
+                  <template #geometry>
+                    <vgl-plane-geometry :width="512" :height="512" />
+                  </template>
+                  <template #material>
+                    <vgl-mesh-standard-material>
+                      <template #map>
+                        <vgl-texture
+                          :rotation="rotation"
+                          :center-u="0.5"
+                          :center-v="0.5"
+                        >
+                          <template #image>
+                            <vgl-video :src="shimoguri" />
+                          </template>
+                        </vgl-texture>
+                      </template>
+                    </vgl-mesh-standard-material>
+                  </template>
+                </vgl-mesh>
+                <vgl-ambient-light color="#ffeecc" />
+                <vgl-directional-light :position-y="1" :position-z="2" />
+              </vgl-scene>
+            </template>
+            <template #camera>
+              <vgl-perspective-camera
+                position="spherical"
+                :position-radius="700"
+                :position-phi="1"
+                :position-theta="0.5"
+                rotation="lookAt"
+              />
+            </template>
+          </vgl-renderer>
+        </client-only>
+
+import {
+  VglRenderer,
+  VglScene,
+  VglAmbientLight,
+  VglDirectionalLight,
+  VglPerspectiveCamera,
+  VglMesh,
+  VglBoxGeometry,
+  VglMeshStandardMaterial,
+  VglTexture,
+  VglPlaneGeometry,
+  VglImage,
+} from "vue-gl";
+import shimoguri from "~/data/IMG_6826-450-years-landscape.mp4";
+
+export default Vue.extend({
+  components: {
+    VideoEmbed,
+    VglMesh,
+    VglBoxGeometry,
+    VglRenderer,
+    VglTexture,
+    VglPlaneGeometry,
+    VglScene,
+    VglAmbientLight,
+    VglDirectionalLight,
+    VglPerspectiveCamera,
+    VglMeshStandardMaterial,
+    VglImage,
+    VglVideo,
+  },
+
+  setup(){
+      const shimoguri = ref(null);
+  }

@@ -1,68 +1,38 @@
 <template>
   <div ref="container" class="container">
-    <client-only>
-      <vgl-renderer id="canvas" ref="canvas">
-        <template #scene>
-          <vgl-scene>
-            <vgl-mesh>
-              <template #geometry>
-                <vgl-box-geometry />
-              </template>
-              <template #material>
-                <vgl-mesh-standard-material />
-              </template>
-            </vgl-mesh>
-            <vgl-directional-light
-              :position-x="2"
-              :position-y="1.5"
-              :position-z="1"
-            />
-          </vgl-scene>
-        </template>
-        <template #camera>
-          <vgl-perspective-camera
-            ref="camera"
-            :position-x="positionX"
-            :position-y="1.5"
-            :position-z="1"
-            rotation="lookAt"
+    <div id="step1" ref="step1">
+      <div class="row text-container top">
+        <h1>
+          <span>It’s </span>
+          <span id="year">{{ yearAsInt }}</span>
+          <span>and this water bottle is</span>
+          <span id="disintegrated">
+            {{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%
+          </span>
+          <span>disintegrated</span>
+        </h1>
+      </div>
+      <div class="row video-container">
+        <div
+          v-for="(activeVideo, index) in activeVideos"
+          :key="`${activeVideos[index]}`"
+          class="col"
+        >
+          <VideoEmbed
+            :index="index"
+            orientation="landscape"
+            path="/video"
+            :filename="activeVideo"
           />
-        </template>
-      </vgl-renderer>
-    </client-only>
-    <!--    <div id="step1" ref="step1">-->
-    <!--      <div class="row text-container top">-->
-    <!--        <h1>-->
-    <!--          <span>It’s </span>-->
-    <!--          <span id="year">{{ yearAsInt }}</span>-->
-    <!--          <span>and this water bottle is</span>-->
-    <!--          <span id="disintegrated">-->
-    <!--            {{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%-->
-    <!--          </span>-->
-    <!--          <span>disintegrated</span>-->
-    <!--        </h1>-->
-    <!--      </div>-->
-    <!--      <div class="row video-container">-->
-    <!--        <div-->
-    <!--          v-for="(activeVideo, index) in activeVideos"-->
-    <!--          :key="`${activeVideos[index]}`"-->
-    <!--          class="col"-->
-    <!--        >-->
-    <!--          <VideoEmbed-->
-    <!--            :index="index"-->
-    <!--            orientation="landscape"-->
-    <!--            path="/video"-->
-    <!--            :filename="activeVideo"-->
-    <!--          />-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--      <div class="row text-container bottom">-->
-    <!--        <h2 id="commentary">{{ commentary }}</h2>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--    <div id="step2" ref="step2">-->
-    <!--      <img src="/img/20190423-plastic-pollution.jpg" />-->
-    <!--    </div>-->
+        </div>
+      </div>
+      <div class="row text-container bottom">
+        <h2 id="commentary">{{ commentary }}</h2>
+      </div>
+    </div>
+    <div id="step2" ref="step2">
+      <img src="/img/20190423-plastic-pollution.jpg" />
+    </div>
   </div>
 </template>
 
@@ -76,38 +46,19 @@ import {
   UnwrapRef,
 } from "@nuxtjs/composition-api";
 
-import {
-  VglRenderer,
-  VglScene,
-  VglAmbientLight,
-  VglDirectionalLight,
-  VglPerspectiveCamera,
-  VglMesh,
-  VglBoxGeometry,
-  VglMeshStandardMaterial,
-} from "vue-gl";
-
 import { videos } from "~/data/videos";
 import { commentaries } from "~/data/commentaries";
 import VideoEmbed from "~/components/video-embed";
 export default Vue.extend({
   components: {
     VideoEmbed,
-    VglMesh,
-    VglBoxGeometry,
-    VglRenderer,
-    VglScene,
-    VglAmbientLight,
-    VglDirectionalLight,
-    VglPerspectiveCamera,
-    VglMeshStandardMaterial,
   },
   setup() {
     let frame: Number = 1;
     let year: Number = new Date().getFullYear();
     const scrollPosition: Number = ref(0);
     const canvas = ref(null);
-    const positionX = ref(2);
+    const rotation = ref(0);
     let previousScrollPosition: Number = 0;
     const currentYear = year;
     const yearsToDisintegrate = 450;
@@ -153,15 +104,12 @@ export default Vue.extend({
       activeVideos,
       scrollPosition,
       canvas,
-      positionX,
+      rotation,
     };
   },
 
-  // data: () => ({ name: "seahorse", model: { seahorse, cottage } }),
   watch: {
     disintegrated(value, oldValue) {
-      this.positionX -= 0.1;
-      // console.log(this.$refs.camera.inst);
       if (value > 5) {
         this.$refs.container.style.height = this.scrollPosition + "px";
       }
@@ -182,6 +130,7 @@ html, p, h1, h2, h3, h4, h5, h6
   display: flex
   background-color: #000000
   flex-direction: column
+  font-family: "Raleway"
   #step1
     height: 100%
     z-index: 1
@@ -197,6 +146,7 @@ html, p, h1, h2, h3, h4, h5, h6
     &.text-container
       p, h1, h2
         text-align: center
+        font-family: "Raleway"
       #year
         font-size: 20rem
         line-height: 0
