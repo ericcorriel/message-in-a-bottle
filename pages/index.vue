@@ -26,9 +26,9 @@ import {
 
 import { videos } from "~/data/videos";
 import { commentaries } from "~/data/commentaries";
-import YearDisintegrated from "~/components/year-disintegrated";
-import VideoContainer from "~/components/video-container";
-import Commentary from "~/components/commentary";
+import YearDisintegrated from "~/components/year-disintegrated.vue";
+import VideoContainer from "~/components/video-container.vue";
+import Commentary from "~/components/commentary.vue";
 export default defineComponent({
   components: {
     YearDisintegrated,
@@ -36,19 +36,19 @@ export default defineComponent({
     Commentary,
   },
   setup() {
-    let frame: Number = 1;
-    let year: Number = new Date().getFullYear();
-    let previousScrollPosition: Number = 0;
-    const scrollPosition: Ref<UnwrapRef<Number>> = ref(0);
+    let frame: number = 1;
+    let year: number = new Date().getFullYear();
+    let previousScrollPosition: number = 0;
+    const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
     const yearsToDisintegrate = 450;
-    const yearAsInt: Ref<UnwrapRef<Number>> = ref(year);
-    const disintegrated: Ref<UnwrapRef<Number>> = ref(0.0);
-    const commentary: Ref<UnwrapRef<String>> = ref(null);
-    commentary.value = "Scroll Down!";
+    const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
+    const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
+    const commentary: Ref<UnwrapRef<string>> = ref("Scroll Down!");
+    // commentary.value = "Scroll Down!";
 
     const activeVideos = reactive([]);
-    for (let i: Number = 0; i < 1; i++) activeVideos.push(videos[i]);
+    for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
 
     function swapSingleVideo() {
       activeVideos.unshift(videos[videos.length - 1 - frame]);
@@ -105,6 +105,7 @@ export default defineComponent({
   max-width: 100%
   display: flex
   flex-direction: column
+  padding: 0
   #step1
     height: 100%
     z-index: 1

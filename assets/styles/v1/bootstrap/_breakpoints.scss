@@ -6,7 +6,8 @@ $v1-grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
+  xxxl: 2000px
 ) !default;
 // 21.06.06 - apparently not necessary for my use case
 // @import '/node_modules/bootstrap/scss/functions';

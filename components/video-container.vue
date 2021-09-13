@@ -35,7 +35,7 @@ export default defineComponent({
   opacity: 1
   height: 50vh
   .col
-    margin: 10px
+    margin: 0
     padding: 0
     width: 100%
 </style>
