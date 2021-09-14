@@ -1,15 +1,33 @@
 <template>
-  <div ref="container" class="container">
-    <div id="step1" ref="step1">
-      <YearDisintegrated
-        :disintegrated="disintegrated"
-        :year-as-int="yearAsInt"
-      />
-      <VideoContainer :active-videos="activeVideos" />
-      <Commentary :commentary="commentary" />
+  <div>
+    <div ref="container" class="container">
+      <div id="step1" ref="step1" class="step">
+        <YearDisintegrated
+          :disintegrated="disintegrated"
+          :year-as-int="yearAsInt"
+        />
+        <VideoContainer :active-videos="activeVideos" />
+        <Commentary :commentary="commentary" />
+      </div>
     </div>
-    <div id="step2" ref="step2">
-      <img src="/img/20190423-plastic-pollution.jpg" />
+    <div id="step2" ref="step2" class="step">
+      <p>Congratulations!</p>
+      <p>You just scrolled through 450 years</p>
+    </div>
+    <div id="step3" class="step">
+      <p>That bottle made in 2021 has finally disintegrated:)</p>
+    </div>
+    <div id="step4" class="step">
+      <p>Oh wait…there's more:(</p>
+      <div class="img-container cover">
+        <img src="/img/20190423-plastic-pollution.jpg" />
+      </div>
+    </div>
+    <div id="step5" class="step">
+      <p>Shiiiiiiit…</p>
+    </div>
+    <div id="credits">
+      <p>Credits</p>
     </div>
   </div>
 </template>
@@ -18,6 +36,7 @@
 import {
   defineComponent,
   onMounted,
+  watch,
   reactive,
   Ref,
   ref,
@@ -45,7 +64,7 @@ export default defineComponent({
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
     const commentary: Ref<UnwrapRef<string>> = ref("Scroll Down!");
-    // commentary.value = "Scroll Down!";
+    const container = ref(null);
 
     const activeVideos = reactive([]);
     for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
@@ -76,22 +95,30 @@ export default defineComponent({
       }, 10000);
     });
 
+    watch(disintegrated, (value, oldValue) => {
+      console.log(scrollPosition.value);
+      if (value > 5) {
+        container.value.style.height = scrollPosition.value + "px";
+      }
+    });
+
     return {
       yearAsInt,
       commentary,
       disintegrated,
       activeVideos,
       scrollPosition,
+      container,
     };
   },
 
-  watch: {
-    disintegrated(value, oldValue) {
-      if (value > 5) {
-        this.$refs.container.style.height = this.scrollPosition + "px";
-      }
-    },
-  },
+  // watch: {
+  //   disintegrated(value, oldValue) {
+  //     if (value > 5) {
+  //       this.$refs.container.style.height = this.scrollPosition + "px";
+  //     }
+  //   },
+  // },
 });
 </script>
 
@@ -106,12 +133,27 @@ export default defineComponent({
   display: flex
   flex-direction: column
   padding: 0
-  #step1
-    height: 100%
-    z-index: 1
-#step2
+
+.step
   height: 100vh
-  z-index: 2
-  img
-    height: 100vh
+  background-color: #000000
+  position: relative
+  .img-container
+    &.cover
+      width: 100vh
+      height: 100vh
+      img
+        object-fit: cover
+  &#step1
+    z-index: 1
+  &#step2
+    z-index: 2
+  &#step3
+    z-index: 3
+  &#step4
+    z-index: 4
+  &#step5
+    z-index: 5
+  &#credits
+    z-index: 6
 </style>

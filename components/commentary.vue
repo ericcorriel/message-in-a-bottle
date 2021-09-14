@@ -45,7 +45,7 @@ export default defineComponent({
       font-size: 3.5rem
 
     @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
-      font-size: 6rem
+      font-size: 13vw
   &.bottom
     top: 75vh
     align-items: baseline

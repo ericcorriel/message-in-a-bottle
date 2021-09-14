@@ -28,83 +28,67 @@ export default defineComponent({
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
 .text-container
-  font-size: 2.5rem
+  font-size: 10vw
   line-height: 0
   .body-copy
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
-      font-size: 2.5rem
+      font-size: 8vw
 
     @include media-breakpoint-up(xs, $v1-grid-breakpoints)
-      font-size: 2.5rem
+      font-size: 8vw
 
     @include media-breakpoint-up(sm, $v1-grid-breakpoints)
-      font-size: 2.5rem
+      font-size: 6vw
 
     @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      font-size: 2.5rem
+      font-size: 4vw
 
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      font-size: 1.75rem
+      font-size: 2.9vw
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 2rem
+      font-size: 2.5vw
 
-    @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
-      font-size: 2rem
-
-    @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
-      font-size: 2.5remg
   #year
-    font-size: 20rem
+    font-size: 20vw
     line-height: 0
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 28vw
 
     @include media-breakpoint-up(xs, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 28vw
 
     @include media-breakpoint-up(sm, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 22vw
 
     @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 20vw
 
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      font-size: 6rem
+      font-size: 10vw
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 8rem
-
-    @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
-      font-size: 10rem
-
-    @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
-      font-size: 20rem
+      font-size: 12vw
 
   #disintegrated
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
-    font-size: 10rem
+    font-size: 18vw
 
     @include media-breakpoint-up(xs, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 16vw
 
     @include media-breakpoint-up(sm, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 11vw
 
     @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      font-size: 10rem
+      font-size: 10vw
 
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      font-size: 4rem
+      font-size: 7vw
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 5rem
+      font-size: 8vw
 
-    @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
-      font-size: 6rem
-
-    @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
-      font-size: 10rem
   &.top
     top: 0
     align-items: flex-end
