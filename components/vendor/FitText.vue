@@ -16,14 +16,14 @@ export default {
         return {
           minSize: 16,
           maxSize: 512,
-          multiLine: true
+          multiLine: true,
         };
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      $_fitty: undefined
+      $_fitty: undefined,
     };
   },
   destroyed() {
@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
     this.$_fitty = fitty(this.$el, this.options);
-  }
+  },
 };
 </script>
 

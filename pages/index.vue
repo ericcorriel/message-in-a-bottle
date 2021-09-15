@@ -65,7 +65,7 @@ export default defineComponent({
     let frame: number = 1;
     let year: number = new Date().getFullYear();
     let previousScrollPosition: number = 0;
-    let stoppingDisintegratedPercentage = 5;
+    const stoppingDisintegratedPercentage = 5;
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
@@ -86,17 +86,19 @@ export default defineComponent({
     function updateBottle(e) {
       scrollPosition.value =
         (window.pageYOffset || document.documentElement.scrollTop) -
-        (document.documentElement.clientTop || 0) + window.innerHeight;
+        (document.documentElement.clientTop || 0) +
+        window.innerHeight;
 
       scrollPosition.value >= previousScrollPosition
         ? (year += 0.25)
         : (year -= 0.25);
-      disintegrated.value = (disintegrated.value < stoppingDisintegratedPercentage)? ((year - currentYear) / yearsToDisintegrate) * 100 : stoppingDisintegratedPercentage;
+      disintegrated.value =
+        disintegrated.value < stoppingDisintegratedPercentage
+          ? ((year - currentYear) / yearsToDisintegrate) * 100
+          : stoppingDisintegratedPercentage;
       yearAsInt.value = parseInt(year);
       commentary.value = commentaries[yearAsInt.value] ?? commentary.value;
       previousScrollPosition = scrollPosition.value;
-
-
     }
     onMounted(() => {
       document.addEventListener("scroll", updateBottle);
@@ -109,7 +111,6 @@ export default defineComponent({
     const unwatch = watch(disintegrated, (value, oldValue) => {
       if (value >= stoppingDisintegratedPercentage) {
         container.value.style.height = scrollPosition.value + "px";
-
       }
     });
 
@@ -122,7 +123,6 @@ export default defineComponent({
       container,
     };
   },
-
 });
 </script>
 

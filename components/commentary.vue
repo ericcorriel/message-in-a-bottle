@@ -9,12 +9,12 @@ import { defineComponent } from "@nuxtjs/composition-api";
 import FitText from "~/components/vendor/FitText";
 export default defineComponent({
   name: "Commentary",
+  components: {
+    FitText,
+  },
   props: {
     commentary: { type: String, default: "" },
   },
-  components: {
-    FitText,
-  }
 });
 </script>
 

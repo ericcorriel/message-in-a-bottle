@@ -72,27 +72,43 @@ export default {
   build: {
     cssSourceMap: false,
     filenames: {
-      app: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[contenthash:7]${isModern ? '.modern' : ''}.js`,
-      chunk: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[contenthash:7]${isModern ? '.modern' : ''}.js`,
-      css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash:7].css',
-      img: ({ isDev }) => isDev ? '[path][name].(png|svg|jpg|jpeg|gif)' : 'img/[name].[contenthash:7].[ext]',
-      font: ({ isDev }) => isDev ? '[path][name].(woff|woff2|otf|ttf)' : 'fonts/[name].[contenthash:7].[ext]',
-      video: ({ isDev }) => isDev ? '[path][name].(mp4|mp3|mov)' : 'videos/[name].[contenthash:7].[ext]',
-      json: ({ isDev }) => isDev ? '[path][name].json' : 'content/[name].[contenthash:7].[ext]'
+      app: ({ isDev, isModern }) =>
+        isDev
+          ? `[name]${isModern ? ".modern" : ""}.js`
+          : `[contenthash:7]${isModern ? ".modern" : ""}.js`,
+      chunk: ({ isDev, isModern }) =>
+        isDev
+          ? `[name]${isModern ? ".modern" : ""}.js`
+          : `[contenthash:7]${isModern ? ".modern" : ""}.js`,
+      css: ({ isDev }) => (isDev ? "[name].css" : "css/[contenthash:7].css"),
+      img: ({ isDev }) =>
+        isDev
+          ? "[path][name].(png|svg|jpg|jpeg|gif)"
+          : "img/[name].[contenthash:7].[ext]",
+      font: ({ isDev }) =>
+        isDev
+          ? "[path][name].(woff|woff2|otf|ttf)"
+          : "fonts/[name].[contenthash:7].[ext]",
+      video: ({ isDev }) =>
+        isDev
+          ? "[path][name].(mp4|mp3|mov)"
+          : "videos/[name].[contenthash:7].[ext]",
+      json: ({ isDev }) =>
+        isDev ? "[path][name].json" : "content/[name].[contenthash:7].[ext]",
     },
     optimization: {
       splitChunks: {
-        chunks: 'all',
-        automaticNameDelimiter: '.',
+        chunks: "all",
+        automaticNameDelimiter: ".",
         name: undefined,
-        cacheGroups: {}
-      }
+        cacheGroups: {},
+      },
     },
     splitChunks: {
       layouts: false,
       pages: true,
-      commons: true
-    }
+      commons: true,
+    },
   },
   generate: {
     interval: 2000,
