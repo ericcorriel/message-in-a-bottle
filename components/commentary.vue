@@ -1,15 +1,18 @@
 <template>
   <div class="row-fixed text-container bottom">
-    {{ commentary }}
+    <FitText>{{ commentary }}</FitText>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "@nuxtjs/composition-api";
+import FitText from "~/components/vendor/FitText";
 
 export default defineComponent({
   name: "Commentary",
-  components: {},
+  components: {
+    FitText,
+  },
   props: {
     commentary: { type: String, default: "" },
   },

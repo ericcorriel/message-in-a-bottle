@@ -3,13 +3,12 @@
 </template>
 
 <script>
-import {defineComponent} from "@nuxtjs/composition-api";
-import fitty from "fitty";
+import fitty from "~/node_modules/fitty/dist/fitty.module";
 
-export default defineComponent({
+export default {
   name: "FitText",
-  components:{
-    fitty
+  components: {
+    fitty,
   },
   props: {
     options: {
@@ -35,7 +34,7 @@ export default defineComponent({
   mounted() {
     this.$_fitty = fitty(this.$el, this.options);
   },
-});
+};
 </script>
 
 <style scoped>
