@@ -65,7 +65,7 @@ export default defineComponent({
     let frame: number = 1;
     let year: number = new Date().getFullYear();
     let previousScrollPosition: number = 0;
-    const stoppingDisintegratedPercentage = 5;
+    const stoppingDisintegratedPercentage = 100;
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
