@@ -52,14 +52,12 @@ import { commentaries } from "~/data/commentaries";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
-import FitText from "~/components/vendor/FitText";
 
 export default defineComponent({
   components: {
     YearDisintegrated,
     VideoContainer,
     Commentary,
-    FitText,
   },
   setup() {
     let frame: number = 1;
@@ -74,16 +72,16 @@ export default defineComponent({
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
     const commentary: Ref<UnwrapRef<string>> = ref("Scroll Down!");
-    const container = ref(null);
+    const container = ref();
 
-    const activeVideos = reactive([]);
+    const activeVideos: string[] = reactive([]);
     for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
 
     function swapSingleVideo() {
       activeVideos.unshift(videos[videos.length - 1 - frame]);
       activeVideos.pop();
     }
-    function updateBottle(e) {
+    function updateBottle() {
       scrollPosition.value =
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
@@ -96,10 +94,16 @@ export default defineComponent({
         disintegrated.value < stoppingDisintegratedPercentage
           ? ((year - currentYear) / yearsToDisintegrate) * 100
           : stoppingDisintegratedPercentage;
-      yearAsInt.value = parseInt(year);
-      commentary.value = commentaries[yearAsInt.value] ?? commentary.value;
+      yearAsInt.value = Math.floor(year);
+
+      const res = commentaries.filter(
+        (commentaryType) => commentaryType.year === yearAsInt.value
+      );
+
+      commentary.value = res[0]?.comment ?? commentary.value;
       previousScrollPosition = scrollPosition.value;
     }
+
     onMounted(() => {
       document.addEventListener("scroll", updateBottle);
       setInterval(function () {
@@ -110,7 +114,7 @@ export default defineComponent({
 
     const unwatch = watch(disintegrated, (value, oldValue) => {
       if (value >= stoppingDisintegratedPercentage) {
-        container.value.style.height = scrollPosition.value + "px";
+        container.value!.style.height = scrollPosition.value + "px";
       }
     });
 
