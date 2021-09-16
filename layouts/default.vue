@@ -8,7 +8,7 @@
 import { defineComponent } from "@nuxtjs/composition-api";
 
 export default defineComponent({
-  name: "Default.vue",
+  name: "Default",
   components: {},
   setup() {},
 });
