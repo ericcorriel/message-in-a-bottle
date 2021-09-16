@@ -3,11 +3,14 @@
 </template>
 
 <script>
-// 21.09.13 - https://codesandbox.io/s/vwjlp5pj5?file=/src/App.vue:260-304
+import {defineComponent} from "@nuxtjs/composition-api";
 import fitty from "fitty";
 
-export default {
+export default defineComponent({
   name: "FitText",
+  components:{
+    fitty
+  },
   props: {
     options: {
       type: Object,
@@ -32,7 +35,7 @@ export default {
   mounted() {
     this.$_fitty = fitty(this.$el, this.options);
   },
-};
+});
 </script>
 
 <style scoped>
