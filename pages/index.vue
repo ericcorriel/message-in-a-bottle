@@ -52,7 +52,7 @@ import { commentaries } from "~/data/commentaries";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
-import FitText from "~/components/vendor/FitText";
+import FitText from "~/components/vendor/FitText.vue";
 
 export default defineComponent({
   components: {

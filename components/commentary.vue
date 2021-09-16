@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from "@nuxtjs/composition-api";
-import FitText from "~/components/vendor/FitText";
+import FitText from "~/components/vendor/FitText.vue";
 
 export default defineComponent({
   name: "Commentary",
