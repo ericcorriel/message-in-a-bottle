@@ -18,3 +18,12 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Setting up static hosting with GitHub pages
+- Add CNAME to static directory
+- Change A records of DNS to point to 185.199.108.153
+- CNAME record: name = www | value = ericcorriel.github.io
+- create empty gh-pages branch
+- copy .github folder from previous project
+- set GitHub pages to display gh-pages branch
+
