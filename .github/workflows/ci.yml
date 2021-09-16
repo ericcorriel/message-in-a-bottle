@@ -42,7 +42,7 @@ jobs:
         run: rm -rf node_modules && yarn install --frozen-lockfile
 
       #- name: Run linter 👀
-      #  run: npm run lint
+      #  run: yarn lint
 
       - name: Generate build
         run: yarn generate
