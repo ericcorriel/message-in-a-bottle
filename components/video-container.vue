@@ -1,26 +1,17 @@
 <template>
   <div class="row-fixed video-container">
-    <div
-      v-for="(activeVideo, index) in activeVideos"
-      :key="`${activeVideos[index]}`"
-      class="col"
-    >
-      <VideoEmbed
-        :index="index"
-        orientation="landscape"
-        path="/video"
-        :filename="activeVideo"
-      />
+    <div class="col">
+      <VimeoEmbed> </VimeoEmbed>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "@nuxtjs/composition-api";
-import VideoEmbed from "~/components/video-embed";
+import VimeoEmbed from "~/components/vimeo-embed.vue";
 export default defineComponent({
   name: "VideoContainer",
-  components: { VideoEmbed },
+  components: { VimeoEmbed },
   props: {
     activeVideos: { type: Array, default: () => [] },
   },

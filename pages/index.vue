@@ -6,7 +6,11 @@
           :disintegrated="disintegrated"
           :year-as-int="yearAsInt"
         />
-        <VideoContainer :active-videos="activeVideos" />
+        <!--        <VideoContainer :active-videos="activeVideos" />-->
+        <VimeoEmbed
+          video-id="607838921"
+          :current-video-time="currentVideoTime"
+        ></VimeoEmbed>
         <Commentary :commentary="commentary" />
       </div>
     </div>
@@ -53,6 +57,7 @@ import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
+import VimeoEmbed from "~/components/vimeo-embed.vue";
 
 export default defineComponent({
   components: {
@@ -60,6 +65,7 @@ export default defineComponent({
     VideoContainer,
     Commentary,
     FitText,
+    VimeoEmbed,
   },
   setup() {
     let frame: number = 1;
@@ -70,6 +76,7 @@ export default defineComponent({
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
     const yearsToDisintegrate = 450;
+    const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
 
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
@@ -88,6 +95,8 @@ export default defineComponent({
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
+
+      currentVideoTime.value += 0.1;
 
       scrollPosition.value >= previousScrollPosition
         ? (year += 0.25)
@@ -127,6 +136,7 @@ export default defineComponent({
       activeVideos,
       scrollPosition,
       container,
+      currentVideoTime,
     };
   },
 });

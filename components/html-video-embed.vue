@@ -9,7 +9,7 @@
 import { defineComponent } from "@nuxtjs/composition-api";
 
 export default defineComponent({
-  name: "VideoEmbed",
+  name: "HtmlVideoEmbed",
   props: {
     path: { type: String, default: "/video" },
     frame: { type: Number, default: 0 },
