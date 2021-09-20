@@ -74,8 +74,8 @@ export default defineComponent({
     let previousScrollPosition: number = 0;
     const stoppingDisintegratedPercentage = 100;
     const isScrollingTracker = ref();
-    const isScrolling: Boolean = ref(false);
-    const useVimeo: Boolean = ref(false);
+    const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
+    const useVimeo: Ref<UnwrapRef<Boolean>> = ref(false);
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
