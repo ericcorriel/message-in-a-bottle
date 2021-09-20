@@ -1,16 +1,14 @@
 <template>
-  <div class="row-fixed video-container">
-    <client-only>
-      <vueVimeoPlayer
-        ref="player"
-        :video-id="videoId"
-        :options="{ muted: 1, background: 0 }"
-        :autoplay="false"
-        :controls="false"
-        :loop="true"
-      />
-    </client-only>
-  </div>
+  <client-only>
+    <vueVimeoPlayer
+      ref="player"
+      :video-id="videoId"
+      :options="{ muted: 1, background: 0 }"
+      :autoplay="false"
+      :controls="false"
+      :loop="true"
+    />
+  </client-only>
 </template>
 
 <script lang="ts">

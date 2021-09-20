@@ -9,7 +9,7 @@
       ></VimeoEmbed>
       <HTMLVideoEmbed
         v-else
-        filename="export.1920x1080.01-HD-720p.mov"
+        filename="shatter.03-HD-720p.mov"
         :current-video-time="currentVideoTime"
         :is-scrolling="isScrolling"
       ></HTMLVideoEmbed>
