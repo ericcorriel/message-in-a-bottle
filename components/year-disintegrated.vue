@@ -30,6 +30,7 @@ export default defineComponent({
 .text-container
   font-size: 10vw
   line-height: 0
+  background-color: #000000
   .body-copy
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
       font-size: 8vw

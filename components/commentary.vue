@@ -52,6 +52,7 @@ export default defineComponent({
   //  @include media-breakpoint-up(xxxl, $v1-grid-breakpoints)
   //    font-size: 13vw
   &.bottom
+    background-color: #000000
     top: 75vh
     align-items: baseline
 </style>
