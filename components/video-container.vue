@@ -20,7 +20,7 @@
 <script>
 import { defineComponent } from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
-import HTMLVideoEmbed from "~/components/html-video-embed";
+import HTMLVideoEmbed from "~/components/html-video-embed.vue";
 export default defineComponent({
   name: "VideoContainer",
   components: { VimeoEmbed, HTMLVideoEmbed },
