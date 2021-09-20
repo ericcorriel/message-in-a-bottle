@@ -22,14 +22,14 @@
     </div>
     <div id="step3" class="step">
       <FitText>That bottle made in 2021</FitText>
-      <FitText>has finally disintegrated😅</FitText>
+      <FitText>has finally disintegrated</FitText>
     </div>
     <div id="step4" class="step">
-      <FitText>Oh wait–there’s a few more…</FitText>
+      <FitText>Oh wait–there’s just a few more…</FitText>
     </div>
     <div id="step5" class="step">
       <div class="img-container cover">
-        <img src="/img/landfill.jpg" />
+        <img src="/img/wall-o-bottles.jpg" />
       </div>
     </div>
     <div id="step5" class="step">
@@ -99,8 +99,6 @@ export default defineComponent({
       isScrolling.value = true;
       window.clearTimeout(isScrollingTracker.value);
       isScrollingTracker.value = setTimeout(function () {
-        // Run the callback
-        console.log("Scrolling has stopped.");
         isScrolling.value = false;
       }, 66);
 
@@ -108,8 +106,6 @@ export default defineComponent({
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
-
-      currentVideoTime.value += 0.1;
 
       scrollPosition.value >= previousScrollPosition
         ? (year += 0.25)
@@ -119,6 +115,8 @@ export default defineComponent({
           ? ((year - currentYear) / yearsToDisintegrate) * 100
           : stoppingDisintegratedPercentage;
       yearAsInt.value = Math.floor(year);
+
+      currentVideoTime.value = (disintegrated.value * 60) / 100;
 
       const res = commentaries.filter(
         (commentaryType) => commentaryType.year === yearAsInt.value
