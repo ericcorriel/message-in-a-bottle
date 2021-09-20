@@ -6,6 +6,8 @@
         :video-id="videoId"
         :options="{ muted: 1, background: 0 }"
         :autoplay="false"
+        :controls="false"
+        :loop="true"
       />
     </client-only>
   </div>
@@ -31,6 +33,7 @@ export default defineComponent({
   props: {
     videoId: { type: String, default: "0" },
     currentVideoTime: { type: Number, default: 0 },
+    isScrolling: { type: Boolean, default: false },
   },
   setup(props, context) {
     const player = ref();
@@ -48,7 +51,15 @@ export default defineComponent({
         player.value!.play();
         setTimeout(function () {
           player.value!.pause();
-        }, 750);
+        }, 1000);
+      }
+    );
+    watch(
+      () => props.isScrolling,
+      (value, oldValue) => {
+        if (value === false) {
+          player.value!.pause();
+        }
       }
     );
 

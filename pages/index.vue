@@ -6,11 +6,12 @@
           :disintegrated="disintegrated"
           :year-as-int="yearAsInt"
         />
-        <!--        <VideoContainer :active-videos="activeVideos" />-->
-        <VimeoEmbed
-          video-id="607838921"
+        <VideoContainer
+          :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
-        ></VimeoEmbed>
+          :is-scrolling="isScrolling"
+          :use-vimeo="useVimeo"
+        />
         <Commentary :commentary="commentary" />
       </div>
     </div>
@@ -68,10 +69,13 @@ export default defineComponent({
     VimeoEmbed,
   },
   setup() {
-    let frame: number = 1;
+    const frame: number = 1;
     let year: number = new Date().getFullYear();
     let previousScrollPosition: number = 0;
     const stoppingDisintegratedPercentage = 100;
+    const isScrollingTracker = ref();
+    const isScrolling: Boolean = ref(false);
+    const useVimeo: Boolean = ref(false);
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
@@ -90,7 +94,16 @@ export default defineComponent({
       activeVideos.unshift(videos[videos.length - 1 - frame]);
       activeVideos.pop();
     }
+
     function updateBottle() {
+      isScrolling.value = true;
+      window.clearTimeout(isScrollingTracker.value);
+      isScrollingTracker.value = setTimeout(function () {
+        // Run the callback
+        console.log("Scrolling has stopped.");
+        isScrolling.value = false;
+      }, 66);
+
       scrollPosition.value =
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
@@ -117,10 +130,6 @@ export default defineComponent({
 
     onMounted(() => {
       document.addEventListener("scroll", updateBottle);
-      setInterval(function () {
-        frame++;
-        swapSingleVideo();
-      }, 10000);
     });
 
     const unwatch = watch(disintegrated, (value, oldValue) => {
@@ -137,6 +146,8 @@ export default defineComponent({
       scrollPosition,
       container,
       currentVideoTime,
+      isScrolling,
+      useVimeo,
     };
   },
 });

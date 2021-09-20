@@ -1,21 +1,33 @@
 <template>
-  <video muted autoplay loop>
-    <source :src="`${path}/bucket/${filename}`" type="video/mp4" />
+  <video ref="player" muted loop>
+    <source :src="`/video/${filename}`" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "HtmlVideoEmbed",
   props: {
-    path: { type: String, default: "/video" },
-    frame: { type: Number, default: 0 },
-    index: { type: Number, default: 0 },
-    orientation: { type: String, default: "landscape" },
     filename: { type: String, default: "" },
+    currentVideoTime: { type: Number, default: 0 },
+    isScrolling: { type: Boolean, default: false },
+  },
+  setup(props, context) {
+    const player = ref();
+
+    watch(
+      () => props.currentVideoTime,
+      (value, oldValue) => {
+        player.value.currentTime = value;
+      }
+    );
+
+    return {
+      player,
+    };
   },
 });
 </script>
