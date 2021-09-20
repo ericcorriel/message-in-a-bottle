@@ -1,4 +1,4 @@
 import Vue from "vue";
-import vueVimeoPlayer from "~/vendor/vue-vimeo-player";
+import vueVimeoPlayer from "~/forks/vue-vimeo-player";
 
 Vue.use(vueVimeoPlayer);

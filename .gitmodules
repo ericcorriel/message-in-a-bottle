@@ -1,0 +1,3 @@
+[submodule "forks/vue-vimeo-player"]
+	path = forks/vue-vimeo-player
+	url = git@github.com:ericcorriel/vue-vimeo-player.git

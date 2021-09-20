@@ -21,7 +21,7 @@ import {
   toRef,
   watch,
 } from "@nuxtjs/composition-api";
-import vueVimeoPlayer from "~/vendor/vue-vimeo-player";
+import vueVimeoPlayer from "~/forks/vue-vimeo-player";
 
 export default defineComponent({
   name: "VimeoEmbed",
