@@ -4,14 +4,19 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "450 Years",
+    title: "Message In A Bottle",
     htmlAttrs: {
       lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "A crowdsourced interactive film showing the many different lives a plastic water bottle will lead during its 450 year journey towards disintegration.",
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
@@ -28,6 +33,7 @@ export default {
   plugins: [
     { src: "plugins/bootstrap.js", mode: "client" },
     { src: "plugins/fontawesome.js" },
+    { src: `~plugins/vimeo-player` },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -70,6 +76,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    vendor: ["vue-vimeo-player"],
     cssSourceMap: false,
     filenames: {
       app: ({ isDev, isModern }) =>
