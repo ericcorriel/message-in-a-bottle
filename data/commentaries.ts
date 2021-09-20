@@ -20,9 +20,26 @@ export const commentaries: commentariesArr = [
   },
   { year: 2101, comment: "✊100 year anniversary of 9/11✊" },
   { year: 2120, comment: "🪦You’re dead🪦" },
+  {
+    year: 2141,
+    comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  {
+    year: 2175,
+    comment: "Si stante, hoc natura videlicet vult, salvam esse se",
+  },
+  { year: 2203, comment: "Quod concedimus; Animum autem reliquis rebus" },
   { year: 2220, comment: "🪦🪦Your kids are dead🪦🪦" },
+  {
+    year: 2256,
+    comment: "Ita perfecit, ut corpus; Cyrenaici quidem non recusant",
+  },
+  { year: 2283, comment: "Non pugnem cum homine, cur tantum habeat" },
   { year: 2320, comment: "🪦🪦🪦Your grandkids are dead🪦🪦🪦" },
+  { year: 2355, comment: "In natura boni; Hoc mihi cum tuo" },
+  { year: 2381, comment: "Fratre convenit. Duo Reges: constructio interrete" },
   { year: 2420, comment: "🪦🪦🪦🪦Your grandkids' kids are dead🪦🪦🪦🪦" },
+  { year: 2444, comment: "Lorem ipsum dolor sit amet," },
   {
     year: 2471,
     comment: "Congratulations–the water bottle has disintegrated!",
