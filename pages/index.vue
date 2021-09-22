@@ -11,6 +11,8 @@
           :current-video-time="currentVideoTime"
           :is-scrolling="isScrolling"
           :use-vimeo="useVimeo"
+          vimeo-id="607838921"
+          filename="shatter.04-HD 720p.mov"
         />
         <Commentary :commentary="commentary" />
       </div>
@@ -66,7 +68,6 @@ export default defineComponent({
     VideoContainer,
     Commentary,
     FitText,
-    VimeoEmbed,
   },
   setup() {
     const frame: number = 1;

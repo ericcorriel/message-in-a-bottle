@@ -3,13 +3,13 @@
     <div class="col">
       <VimeoEmbed
         v-if="useVimeo"
-        video-id="607838921"
+        :video-id="vimeoId"
         :current-video-time="currentVideoTime"
         :is-scrolling="isScrolling"
       ></VimeoEmbed>
       <HTMLVideoEmbed
         v-else
-        filename="shatter.03-HD-720p.mov"
+        :filename="filename"
         :current-video-time="currentVideoTime"
         :is-scrolling="isScrolling"
       ></HTMLVideoEmbed>
@@ -29,6 +29,8 @@ export default defineComponent({
     useVimeo: { type: Boolean, default: false },
     isScrolling: { type: Boolean, default: false },
     currentVideoTime: { type: Number, default: 0 },
+    filename: { type: String, default: "" },
+    vimeoId: { type: String, default: "" },
   },
   setup() {},
 });
