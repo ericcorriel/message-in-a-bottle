@@ -39,11 +39,13 @@ export default defineComponent({
 <style lang="sass" scoped>
 @import "/assets/styles/v1/styles"
 .row-fixed.video-container
-  top: 25vh
+  top: 0
   opacity: 1
-  height: 50vh
+  height: 100vh
+  z-index: 0
   .col
     margin: 0
     padding: 0
     width: 100%
+    height: 100%
 </style>

@@ -30,7 +30,6 @@ export default defineComponent({
 .text-container
   font-size: 10vw
   line-height: 0
-  background-color: #000000
   .body-copy
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
       font-size: 8vw
@@ -69,7 +68,7 @@ export default defineComponent({
       font-size: 10vw
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 12vw
+      font-size: 11vw
 
   #disintegrated
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
@@ -88,11 +87,15 @@ export default defineComponent({
       font-size: 7vw
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
-      font-size: 8vw
+      font-size: 6vw
 
   &.top
-    top: 0
-    align-items: flex-end
+    top: 4vh
+    @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
+      top: 10vh
+    @include media-breakpoint-up(md, $v1-grid-breakpoints)
+      top: 4vh
+    align-items: center
   .number-text
     font-family: "Azeret Mono"
 </style>
