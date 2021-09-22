@@ -2,42 +2,54 @@
   <div>
     <div ref="container" class="container">
       <div id="step1" ref="step1" class="step">
-        <YearDisintegrated
-          :disintegrated="disintegrated"
-          :year-as-int="yearAsInt"
-        />
         <VideoContainer
           :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
           :is-scrolling="isScrolling"
           :use-vimeo="useVimeo"
           vimeo-id="607838921"
-          filename="shatter.04-HD 720p.mov"
+          filename="shatter.06-HD-720p.mov"
+        />
+        <YearDisintegrated
+          :disintegrated="disintegrated"
+          :year-as-int="yearAsInt"
         />
         <Commentary :commentary="commentary" />
       </div>
     </div>
-    <div id="step2" ref="step2" class="step">
-      <FitText>Congratulations!</FitText>
-      <FitText>You just scrolled through</FitText>
-      <FitText>450 years</FitText>
-    </div>
-    <div id="step3" class="step">
-      <FitText>That bottle made in 2021</FitText>
-      <FitText>has finally disintegrated</FitText>
-    </div>
-    <div id="step4" class="step">
-      <FitText>Oh wait–there’s just a few more…</FitText>
-    </div>
-    <div id="step5" class="step">
-      <div class="img-container cover">
-        <img src="/img/wall-o-bottles.jpg" />
+    <div id="step2" ref="step2" class="step bg-black">
+      <div class="fit-text-container">
+        <FitText>Congratulations!</FitText>
+        <FitText>You just scrolled through</FitText>
+        <FitText>450 years</FitText>
       </div>
     </div>
-    <div id="step5" class="step">
-      <FitText>Shiiiiiit…</FitText>
+    <div id="step3" class="step bg-black">
+      <div class="fit-text-container">
+        <FitText>That bottle made in 2021</FitText>
+        <FitText>has finally disintegrated.</FitText>
+      </div>
+      <div class="fit-text-container" style="margin-top: 20vh">
+        <FitText>Though its pieces still remain…</FitText>
+      </div>
     </div>
-    <div id="credits" class="step">
+    <div id="step4" class="step bg-black">
+      <div class="fit-text-container">
+        <FitText>Oh wait–there’s just a few more…</FitText>
+      </div>
+    </div>
+    <div id="step5" class="step bg-black">
+      <div class="img-container cover">
+        <img src="/img/wall-o-bottles.jpg" />
+        <img src="/img/wall-o-bottles.jpg" style="transform: rotate(180deg)" />
+      </div>
+    </div>
+    <div id="step5" class="step bg-black">
+      <div class="fit-text-container">
+        <FitText>Shiiiiiit…</FitText>
+      </div>
+    </div>
+    <div id="credits" class="step bg-black">
       <h1 style="text-align: center">Credits TK</h1>
     </div>
   </div>
@@ -85,7 +97,7 @@ export default defineComponent({
 
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
-    const commentary: Ref<UnwrapRef<string>> = ref("Scroll Down!");
+    const commentary: Ref<UnwrapRef<string>> = ref("~~Scroll Down~~");
     const container = ref();
 
     const activeVideos: string[] = reactive([]);
@@ -115,7 +127,10 @@ export default defineComponent({
         disintegrated.value < stoppingDisintegratedPercentage
           ? ((year - currentYear) / yearsToDisintegrate) * 100
           : stoppingDisintegratedPercentage;
-      yearAsInt.value = Math.floor(year);
+      yearAsInt.value =
+        year <= currentYear + yearsToDisintegrate
+          ? Math.floor(year)
+          : yearAsInt.value;
 
       currentVideoTime.value = (disintegrated.value * 60) / 100;
 
@@ -163,15 +178,18 @@ export default defineComponent({
   display: flex
   flex-direction: column
   padding: 0
-
-.step
-
   background-color: #000000
+.step
   position: relative
   display: flex
   align-items: center
   flex-wrap: wrap
   align-content: center
+  .fit-text-container
+    margin: 0 20px
+    width: 100vw
+  &.bg-black
+    background-color: #000
   .img-container
     &.cover
       width: 100vw
