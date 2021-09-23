@@ -78,6 +78,16 @@ export default {
   build: {
     vendor: ["vue-vimeo-player"],
     cssSourceMap: false,
+    extend(config, { isDev, isClient }) {
+      config.module.rules.push({
+        test: /\.(obj|mtl|blend1)?$/,
+        loader: "file-loader",
+      });
+      // Sets webpack's mode to development if `isDev` is true.
+      if (isDev) {
+        config.mode = "development";
+      }
+    },
     filenames: {
       app: ({ isDev, isModern }) =>
         isDev
