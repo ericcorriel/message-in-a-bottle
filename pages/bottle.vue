@@ -7,7 +7,7 @@
             <vgl-obj-loader
               :src="model[name]"
               :position-y="name === 'cottage' ? 250 : 0"
-              :position-z="name === 'seahorse' ? -100 : 5"
+              :position-z="name === 'seahorse' ? 300 : 5"
               :rotation-x="name === 'cottage' ? -1.5 : 0"
               :rotation-y="name === 'cottage' ? 1 : 0"
             />
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, ref } from "@nuxtjs/composition-api";
 import {
   VglRenderer,
   VglScene,
@@ -50,6 +50,7 @@ import {
 import VglObjLoader from "vue-gl/dist/examples/loaders/vgl-obj-loader";
 import seahorse from "~/data/seahorse.obj";
 import cottage from "~/data/cottage.obj";
+import bottle from "~/data/obj/bottle.obj";
 
 export default defineComponent({
   components: {
@@ -60,7 +61,16 @@ export default defineComponent({
     VglPerspectiveCamera,
     VglObjLoader,
   },
-  data: () => ({ name: "seahorse", model: { seahorse, cottage } }),
+  setup() {
+    const model = { seahorse, cottage };
+    const name = ref("seahorse");
+
+    return {
+      bottle,
+      model,
+      name,
+    };
+  },
 });
 </script>
 
