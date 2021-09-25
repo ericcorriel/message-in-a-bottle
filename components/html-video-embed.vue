@@ -1,5 +1,10 @@
 <template>
-  <video ref="player" muted loop>
+  <video
+    ref="player"
+    muted
+    loop
+    poster="/img/placeholder/bottle.placeholder.jpg"
+  >
     <source :src="`/video/${filename}`" type="video/mp4" class="bg-video" />
     Your browser does not support the video tag.
   </video>
