@@ -20,6 +20,8 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
+@import "/assets/styles/v1/bootstrap/grid"
+@import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/base"
 @import "/assets/styles/v1/mixins"
 @import "/assets/styles/v1/app"
@@ -29,8 +31,11 @@ export default defineComponent({
   padding-bottom: 3vh
   position: fixed
   width: 100vw
-  -webkit-text-stroke: 3px $bg-color
   text-align: center
+  -webkit-text-stroke: 1px $bg-color
+  @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+    -webkit-text-stroke: 3px $bg-color
+
   span
     line-height: 1.1em
     .monospace

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="container" ref="container" class="container">
-      <div id="step1" ref="step1" class="step">
+      <div ref="step1" class="step">
         <VideoContainer
           :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
@@ -17,55 +17,54 @@
         <Commentary :commentary="commentary" />
       </div>
     </div>
-    <div id="step2" ref="step2" class="step bg-black on-top">
+    <div ref="step2" class="step bg-black on-top">
       <div class="fittext-container">
         <FitText>Congratulations!</FitText>
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
     </div>
-    <div id="step3" class="step bg-black on-top">
+    <div class="step bg-black on-top full-height">
       <div class="fittext-container">
         <FitText>A bottle made in 2021</FitText>
         <FitText>disintegrates in 2471</FitText>
       </div>
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
-    <div id="step3" class="step bg-black on-top">
+    <div class="step bg-black on-top full-height">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
             >Though its pieces will<br />stay with us forever…</FitText
           >
         </div>
-
         <div class="image-container full-width">
           <img src="/img/microplastics.02.png" alt="series of plastic straws" />
         </div>
       </div>
     </div>
 
-    <div id="step4" class="step bg-black on-top align-text-baseline">
+    <div class="step bg-black on-top align-text-baseline full-height">
       <div class="fittext-container">
         <FitText>Oh wait–I forgot about these!</FitText>
       </div>
     </div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="step bg-black on-top">
       <div class="full-width-img-container cover">
         <img src="/img/wall-o-bottles.jpg" />
       </div>
     </div>
-    <div id="step6" class="step bg-black on-top">
+    <div class="step bg-black on-top">
       <div class="fittext-container">
         <FitText>Hang on, almost done…</FitText>
       </div>
     </div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="step bg-black on-top">
       <div class="full-width-img-container cover">
         <img src="/img/wall-o-bottles.jpg" style="transform: rotate(180deg)" />
       </div>
     </div>
-    <div id="step6" class="step bg-black on-top">
+    <div class="step bg-black on-top">
       <div class="fittext-container">
         <FitText>Hey, while we’re on the subject,</FitText>
       </div>
@@ -73,8 +72,8 @@
         <FitText>did you know…</FitText>
       </div>
     </div>
-    <div id="step6" class="half-step bg-black on-top"></div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="half-step bg-black on-top"></div>
+    <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>200 YEARS</FitText></div>
         <div class="image-container">
@@ -82,8 +81,8 @@
         </div>
       </div>
     </div>
-    <div id="step6" class="half-step bg-black on-top"></div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="half-step bg-black on-top"></div>
+    <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>500 YEARS</FitText></div>
         <div class="image-container">
@@ -94,8 +93,8 @@
         </div>
       </div>
     </div>
-    <div id="step6" class="half-step bg-black on-top"></div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="half-step bg-black on-top"></div>
+    <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>1000 YEARS</FitText></div>
         <div class="image-container">
@@ -103,8 +102,8 @@
         </div>
       </div>
     </div>
-    <div id="step6" class="half-step bg-black on-top"></div>
-    <div id="step5" class="step bg-black on-top">
+    <div class="half-step bg-black on-top"></div>
+    <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText
@@ -298,6 +297,8 @@ export default defineComponent({
     display: flex
     flex-direction: row
     align-content: flex-end
+  &.full-height
+    height: 100vh
 
   .full-width-img-container
     &.cover
@@ -340,11 +341,4 @@ export default defineComponent({
         object-fit: cover
         width: 100%
         height: 100%
-
-
-
-  &#step3
-    height: 100vh
-  &#step4
-    height: 100vh
 </style>
