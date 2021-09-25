@@ -14,6 +14,6 @@ export default {
 .spacer-full-screen
   position: relative
   display: flex
-  height: 25vh
+  height: 100vh
   background-color: $bg-color
 </style>

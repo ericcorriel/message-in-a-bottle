@@ -133,7 +133,8 @@
           <li><a href="https://github.com/rikschennink/fitty" target="_blank">Fitty</a></li>
           <li><a href="https://getbootstrap.com" target="_blank">Bootstrap</a></li>
           <li><a href="https://google.com/fonts">Google Fonts</a></li>
-          <li><a href="https://www.typescriptlang.org/" target="_blank">Typescript</a> (definitely did not make things go quicker;)</li>
+          <li><a href="https://www.typescriptlang.org/" target="_blank">Typescript</a> </li>
+          <li>(definitely did not ☝️ speed things up;)</li>
         </ul>
       </p>
     </div>
@@ -156,9 +157,13 @@
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row no-margin-bottom sig center">
       <p>No plastic bottles were purchased in the making of this film</p>
-      <br />
+      </div>
+    <SpacerQuarterScreen></SpacerQuarterScreen>
+    <div class="credit-row no-margin-bottom sig center">
       <div><a href="http://ericcorriel.com" target="_blank"><img src="/img/sig.png" ></a></div>
+      <p><small>© 2021 <a href="https://ericcorriel.com" target="_blank">Eric Corriel Studios</a></small></p>
     </div>
+    <SpacerFullScreen></SpacerFullScreen>
   </div>
 </template>
 
