@@ -24,13 +24,15 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-@import "/assets/styles/v1/styles"
+@import "/assets/styles/v1/base"
+@import "/assets/styles/v1/app"
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
 .text-container
   font-size: 10vw
   line-height: 0
   .body-copy
+    -webkit-text-stroke: 1px $bg-color
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
       font-size: 8vw
 
@@ -48,6 +50,7 @@ export default defineComponent({
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
       font-size: 2.5vw
+
 
   #year
     font-size: 20vw

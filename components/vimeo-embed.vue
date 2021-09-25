@@ -69,7 +69,7 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-@import "/assets/styles/v1/styles"
+@import "/assets/styles/v1/app"
 .row-fixed.video-container
   top: 25vh
   opacity: 1

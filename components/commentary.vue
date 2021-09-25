@@ -1,6 +1,6 @@
 <template>
   <div class="row-fixed text-container bottom">
-    <FitText>{{ commentary }}</FitText>
+    <FitText v-html="commentary"></FitText>
   </div>
 </template>
 
@@ -21,12 +21,19 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 @import "/assets/styles/v1/base"
-@import "/assets/styles/v1/styles"
-@import "/assets/styles/v1/bootstrap/grid"
-@import "/assets/styles/v1/bootstrap/breakpoints"
+@import "/assets/styles/v1/mixins"
+@import "/assets/styles/v1/app"
 .row-fixed.text-container.bottom
-  top: 75vh
+  height: auto
   bottom: 0
+  padding-bottom: 3vh
   position: fixed
   width: 100vw
+  -webkit-text-stroke: 3px $bg-color
+  text-align: center
+  span
+    line-height: 1.1em
+    .monospace
+
+      color: red
 </style>

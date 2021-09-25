@@ -36,6 +36,6 @@ export default defineComponent({
 video
   width: 100%
   height: 100vh
-  opacity: .75
   object-fit: cover
+  opacity: .75
 </style>
