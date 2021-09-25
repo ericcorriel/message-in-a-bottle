@@ -8,7 +8,7 @@
           :is-scrolling="isScrolling"
           :use-vimeo="useVimeo"
           vimeo-id="607838921"
-          filename="shatter.07-HD-1080p.mov"
+          filename="shatter.07-HD 1080p.baseline.mov"
         />
         <YearDisintegrated
           :disintegrated="disintegrated"
