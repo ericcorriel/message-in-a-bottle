@@ -134,7 +134,7 @@
           <li><a href="https://getbootstrap.com" target="_blank">Bootstrap</a></li>
           <li><a href="https://google.com/fonts">Google Fonts</a></li>
           <li><a href="https://www.typescriptlang.org/" target="_blank">Typescript</a> </li>
-          <li>(definitely did not ☝️ speed things up;)</li>
+          <li>(okay, maybe this one☝️ didn't speed things up;)</li>
         </ul>
       </p>
     </div>
