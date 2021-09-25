@@ -18,7 +18,27 @@ export default {
           "A crowdsourced interactive film showing the many different lives a plastic water bottle will lead during its 450 year journey towards disintegration.",
       },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/img/icons/favicon.ico" },
+      {
+        rel: "icon",
+        sizes: "180x180",
+        href: "/img/icons/apple-touch-icon.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/img/icons/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/img/icons/favicon-16x16.png",
+      },
+      { rel: "manifest", href: "/img/icons/site.webmanifest" },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -26,7 +46,7 @@ export default {
     "~/assets/styles/v1/fonts-and-colors.sass",
     "~/assets/styles/v1/bootstrap/overrides.sass",
     "~/assets/styles/v1/base.sass",
-    "~/assets/styles/v1/styles.sass",
+    "~/assets/styles/v1/app.sass",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -49,7 +69,7 @@ export default {
   googleFonts: {
     /* module options */
     families: {
-      Oswald: { wght: [500] },
+      Oswald: { wght: [300, 500] },
       "Azeret+Mono": { wght: [600] },
     },
     useStylesheet: true,
