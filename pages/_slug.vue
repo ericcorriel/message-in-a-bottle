@@ -158,7 +158,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
-    const movieMode = false;
+    const movieMode = true;
     const movieScroll = ref(0);
 
     const frame: number = 1;
