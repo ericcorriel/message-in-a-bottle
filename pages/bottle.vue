@@ -52,7 +52,7 @@ import VglObjLoader from "vue-gl/dist/examples/loaders/vgl-obj-loader";
 import * as THREE from "three";
 import seahorse from "~/data/obj/seahorse.obj";
 import cottage from "~/data/obj/cottage.obj";
-import bottle from "~/data/obj/bottle.obj";
+import bottle from "~/data/obj/bottle-test.obj";
 export default defineComponent({
   components: {
     VglRenderer,
@@ -62,7 +62,6 @@ export default defineComponent({
     VglPerspectiveCamera,
     VglObjLoader,
     THREE,
-    OrbitControls,
   },
   setup() {
     const model = { seahorse, cottage };
