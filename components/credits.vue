@@ -223,7 +223,7 @@ export default defineComponent({
     display: flex
     flex-direction: row
     flex-wrap: nowrap
-    align-items: start
+    align-items: flex-start
     justify-content: space-around
     margin: 40px 10px 20px
     .cell
