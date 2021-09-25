@@ -15,7 +15,7 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "A crowdsourced interactive film showing the many different lives a plastic water bottle will lead during its 450 year journey towards disintegration.",
+          "Message In A Bottle is an interactive film that takes the user on a multi-century journey through the disintegration of a single water bottle.",
       },
     ],
     link: [
@@ -149,5 +149,14 @@ export default {
   },
   generate: {
     interval: 2000,
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: "index",
+        path: "/",
+        component: resolve(__dirname, "pages/_slug.vue"),
+      });
+    },
   },
 };
