@@ -54,6 +54,7 @@ export default {
     { src: "plugins/bootstrap.js", mode: "client" },
     { src: "plugins/fontawesome.js" },
     { src: `~plugins/vimeo-player` },
+    { src: "plugins/vue-gtag.js", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -65,7 +66,6 @@ export default {
     "@nuxt/typescript-build",
     "@nuxtjs/composition-api/module",
     "@nuxtjs/google-fonts",
-    "@nuxtjs/google-analytics",
   ],
   googleFonts: {
     /* module options */
@@ -74,14 +74,6 @@ export default {
       "Azeret+Mono": { wght: [600] },
     },
     useStylesheet: true,
-  },
-  googleAnalytics: {
-    id: "G-GNBXP7CJ0D", // Use as fallback if no runtime config is provided
-  },
-  publicRuntimeConfig: {
-    googleAnalytics: {
-      id: "G-GNBXP7CJ0D",
-    },
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
