@@ -4,6 +4,7 @@
     muted
     loop
     poster="/img/placeholder/bottle.placeholder.jpg"
+    preload="metadata"
   >
     <source :src="`/video/${filename}`" type="video/mp4" class="bg-video" />
     Your browser does not support the video tag.

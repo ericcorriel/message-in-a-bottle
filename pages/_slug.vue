@@ -8,7 +8,7 @@
           :is-scrolling="isScrolling"
           :use-vimeo="useVimeo"
           vimeo-id="607838921"
-          filename="shatter.07-HD 1080p.baseline.mov"
+          filename="shatter.07-HD 1080p.02.mp4"
         />
         <YearDisintegrated
           :disintegrated="disintegrated"
@@ -35,8 +35,8 @@
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
-            >Though its pieces will<br />stay with us forever…</FitText
-          >
+            >Though its pieces will<br />stay with us forever…
+          </FitText>
         </div>
         <div class="image-container full-width">
           <img src="/img/microplastics.02.png" alt="series of plastic straws" />
@@ -75,7 +75,9 @@
     <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
-        <div class="text-container"><FitText>200 YEARS</FitText></div>
+        <div class="text-container">
+          <FitText>200 YEARS</FitText>
+        </div>
         <div class="image-container">
           <img src="/img/straw.03.png" alt="series of plastic straws" />
         </div>
@@ -84,7 +86,9 @@
     <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
-        <div class="text-container"><FitText>500 YEARS</FitText></div>
+        <div class="text-container">
+          <FitText>500 YEARS</FitText>
+        </div>
         <div class="image-container">
           <img
             src="/img/pexels-anna-shvets-5218021.png"
@@ -96,7 +100,9 @@
     <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
-        <div class="text-container"><FitText>1000 YEARS</FitText></div>
+        <div class="text-container">
+          <FitText>1000 YEARS</FitText>
+        </div>
         <div class="image-container">
           <img src="/img/ink-cartridge.02.png" alt="series of plastic straws" />
         </div>
@@ -107,8 +113,8 @@
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText
-            >&nbsp;&nbsp;&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;</FitText
-          >
+            >&nbsp;&nbsp;&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;
+          </FitText>
         </div>
         <div class="image-container">
           <img src="/img/styrofoam.08.png" alt="series of plastic straws" />
@@ -166,7 +172,7 @@ export default defineComponent({
       : new Date().getFullYear();
 
     let previousScrollPosition: number = 0;
-    const stoppingDisintegratedPercentage = 5;
+    const stoppingDisintegratedPercentage = 100;
     const isScrollingTracker = ref();
     const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
     const useVimeo: Ref<UnwrapRef<Boolean>> = ref(false);
@@ -277,42 +283,53 @@ export default defineComponent({
   flex-direction: column
   padding: 0
   background-color: #000000
+
 .half-step
   position: relative
   display: flex
   height: 50vh
   background-color: #000000
+
 .step
   position: relative
   display: flex
   align-items: center
   flex-wrap: wrap
   align-content: center
+
   .fittext-container
     @include fittext-container
+
   &.bg-black
     background-color: #000
+
   &.on-top
     z-index: 1
+
   &.align-text-baseline
     display: flex
     flex-direction: row
     align-content: flex-end
+
   &.full-height-and-width
     height: 100vh
     width: 100vw
+
   .full-width-img-container
     &.cover
       width: 100vw
+
       img
         object-fit: cover
         width: 100vw
+
   .text-over-image-container
     width: 100vw
     height: 100vh
     display: flex
     flex-wrap: nowrap
     align-items: center
+
     .text-container
       width: 95vw
       height: 100vh
@@ -324,11 +341,13 @@ export default defineComponent({
       align-items: center
       position: relative
       margin: 0 auto
+
       span
         text-align: center
         -webkit-text-stroke: 1px black
         @include media-breakpoint-up(lg, $v1-grid-breakpoints)
           -webkit-text-stroke: 3px $bg-color
+
     .image-container
       position: absolute
       margin: 0 auto
@@ -341,9 +360,11 @@ export default defineComponent({
       text-align: center
       justify-content: center
       align-items: center
+
       img
         max-width: 100%
         max-height: 100%
+
       &.full-width img
         object-fit: cover
         width: 100%
