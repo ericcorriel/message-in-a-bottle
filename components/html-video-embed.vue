@@ -2,7 +2,6 @@
   <video
     ref="player"
     muted
-    loop
     poster="/img/placeholder/bottle.placeholder.jpg"
     preload="metadata"
   >
@@ -13,9 +12,14 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
+// import VueLodash from "vue-lodash";
+// import _ from "lodash";
+
+// Vue.use(VueLodash, { name: "custom", lodash: { map, random } });
 
 export default defineComponent({
   name: "HtmlVideoEmbed",
+  components: {},
   props: {
     filename: { type: String, default: "" },
     currentVideoTime: { type: Number, default: 0 },
