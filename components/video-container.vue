@@ -21,6 +21,7 @@
 import { defineComponent } from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
+
 export default defineComponent({
   name: "VideoContainer",
   components: { VimeoEmbed, HTMLVideoEmbed },
@@ -37,12 +38,18 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
+@import "/assets/styles/v1/bootstrap/grid"
+@import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/app"
+
 .row-fixed.video-container
-  top: 0
+  top: 5vh
+  @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    top: 0
   opacity: 1
   height: 100vh
   z-index: 0
+
   .col
     margin: 0
     padding: 0

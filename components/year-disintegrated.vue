@@ -14,6 +14,7 @@
 
 <script>
 import { defineComponent } from "@nuxtjs/composition-api";
+
 export default defineComponent({
   name: "YearDisintegrated",
   props: {
@@ -24,13 +25,14 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-@import "/assets/styles/v1/base"
-@import "/assets/styles/v1/app"
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
+@import "/assets/styles/v1/base"
+@import "/assets/styles/v1/app"
 .text-container
   font-size: 10vw
   line-height: 0
+
   .body-copy
     -webkit-text-stroke: 1px $bg-color
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
@@ -99,6 +101,7 @@ export default defineComponent({
     @include media-breakpoint-up(md, $v1-grid-breakpoints)
       top: 4vh
     align-items: center
+
   .number-text
     font-family: "Azeret Mono"
 </style>
