@@ -328,7 +328,7 @@ export default defineComponent({
 @import "/assets/styles/v1/app"
 
 .container
-  height: 250000px
+  height: 1000000px
   max-width: 100%
   display: flex
   flex-direction: column
