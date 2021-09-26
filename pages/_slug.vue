@@ -24,14 +24,14 @@
         <FitText>450 YEARS</FitText>
       </div>
     </div>
-    <div class="step bg-black on-top full-height">
+    <div class="step bg-black on-top full-height-and-width">
       <div class="fittext-container">
         <FitText>A bottle made in 2021</FitText>
         <FitText>disintegrates in 2471</FitText>
       </div>
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
-    <div class="step bg-black on-top full-height">
+    <div class="step bg-black on-top full-height-and-width">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="step bg-black on-top align-text-baseline full-height">
+    <div class="step bg-black on-top align-text-baseline full-height-and-width">
       <div class="fittext-container">
         <FitText>Oh wait–I forgot about these!</FitText>
       </div>
@@ -72,7 +72,7 @@
         <FitText>did you know…</FitText>
       </div>
     </div>
-    <div class="half-step bg-black on-top"></div>
+    <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>200 YEARS</FitText></div>
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="half-step bg-black on-top"></div>
+    <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>500 YEARS</FitText></div>
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="half-step bg-black on-top"></div>
+    <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container"><FitText>1000 YEARS</FitText></div>
@@ -102,7 +102,7 @@
         </div>
       </div>
     </div>
-    <div class="half-step bg-black on-top"></div>
+    <SpacerHalfScreen />
     <div class="step bg-black on-top">
       <div class="text-over-image-container">
         <div class="text-container">
@@ -166,7 +166,7 @@ export default defineComponent({
       : new Date().getFullYear();
 
     let previousScrollPosition: number = 0;
-    const stoppingDisintegratedPercentage = 100;
+    const stoppingDisintegratedPercentage = 5;
     const isScrollingTracker = ref();
     const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
     const useVimeo: Ref<UnwrapRef<Boolean>> = ref(false);
@@ -265,6 +265,7 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 @import "/assets/styles/v1/bootstrap/grid"
+@import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/base"
 @import "/assets/styles/v1/mixins"
 @import "/assets/styles/v1/app"
@@ -297,9 +298,9 @@ export default defineComponent({
     display: flex
     flex-direction: row
     align-content: flex-end
-  &.full-height
+  &.full-height-and-width
     height: 100vh
-
+    width: 100vw
   .full-width-img-container
     &.cover
       width: 100vw
@@ -311,7 +312,6 @@ export default defineComponent({
     height: 100vh
     display: flex
     flex-wrap: nowrap
-    justify-items: center
     align-items: center
     .text-container
       width: 95vw
@@ -325,18 +325,25 @@ export default defineComponent({
       position: relative
       margin: 0 auto
       span
-        -webkit-text-stroke: 3px black
         text-align: center
+        -webkit-text-stroke: 1px black
+        @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+          -webkit-text-stroke: 3px $bg-color
     .image-container
       position: absolute
       margin: 0 auto
-      width: 100%
-      height: 100%
-      text-align: center
       z-index: 0
       display: flex
+      height: 100vh
+      width: 100vw
+      max-width: 100%
+      max-height: 100vh
+      text-align: center
+      justify-content: center
+      align-items: center
       img
-        margin: 0 auto
+        max-width: 100%
+        max-height: 100%
       &.full-width img
         object-fit: cover
         width: 100%
