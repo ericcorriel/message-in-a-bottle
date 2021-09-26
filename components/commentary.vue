@@ -29,6 +29,7 @@ export default defineComponent({
   height: auto
   top: 75vh
   @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    top: auto
     bottom: 0
   padding-bottom: 3vh
   position: fixed
