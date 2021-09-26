@@ -1,18 +1,24 @@
 ### Todo
+
 - [x] straw image
 - [x] re-silhouette bottle
 - [x] favicon
 - [x] autoscroll movie mode
 - [] mailing list/social media links
-- [] rwd
+- [x] rwd
 - [] open graph/social media
 - [] alt-text
 - [] tab accessibility
-- [] movie placeholder
-- [] update description 
+- [x] movie placeholder
+- [x] update description
 - [] GA integration
+- [] accelerating scroll
+- [] implement currentYear throughout
+- [] cannot scroll before current year
+- [] backwards scroll
 
 ### The Future
+
 - Your water bill is more<br />than your electricity bill
 - Extreme weather has pushed your<br />home insurance bill to 💸$462/mo💸
 - Phoenix records temperature <br />🔥152°🔥
@@ -27,7 +33,7 @@
 - Californian homes now come with six-foot fire moats
 - First manned expedition to Saturn
 - First moon colony establishes itself
-- Population of Mars attempts to unify, break colonial ties to Earth. — Greg Bear, Moving Mars, 1993
+- Population of Mars attempts to unify, break colonial ties to Earth. — Greg Bear, Moving Mars, 1993
 - Climate change on Earth forces people to move to Mars
 - Skyscrapers reach 1,000 floors to accommodate population growth
 - Sea levels have risen 25 feet. Flooding occurs.
@@ -36,6 +42,7 @@
 - Half of the words we use today are no longer used
 
 ### Credits
+
 - [rikschennink](https://github.com/rikschennink/fitty)
 - [Pexels](https://www.pexels.com/photo/plastic-bottle-of-detergent-in-studio-5218021/)
 - [Flickr](https://flickr.com/photos/cartridgesave/49501486667/in/photolist-2iqh4o4-vcgZR-2iqdk2Y-sTc6W-a3fYvk-jxxrhs-bn7ERc-FVh35y-hfAWK-4ikHe2-7PpNYb-27fsZcS-f5wRJ1-7P11nG-bsNVnm-4ikGAe-9ewq2n-4ikGTe-6eCPfY-27Gsqnz-2kgKYGT-5AXJFY-inzSF-5YX3vJ-25u9SHN-9BPbSr-7cnKXb-xpP15-cAecj-9jAqDL-9jQdhd-4ivLCc-niMCZj-2iqdjWN-9d9Brh-25u9SKG-6qGhF5-9rn82k-9AZoH5-fAP6z3-2iqfVuz-bbvegc-3MePC3-Va4XYG-mKNzbH-6ZrkQa-26MTQqU-oFEsuc-aBmecD-2i2WBbJ)
