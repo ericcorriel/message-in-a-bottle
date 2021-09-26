@@ -8,7 +8,7 @@
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row up-1">
       <h4 id="concept-design-development">Concept/Design/Development</h4>
-      <h5 id="me">
+      <h5 class="person-credit">
         <a href="https://ericcorriel.com" target="_blank">Eric Corriel</a>
       </h5>
       <p>
@@ -17,7 +17,8 @@
         <a href="https://sva.edu" target="_blank">School of Visual Arts</a>.
       </p>
       <p>
-        Sign up for <a href="#">his newsletter</a> or follow him on
+        Sign up for <a href="https://confirmsubscription.com/h/r/DA49024168C89C952540EF23F30FEDED" target='_blank'>his
+        newsletter</a> or follow him on
         <a href="https://instagram.com/ericcorriel">Instagram</a> • <a
         href="https://twitter.com/ericcorriel">Twitter</a> •
         <a href="https://facebook.com/ericcorrielartist">Facebook</a>
@@ -26,7 +27,7 @@
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row up-1">
       <h4>Human Impacts Institute Environmental Fellow and Collaborator</h4>
-      <h5 id="me">Lisa Bloodgood</h5>
+      <h5 class="person-credit">Lisa Bloodgood</h5>
       <p>Director of Advocacy &amp; Education, <a href="http://newtowncreekalliance.org" target="_blank">Newtown Creek
         Alliance</a></p>
 
@@ -40,7 +41,7 @@
         <div class="cell">
           <div class="image-container">
             <a href="https://www.humanimpactsinstitute.org/" target="_blank"
-            ><img src="/img/logos/human-impacts-institute.on-black.png"
+            ><img src="/img/logos/human-impacts-institute.on-black.png" alt="Human Impacts Institute logo"
             /></a>
           </div>
           <p>
@@ -56,7 +57,7 @@
         <div class="cell">
           <div class="image-container">
             <a href="http://www.newtowncreekalliance.org/" target="_blank"
-            ><img src="/img/logos/newtown-creek-alliance.png"
+            ><img src="/img/logos/newtown-creek-alliance.png" alt="Newtown Creek Alliance logo"
             /></a>
           </div>
           <p>
@@ -78,7 +79,7 @@
         <div class="cell">
           <div class="image-container">
             <a href="https://www1.nyc.gov/assets/dsny/site/home" target="_blank"
-            ><img src="/img/logos/nyc-dos.png"
+            ><img src="/img/logos/nyc-dos.png" alt="NYC Department of Sanitation logo"
             /></a>
           </div>
           <p>
@@ -91,7 +92,7 @@
         <div class="cell">
           <div class="image-container">
             <a href="https://www.wm.com/" target="_blank"
-            ><img src="/img/logos/waste-management.png"
+            ><img src="/img/logos/waste-management.png" alt="Waste Management logo"
             /></a>
           </div>
           <p>
@@ -112,7 +113,7 @@
             <a
               href="https://www.pexels.com/photo/plastic-bottle-of-detergent-in-studio-5218021/"
               target="_blank"
-            ><img src="/img/thanks/pexels-anna-shvets-5218021.jpg"
+            ><img src="/img/thanks/pexels-anna-shvets-5218021.jpg" alt="pink laundry bottle on pink background"
             /></a>
           </div>
           <p>
@@ -131,6 +132,7 @@
               href="https://flickr.com/photos/cartridgesave/49501486667/in/photolist-2iqh4o4-vcgZR-2iqdk2Y-sTc6W-a3fYvk-jxxrhs-bn7ERc-FVh35y-hfAWK-4ikHe2-7PpNYb-27fsZcS-f5wRJ1-7P11nG-bsNVnm-4ikGAe-9ewq2n-4ikGTe-6eCPfY-27Gsqnz-2kgKYGT-5AXJFY-inzSF-5YX3vJ-25u9SHN-9BPbSr-7cnKXb-xpP15-cAecj-9jAqDL-9jQdhd-4ivLCc-niMCZj-2iqdjWN-9d9Brh-25u9SKG-6qGhF5-9rn82k-9AZoH5-fAP6z3-2iqfVuz-bbvegc-3MePC3-Va4XYG-mKNzbH-6ZrkQa-26MTQqU-oFEsuc-aBmecD-2i2WBbJ"
               target="_blank"
             ><img src="/img/thanks/49501486667_cce7e3e6c9_o.jpg"
+                  alt="close up of a white hand holding an ink jet cartridge"
             /></a>
           </div>
           <p>
@@ -198,7 +200,8 @@
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row no-margin-bottom sig center">
-      <div><a href="http://ericcorriel.com" target="_blank"><img src="/img/sig.png"></a></div>
+      <div><a href="https://ericcorriel.com" target="_blank"><img src="/img/sig.png" alt="Eric Corriel's signature"></a>
+      </div>
       <p><small>© 2021 <a href="https://ericcorriel.com" target="_blank">Eric Corriel Studios</a></small></p>
     </div>
     <SpacerFullScreen></SpacerFullScreen>
@@ -259,7 +262,7 @@ export default defineComponent({
   #concept-design-development
     font-size: .7em
 
-  #me
+  .person-credit
     font-size: .65em
 
   h4

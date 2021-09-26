@@ -4,7 +4,7 @@
 - [x] re-silhouette bottle
 - [x] favicon
 - [x] autoscroll movie mode
-- [] mailing list/social media links
+- [x] mailing list/social media links
 - [x] rwd
 - [] open graph/social media
 - [] alt-text
@@ -15,7 +15,9 @@
 - [] accelerating scroll
 - [] implement currentYear throughout
 - [x] cannot scroll before current year
-- [] backwards scroll
+- [x] backwards scroll
+- [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
+- [] overscroll > newsletter
 
 ### The Future
 

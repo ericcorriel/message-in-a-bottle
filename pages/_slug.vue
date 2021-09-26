@@ -39,7 +39,10 @@
           </FitText>
         </div>
         <div class="image-container full-width">
-          <img src="/img/microplastics.02.png" alt="series of plastic straws" />
+          <img
+            src="/img/microplastics.02.png"
+            alt="Close up of an hand with hundreds of specs of microplastics"
+          />
         </div>
       </div>
     </div>
@@ -51,7 +54,10 @@
     </div>
     <div class="step bg-black on-top">
       <div class="full-width-img-container cover">
-        <img src="/img/wall-o-bottles.jpg" />
+        <img
+          src="/img/wall-o-bottles.jpg"
+          alt="Extremely long photo of bales of used plastic bottles smushed together"
+        />
       </div>
     </div>
     <div class="step bg-black on-top">
@@ -61,7 +67,11 @@
     </div>
     <div class="step bg-black on-top">
       <div class="full-width-img-container cover">
-        <img src="/img/wall-o-bottles.jpg" style="transform: rotate(180deg)" />
+        <img
+          src="/img/wall-o-bottles.jpg"
+          style="transform: rotate(180deg)"
+          alt="Same exact photo as above but rotated 180 degrees so the viewer gets to re-experience the photo from a different angle"
+        />
       </div>
     </div>
     <div class="step bg-black on-top">
@@ -79,7 +89,10 @@
           <FitText>200 YEARS</FitText>
         </div>
         <div class="image-container">
-          <img src="/img/straw.03.png" alt="series of plastic straws" />
+          <img
+            src="/img/straw.03.png"
+            alt="Silhouetted single plastic white straw with red stripes"
+          />
         </div>
       </div>
     </div>
@@ -92,7 +105,7 @@
         <div class="image-container">
           <img
             src="/img/pexels-anna-shvets-5218021.png"
-            alt="series of plastic straws"
+            alt="Silhouetted pink plastic laundry detergent bottle"
           />
         </div>
       </div>
@@ -104,7 +117,10 @@
           <FitText>1000 YEARS</FitText>
         </div>
         <div class="image-container">
-          <img src="/img/ink-cartridge.02.png" alt="series of plastic straws" />
+          <img
+            src="/img/ink-cartridge.02.png"
+            alt="Silhouetted hand holding an ink jet printer cartridge"
+          />
         </div>
       </div>
     </div>
@@ -117,7 +133,10 @@
           </FitText>
         </div>
         <div class="image-container">
-          <img src="/img/styrofoam.08.png" alt="series of plastic straws" />
+          <img
+            src="/img/styrofoam.08.png"
+            alt="Open cardboard box filled with white styrofoam packing peanuts"
+          />
         </div>
       </div>
     </div>
@@ -251,7 +270,7 @@ export default defineComponent({
 
     function getCommentary(year: number): string {
       // default condition
-      if (!year || year == new Date().getFullYear()) return "~~Scroll Down~~";
+      if (!year || year === new Date().getFullYear()) return "~~Scroll Down~~";
       else {
         const res = commentaries.filter(
           (commentaryType) => commentaryType.year === yearAsInt.value
