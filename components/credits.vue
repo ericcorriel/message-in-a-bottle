@@ -24,6 +24,14 @@
       </p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
+    <div class="credit-row up-1">
+      <h4>Human Impacts Institute Environmental Fellow and Collaborator</h4>
+      <h5 id="me">Lisa Bloodgood</h5>
+      <p>Director of Advocacy &amp; Education, <a href="http://newtowncreekalliance.org" target="_blank">Newtown Creek
+        Alliance</a></p>
+
+    </div>
+    <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row">
       <h4>
         Awesome institutions without which this would have never been done
@@ -52,11 +60,11 @@
             /></a>
           </div>
           <p>
-            In 2021, I was teamed up with <a href="http://www.newtowncreekalliance.org/" target="_blank">Newtown Creek
+            In 2021, I teamed up Lisa Bloodgood at <a href="http://www.newtowncreekalliance.org/" target="_blank">Newtown
+            Creek
             Alliance</a> as part of Human Impact Institute’s Artist Impact Fellowship. Located in Greenpoint, Brooklyn;
-            NCA is passionately engaged in restoring and revitalizing neighborhoods surrounding
-            <a href="https://en.wikipedia.org/wiki/Newtown_Creek" target="_blank">Newtown Creek</a>. They also have an
-            absolutely
+            NCA is engaged in restoring and revitalizing neighborhoods surrounding
+            <a href="https://en.wikipedia.org/wiki/Newtown_Creek" target="_blank">Newtown Creek</a>. They also have a
             <a href="http://www.kingslandwildflowers.com/" target="_blank">beautiful rooftop garden</a>, which I highly
             recommend visiting.
           </p>
