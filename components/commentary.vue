@@ -27,7 +27,9 @@ export default defineComponent({
 @import "/assets/styles/v1/app"
 .row-fixed.text-container.bottom
   height: auto
-  bottom: 0
+  top: 75vh
+  @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    bottom: 0
   padding-bottom: 3vh
   position: fixed
   width: 100vw
@@ -38,6 +40,7 @@ export default defineComponent({
 
   span
     line-height: 1.1em
+
     .monospace
 
       color: red
