@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="container" ref="container" class="container">
-      <div ref="step1" class="step">
+      <div id="step1" ref="step1" class="step">
         <VideoContainer
           :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
@@ -173,6 +173,7 @@ export default defineComponent({
 
     let previousScrollPosition: number = 0;
     const stoppingDisintegratedPercentage = 100;
+    const yearIncrementOnScroll = 0.25;
     const isScrollingTracker = ref();
     const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
     const useVimeo: Ref<UnwrapRef<Boolean>> = ref(false);
@@ -186,6 +187,7 @@ export default defineComponent({
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
     const commentary: Ref<UnwrapRef<string>> = ref("");
     commentary.value = getCommentary(year);
+    const freezeStep1ScrollValues: Ref<UnwrapRef<boolean>> = ref(false);
     const container = ref();
 
     const activeVideos: string[] = reactive([]);
@@ -208,25 +210,43 @@ export default defineComponent({
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
 
-      scrollPosition.value >= previousScrollPosition
-        ? (year += 0.25)
-        : (year -= 0.25);
-      // don't let % disintegrated < 0
-      if (year - currentYear <= 0) disintegrated.value = 0;
-      else
-        disintegrated.value =
-          disintegrated.value < stoppingDisintegratedPercentage
-            ? ((year - currentYear) / yearsToDisintegrate) * 100
-            : stoppingDisintegratedPercentage;
-      // don't let year < currentYear
-      yearAsInt.value =
-        year < currentYear + yearsToDisintegrate && year >= currentYear
-          ? Math.floor(year)
-          : yearAsInt.value;
-
-      currentVideoTime.value = (disintegrated.value * 60) / 100;
-      commentary.value = getCommentary(yearAsInt.value);
+      // console.log(
+      //   "year: " +
+      //     year +
+      //     " || currentYear: " +
+      //     currentYear +
+      //     " || ytd: " +
+      //     yearsToDisintegrate
+      // );
+      if (!freezeStep1ScrollValues.value) {
+        if (
+          year <= currentYear + yearsToDisintegrate - yearIncrementOnScroll &&
+          year - currentYear + yearIncrementOnScroll >= 0
+        ) {
+          scrollPosition.value >= previousScrollPosition
+            ? (year += yearIncrementOnScroll)
+            : (year -= yearIncrementOnScroll);
+        } else if (
+          year === currentYear + yearsToDisintegrate &&
+          scrollPosition.value < previousScrollPosition
+        ) {
+          year -= yearIncrementOnScroll;
+        }
+        // don't let year become < currentYear
+        if (year - currentYear <= 0) {
+          console.log("RESET");
+          disintegrated.value = 0;
+          year = currentYear;
+        } else {
+          disintegrated.value =
+            ((year - currentYear) / yearsToDisintegrate) * 100;
+          yearAsInt.value = Math.floor(year);
+          currentVideoTime.value = (disintegrated.value * 60) / 100;
+          commentary.value = getCommentary(yearAsInt.value);
+        }
+      }
       previousScrollPosition = scrollPosition.value;
+      // console.log("SP: " + scrollPosition.value + " • ");
     }
 
     function getCommentary(year: number): string {
@@ -248,13 +268,40 @@ export default defineComponent({
           updateBottle();
         }, 100);
       }
-      // when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
+      // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
       document.addEventListener("scroll", updateBottle);
+
+      const target = document.querySelector("#container");
+
+      // @ts-ignore
+      function handleIntersection(entries) {
+        // @ts-ignore
+        entries.map((entry) => {
+          if (entry.isIntersecting) {
+            // console.log("VISIBLE");
+            freezeStep1ScrollValues.value = false;
+          } else {
+            // console.log("INVISIBLE");
+            freezeStep1ScrollValues.value = true;
+          }
+        });
+      }
+
+      const options = {
+        root: null,
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver(handleIntersection, options);
+      // @ts-ignore
+      observer.observe(target);
     });
 
     watch(disintegrated, (value, oldValue) => {
       if (value >= stoppingDisintegratedPercentage) {
         container.value!.style.height = scrollPosition.value + "px";
+        freezeStep1ScrollValues.value = true;
       }
     });
 
@@ -281,7 +328,7 @@ export default defineComponent({
 @import "/assets/styles/v1/app"
 
 .container
-  height: 20000vh
+  height: 250000px
   max-width: 100%
   display: flex
   flex-direction: column
