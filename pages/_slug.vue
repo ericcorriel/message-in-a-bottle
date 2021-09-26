@@ -211,12 +211,16 @@ export default defineComponent({
       scrollPosition.value >= previousScrollPosition
         ? (year += 0.25)
         : (year -= 0.25);
-      disintegrated.value =
-        disintegrated.value < stoppingDisintegratedPercentage
-          ? ((year - currentYear) / yearsToDisintegrate) * 100
-          : stoppingDisintegratedPercentage;
+      // don't let % disintegrated < 0
+      if (year - currentYear <= 0) disintegrated.value = 0;
+      else
+        disintegrated.value =
+          disintegrated.value < stoppingDisintegratedPercentage
+            ? ((year - currentYear) / yearsToDisintegrate) * 100
+            : stoppingDisintegratedPercentage;
+      // don't let year < currentYear
       yearAsInt.value =
-        year <= currentYear + yearsToDisintegrate
+        year < currentYear + yearsToDisintegrate && year >= currentYear
           ? Math.floor(year)
           : yearAsInt.value;
 

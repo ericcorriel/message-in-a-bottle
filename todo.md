@@ -14,7 +14,7 @@
 - [] GA integration
 - [] accelerating scroll
 - [] implement currentYear throughout
-- [] cannot scroll before current year
+- [x] cannot scroll before current year
 - [] backwards scroll
 
 ### The Future
