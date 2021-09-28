@@ -28,7 +28,8 @@
     <div class="credit-row up-1">
       <h4>Human Impacts Institute Environmental Fellow and Collaborator</h4>
       <h5 class="person-credit">Lisa Bloodgood</h5>
-      <p>Director of Advocacy &amp; Education, <a href="http://newtowncreekalliance.org" target="_blank">Newtown Creek
+      <p class="center">Director of Advocacy &amp; Education, <a href="http://newtowncreekalliance.org" target="_blank">Newtown
+        Creek
         Alliance</a></p>
 
     </div>
@@ -249,12 +250,10 @@ export default defineComponent({
     font-size: 6rem
     padding: 0 40px
 
-
   h3, h4, h5, h6
     text-align: center
     margin: 20px 0
     line-height: 1.1em
-
 
   #credits
     font-size: 2em
@@ -274,13 +273,12 @@ export default defineComponent({
   p
     font-weight: 300
     font-size: .5em
-    @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      font-size: .4em
     margin: .75em auto
     max-width: 90%
+    @include media-breakpoint-up(md, $v1-grid-breakpoints)
+      font-size: .4em
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
       max-width: 60vw
-
 
     &.center
       text-align: center
@@ -318,10 +316,11 @@ export default defineComponent({
       display: flex
       flex-direction: column
       flex-wrap: wrap
-      padding: 20px
+      padding: 20px 0px
       width: 100%
       @include media-breakpoint-up(lg, $v1-grid-breakpoints)
         width: 40vw
+        padding: 20px
 
       .image-container
         text-align: center

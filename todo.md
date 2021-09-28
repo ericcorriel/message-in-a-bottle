@@ -7,17 +7,18 @@
 - [x] mailing list/social media links
 - [x] rwd
 - [] open graph/social media
-- [] alt-text
+- [x] alt-text
 - [] tab accessibility
 - [x] movie placeholder
 - [x] update description
-- [] GA integration
+- [x] GA integration
 - [] accelerating scroll
 - [] implement currentYear throughout
 - [x] cannot scroll before current year
 - [x] backwards scroll
 - [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [] overscroll > newsletter
+- [] comments
 
 ### The Future
 

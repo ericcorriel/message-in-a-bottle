@@ -1,0 +1,7 @@
+export default Object.freeze({
+  YEARS_TILL_DISINTEGRATION: 450,
+  STOP_AT_PERCENTAGE: 100,
+  MOBILE_WIDTH: 540,
+  VIMEO_ID: "607838921",
+  VIDEO_FILENAME: "shatter.07-HD 1080p.02.mp4",
+});

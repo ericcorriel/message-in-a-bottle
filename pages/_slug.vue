@@ -6,12 +6,12 @@
           :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
           :is-scrolling="isScrolling"
-          :use-vimeo="useVimeo"
-          vimeo-id="607838921"
-          filename="shatter.07-HD 1080p.02.mp4"
+          :use-vimeo="false"
+          :vimeo-id="KONST.VIMEO_ID"
+          :filename="KONST.VIDEO_FILENAME"
         />
         <YearDisintegrated :disintegrated="disintegrated" :year="yearAsInt" />
-        <Commentary :year="yearAsInt" />
+        <Commentary :year="yearAsInt" :is-mobile="isMobile" />
       </div>
     </div>
     <div ref="step2" class="step bg-black on-top">
@@ -155,7 +155,7 @@ import {
 } from "@nuxtjs/composition-api";
 
 import { videos } from "~/data/videos";
-import { commentaries } from "~/data/commentaries";
+import KONST from "~/data/constants";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
@@ -182,21 +182,17 @@ export default defineComponent({
     const movieMode = false;
     const movieScroll = ref(0);
 
-    const frame: number = 1;
     let year: number = slug.value
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
 
     let previousScrollPosition: number = 0;
-    const stoppingDisintegratedPercentage = 100;
     const yearIncrementOnScroll = 0.25;
     const isScrollingTracker = ref();
     const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
-    const useVimeo: Ref<UnwrapRef<Boolean>> = ref(false);
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
     const currentYear = year;
-    const yearsToDisintegrate = 450;
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
 
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
@@ -211,11 +207,6 @@ export default defineComponent({
     const activeVideos: string[] = reactive([]);
     for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
 
-    function swapSingleVideo() {
-      activeVideos.unshift(videos[videos.length - 1 - frame]);
-      activeVideos.pop();
-    }
-
     function updateBottle() {
       isScrolling.value = true;
       window.clearTimeout(isScrollingTracker.value);
@@ -228,24 +219,20 @@ export default defineComponent({
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
 
-      // console.log(
-      //   "year: " +
-      //     year +
-      //     " || currentYear: " +
-      //     currentYear +
-      //     " || ytd: " +
-      //     yearsToDisintegrate
-      // );
+      // console.log("year: " + year + " || currentYear: " + currentYear + " || ytd: " + yearsToDisintegrate);
       if (!freezeStep1ScrollValues.value) {
         if (
-          year <= currentYear + yearsToDisintegrate - yearIncrementOnScroll &&
+          year <=
+            currentYear +
+              KONST.YEARS_TILL_DISINTEGRATION -
+              yearIncrementOnScroll &&
           year - currentYear + yearIncrementOnScroll >= 0
         ) {
           scrollPosition.value >= previousScrollPosition
             ? (year += yearIncrementOnScroll)
             : (year -= yearIncrementOnScroll);
         } else if (
-          year === currentYear + yearsToDisintegrate &&
+          year === currentYear + KONST.YEARS_TILL_DISINTEGRATION &&
           scrollPosition.value < previousScrollPosition
         ) {
           year -= yearIncrementOnScroll;
@@ -257,13 +244,12 @@ export default defineComponent({
           year = currentYear;
         } else {
           disintegrated.value =
-            ((year - currentYear) / yearsToDisintegrate) * 100;
+            ((year - currentYear) / KONST.YEARS_TILL_DISINTEGRATION) * 100;
           yearAsInt.value = Math.floor(year);
           currentVideoTime.value = (disintegrated.value * 60) / 100;
         }
       }
       previousScrollPosition = scrollPosition.value;
-      // console.log("SP: " + scrollPosition.value + " • ");
     }
 
     onMounted(() => {
@@ -277,6 +263,8 @@ export default defineComponent({
       // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
       document.addEventListener("scroll", updateBottle);
       window.addEventListener("resize", handleResize);
+      isMobile.value = window.innerWidth <= KONST.MOBILE_WIDTH;
+
       const target = document.querySelector("#container");
 
       // @ts-ignore
@@ -307,14 +295,16 @@ export default defineComponent({
     });
 
     watch(disintegrated, (value, oldValue) => {
-      if (value >= stoppingDisintegratedPercentage) {
+      if (value >= KONST.STOP_AT_PERCENTAGE) {
         container.value!.style.height = scrollPosition.value + "px";
         freezeStep1ScrollValues.value = true;
       }
     });
 
     function handleResize() {
+      isMobile.value = window.innerWidth <= KONST.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
+
       console.log("WINDOW CHAG " + windowWidth.value);
     }
 
@@ -326,8 +316,8 @@ export default defineComponent({
       container,
       currentVideoTime,
       isScrolling,
-      useVimeo,
-      windowWidth,
+      isMobile,
+      KONST,
     };
   },
 });

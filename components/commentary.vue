@@ -22,13 +22,13 @@ export default defineComponent({
   },
   props: {
     year: { type: Number, default: new Date().getFullYear() },
+    isMobile: { type: Boolean, default: false },
   },
   setup(props, context) {
     const commentary: Ref<UnwrapRef<string>> = ref("");
     commentary.value = getCommentary(props.year);
 
     function getCommentary(year: number): string {
-      const isMobile = false;
       // default condition
       if (!year || year === new Date().getFullYear()) return "~~Scroll Down~~";
       else {
@@ -36,7 +36,7 @@ export default defineComponent({
           (commentaryType) => commentaryType.year === year
         );
         if (res[0]?.comment)
-          return isMobile ? res[0].commentSm : res[0].comment;
+          return props.isMobile ? res[0].commentSm : res[0].comment;
         else return commentary.value;
       }
     }
@@ -45,6 +45,13 @@ export default defineComponent({
       () => props.year,
       (value, oldValue) => {
         commentary.value = getCommentary(value);
+      }
+    );
+
+    watch(
+      () => props.isMobile,
+      (value, oldValue) => {
+        if (value !== oldValue) commentary.value = getCommentary(props.year);
       }
     );
 
@@ -63,22 +70,18 @@ export default defineComponent({
 @import "/assets/styles/v1/app"
 .row-fixed.text-container.bottom
   height: auto
-  top: 75vh
-  @include media-breakpoint-up(md, $v1-grid-breakpoints)
-    top: auto
-    bottom: 0
+  top: 70vh
   padding-bottom: 3vh
   position: fixed
   width: 100vw
   text-align: center
   -webkit-text-stroke: 1px $bg-color
+  bottom: 0
+  @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    top: auto
   @include media-breakpoint-up(lg, $v1-grid-breakpoints)
     -webkit-text-stroke: 3px $bg-color
 
   span
     line-height: 1.1em
-
-    .monospace
-
-      color: red
 </style>
