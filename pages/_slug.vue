@@ -10,11 +10,8 @@
           vimeo-id="607838921"
           filename="shatter.07-HD 1080p.02.mp4"
         />
-        <YearDisintegrated
-          :disintegrated="disintegrated"
-          :year-as-int="yearAsInt"
-        />
-        <Commentary :commentary="commentary" />
+        <YearDisintegrated :disintegrated="disintegrated" :year="yearAsInt" />
+        <Commentary :year="yearAsInt" />
       </div>
     </div>
     <div ref="step2" class="step bg-black on-top">
@@ -204,10 +201,12 @@ export default defineComponent({
 
     const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
     const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
-    const commentary: Ref<UnwrapRef<string>> = ref("");
-    commentary.value = getCommentary(year);
+
     const freezeStep1ScrollValues: Ref<UnwrapRef<boolean>> = ref(false);
     const container = ref();
+
+    const isMobile: Ref<UnwrapRef<Boolean>> = ref(false);
+    const windowWidth: Ref<UnwrapRef<Number>> = ref(0);
 
     const activeVideos: string[] = reactive([]);
     for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
@@ -261,22 +260,10 @@ export default defineComponent({
             ((year - currentYear) / yearsToDisintegrate) * 100;
           yearAsInt.value = Math.floor(year);
           currentVideoTime.value = (disintegrated.value * 60) / 100;
-          commentary.value = getCommentary(yearAsInt.value);
         }
       }
       previousScrollPosition = scrollPosition.value;
       // console.log("SP: " + scrollPosition.value + " • ");
-    }
-
-    function getCommentary(year: number): string {
-      // default condition
-      if (!year || year === new Date().getFullYear()) return "~~Scroll Down~~";
-      else {
-        const res = commentaries.filter(
-          (commentaryType) => commentaryType.year === yearAsInt.value
-        );
-        return res[0]?.comment ?? commentary.value;
-      }
     }
 
     onMounted(() => {
@@ -289,7 +276,7 @@ export default defineComponent({
       }
       // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
       document.addEventListener("scroll", updateBottle);
-
+      window.addEventListener("resize", handleResize);
       const target = document.querySelector("#container");
 
       // @ts-ignore
@@ -315,6 +302,8 @@ export default defineComponent({
       const observer = new IntersectionObserver(handleIntersection, options);
       // @ts-ignore
       observer.observe(target);
+
+      windowWidth.value = window.innerWidth;
     });
 
     watch(disintegrated, (value, oldValue) => {
@@ -324,9 +313,13 @@ export default defineComponent({
       }
     });
 
+    function handleResize() {
+      windowWidth.value = window.innerWidth;
+      console.log("WINDOW CHAG " + windowWidth.value);
+    }
+
     return {
       yearAsInt,
-      commentary,
       disintegrated,
       activeVideos,
       scrollPosition,
@@ -334,6 +327,7 @@ export default defineComponent({
       currentVideoTime,
       isScrolling,
       useVimeo,
+      windowWidth,
     };
   },
 });

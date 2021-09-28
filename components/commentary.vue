@@ -4,9 +4,16 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "@nuxtjs/composition-api";
+<script lang="ts">
+import {
+  defineComponent,
+  ref,
+  Ref,
+  UnwrapRef,
+  watch,
+} from "@nuxtjs/composition-api";
 import FitText from "~/components/vendor/FitText.vue";
+import { commentaries } from "~/data/commentaries";
 
 export default defineComponent({
   name: "Commentary",
@@ -14,7 +21,36 @@ export default defineComponent({
     FitText,
   },
   props: {
-    commentary: { type: String, default: "" },
+    year: { type: Number, default: new Date().getFullYear() },
+  },
+  setup(props, context) {
+    const commentary: Ref<UnwrapRef<string>> = ref("");
+    commentary.value = getCommentary(props.year);
+
+    function getCommentary(year: number): string {
+      const isMobile = false;
+      // default condition
+      if (!year || year === new Date().getFullYear()) return "~~Scroll Down~~";
+      else {
+        const res = commentaries.filter(
+          (commentaryType) => commentaryType.year === year
+        );
+        if (res[0]?.comment)
+          return isMobile ? res[0].commentSm : res[0].comment;
+        else return commentary.value;
+      }
+    }
+
+    watch(
+      () => props.year,
+      (value, oldValue) => {
+        commentary.value = getCommentary(value);
+      }
+    );
+
+    return {
+      commentary,
+    };
   },
 });
 </script>

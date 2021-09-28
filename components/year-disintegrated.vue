@@ -2,7 +2,7 @@
   <div class="row-fixed text-container top">
     <h1>
       <span class="body-copy">It’s </span>
-      <span id="year" class="number-text">{{ yearAsInt }}</span>
+      <span id="year" class="number-text">{{ year }}</span>
       <span class="body-copy">and this bottle is</span>
       <span id="disintegrated" class="number-text"
         >{{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%</span
@@ -18,7 +18,7 @@ import { defineComponent } from "@nuxtjs/composition-api";
 export default defineComponent({
   name: "YearDisintegrated",
   props: {
-    yearAsInt: { type: Number, default: new Date().getFullYear() },
+    year: { type: Number, default: new Date().getFullYear() },
     disintegrated: { type: Number, default: 0 },
   },
 });
