@@ -155,7 +155,7 @@ import {
 } from "@nuxtjs/composition-api";
 
 import { videos } from "~/data/videos";
-import KONST from "~/data/constants";
+import KONST, { scrollSpeeds } from "~/data/constants.ts";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
@@ -187,8 +187,8 @@ export default defineComponent({
       : new Date().getFullYear();
 
     let previousScrollPosition: number = 0;
-    const yearIncrementOnScroll = 0.25;
-    const isScrollingTracker = ref();
+    // const yearIncrementOnScroll = 0.25;
+    const isScrollingPoll = ref();
     const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
 
     const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
@@ -209,8 +209,8 @@ export default defineComponent({
 
     function updateBottle() {
       isScrolling.value = true;
-      window.clearTimeout(isScrollingTracker.value);
-      isScrollingTracker.value = setTimeout(function () {
+      window.clearTimeout(isScrollingPoll.value);
+      isScrollingPoll.value = setTimeout(function () {
         isScrolling.value = false;
       }, 66);
 
@@ -218,8 +218,48 @@ export default defineComponent({
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
-
+      // console.log("SP: " + scrollPosition.value);
       // console.log("year: " + year + " || currentYear: " + currentYear + " || ytd: " + yearsToDisintegrate);
+
+      const res = scrollSpeeds.filter(
+        (x) => x.percentDisintegrated >= disintegrated.value
+      );
+
+      // console.log(res);
+      // console.log("yearIncrementOnScroll: " + yearIncrementOnScroll);
+      let yearIncrementOnScroll = res[0]?.speed ? res[0].speed : 0;
+
+      // console.log(
+      //   `BEFORE: ${
+      //     currentYear +
+      //     KONST.YEARS_TILL_DISINTEGRATION -
+      //     year -
+      //     yearIncrementOnScroll
+      //   }`
+      // );
+
+      // eslint-disable-next-line no-use-before-define
+      // console.log(
+      //   currentYear +
+      //     KONST.YEARS_TILL_DISINTEGRATION -
+      //     yearIncrementOnScroll -
+      //     year
+      // );
+      // eslint-disable-next-line no-use-before-define
+      if (
+        year > currentYear &&
+        scrollPosition.value >= previousScrollPosition &&
+        currentYear +
+          KONST.YEARS_TILL_DISINTEGRATION -
+          yearIncrementOnScroll -
+          year <
+          yearIncrementOnScroll
+      ) {
+        yearIncrementOnScroll =
+          currentYear + KONST.YEARS_TILL_DISINTEGRATION - year;
+        // console.log("YS: " + yearIncrementOnScroll);
+      }
+
       if (!freezeStep1ScrollValues.value) {
         if (
           year <=
@@ -249,6 +289,7 @@ export default defineComponent({
           currentVideoTime.value = (disintegrated.value * 60) / 100;
         }
       }
+
       previousScrollPosition = scrollPosition.value;
     }
 
