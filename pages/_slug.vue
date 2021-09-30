@@ -155,7 +155,8 @@ import {
 } from "@nuxtjs/composition-api";
 
 import { videos } from "~/data/videos";
-import KONST, { scrollSpeeds } from "~/data/constants.ts";
+// @ts-ignore
+import { KONST, scrollSpeeds } from "~/data/constants.ts";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";

@@ -1,5 +1,5 @@
-export default Object.freeze({
-  YEARS_TILL_DISINTEGRATION: 20,
+export const KONST = Object.freeze({
+  YEARS_TILL_DISINTEGRATION: 450,
   STOP_AT_PERCENTAGE: 100,
   MOBILE_WIDTH: 540,
   VIMEO_ID: "607838921",
