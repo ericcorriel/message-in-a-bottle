@@ -222,6 +222,7 @@ export default defineComponent({
       // console.log("year: " + year + " || currentYear: " + currentYear + " || ytd: " + yearsToDisintegrate);
 
       const res = scrollSpeeds.filter(
+        // @ts-ignore
         (x) => x.percentDisintegrated >= disintegrated.value
       );
 
@@ -279,8 +280,7 @@ export default defineComponent({
         }
         // don't let year become < currentYear
         if (year - currentYear <= 0) {
-          console.log("RESET");
-          disintegrated.value = 0;
+          //          disintegrated.value = 0;
           year = currentYear;
         } else {
           disintegrated.value =
