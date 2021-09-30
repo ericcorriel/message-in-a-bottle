@@ -97,17 +97,17 @@ export const commentaries: commentariesArr = [
     commentSm: "You download<br />your first <br />🌬Air Quality Index app🌬",
   },
   {
-    year: 2051,
+    year: 2042,
     comment: "Your phone alerts you to<br />⚠️Ration Water⚠️",
     commentSm: "Your phone<br />alerts you to<br />⚠️Ration Water⚠️",
   },
   {
-    year: 2067,
+    year: 2055,
     comment: "You buy your first<br />🍷bottle of Alaskan wine🍷",
     commentSm: "You buy your<br />first bottle of<br />🍷Alaskan wine🍷",
   },
   {
-    year: 2081,
+    year: 2075,
     comment: "Ugh–this heat!<br />🥵Temps reach 140°F🥵",
     commentSm: "Ugh–this heat!<br />Temps reach<br />🥵140°F🥵",
   },
@@ -117,12 +117,12 @@ export const commentaries: commentariesArr = [
     commentSm:
       "You vote for<br />the candidate who<br />💧promises cheap water💧",
   },
-  { year: 2120, comment: "🪦You die🪦", commentSm: "🪦You die🪦" },
+  { year: 2120, comment: "🪦You’re dead🪦", commentSm: "🪦You’re dead🪦" },
 
   {
     year: 2141,
-    comment: "🔥“Fire moat”🔥<br />voted word of the decade",
-    commentSm: "🔥“Fire moat”🔥<br />voted word<br />of the decade",
+    comment: "🔥“Fire moat”🔥<br />voted phrase of the decade",
+    commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the decade",
   },
   {
     year: 2160,
@@ -146,8 +146,8 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2256,
-    comment: "🌜First moon colony🌛<br />establishes itself",
-    commentSm: "First<br />🌜moon colony🌛<br />establishes itself",
+    comment: "🌜First moon colony🌛<br />established",
+    commentSm: "First<br />🌜moon colony🌛<br />established",
   },
   {
     year: 2283,
@@ -168,7 +168,7 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2355,
-    comment: "A child asks mom<br />🤔“What was wildlife?”🤔",
+    comment: "A child asks<br />🤔“What was wildlife?”🤔",
     commentSm: "A child asks<br />“What was<br />🤔wildlife?”🤔",
   },
   {
