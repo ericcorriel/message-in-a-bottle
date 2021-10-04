@@ -3,14 +3,15 @@
     <div id="container" ref="container" class="container">
       <div id="step1" ref="step1" class="step">
         <VideoContainer
-          :active-videos="activeVideos"
           :current-video-time="currentVideoTime"
-          :is-scrolling="isScrolling"
           :use-vimeo="false"
-          :vimeo-id="KONST.VIMEO_ID"
-          :filename="KONST.VIDEO_FILENAME"
+          :vimeo-id="APP.VIMEO_ID"
+          :filename="APP.VIDEO_FILENAME"
         />
-        <YearDisintegrated :disintegrated="disintegrated" :year="yearAsInt" />
+        <YearDisintegrated
+          :disintegrated="percentDisintegrated"
+          :year="yearAsInt"
+        />
         <Commentary :year="yearAsInt" :is-mobile="isMobile" />
       </div>
     </div>
@@ -146,7 +147,6 @@ import {
   defineComponent,
   onMounted,
   watch,
-  reactive,
   Ref,
   ref,
   UnwrapRef,
@@ -154,17 +154,22 @@ import {
   useRoute,
 } from "@nuxtjs/composition-api";
 
-import { videos } from "~/data/videos";
+import {
+  APP,
+  scrollSpeeds,
+  ScrollSpeed,
+  SCROLL_DIRECTION,
+  // @ts-ignore
+} from "~/data/constants.ts";
+
 // @ts-ignore
-import { KONST, scrollSpeeds } from "~/data/constants.ts";
+import stateMachine, { ScrollState } from "~/data/state.ts";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
-import SpacerQuarterScreen from "~/components/spacer/quarter-screen.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
-import SpacerFullScreen from "~/components/spacer/full-screen.vue";
 
 export default defineComponent({
   components: {
@@ -173,139 +178,143 @@ export default defineComponent({
     Commentary,
     FitText,
     Credits,
-    SpacerQuarterScreen,
     SpacerHalfScreen,
-    SpacerFullScreen,
   },
   setup() {
+    // app stuff
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
-    const movieMode = false;
-    const movieScroll = ref(0);
 
-    let year: number = slug.value
+    // scrolling stuff
+    let yearAtCurrentScroll: number = slug.value
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
 
-    let previousScrollPosition: number = 0;
-    // const yearIncrementOnScroll = 0.25;
-    const isScrollingPoll = ref();
-    const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
+    // set initial state values
+    stateMachine.set({
+      yearZero: yearAtCurrentScroll,
+      yearAtCurrentScroll,
+      yearEnd: yearAtCurrentScroll + APP.YEARS_TILL_DISINTEGRATION,
+      previousScrollPosition: 0,
+      currentScrollPosition: 0,
+      percentDisintegrated: 0,
+      debug: false,
+    });
 
-    const scrollPosition: Ref<UnwrapRef<number>> = ref(0);
-    const currentYear = year;
+    // vfx stuff
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
+    const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
+    const percentDisintegrated: Ref<UnwrapRef<number>> = ref(0.0);
 
-    const yearAsInt: Ref<UnwrapRef<number>> = ref(year);
-    const disintegrated: Ref<UnwrapRef<number>> = ref(0.0);
-
-    const freezeStep1ScrollValues: Ref<UnwrapRef<boolean>> = ref(false);
+    // html stuff
     const container = ref();
 
+    // responsive stuff
     const isMobile: Ref<UnwrapRef<Boolean>> = ref(false);
     const windowWidth: Ref<UnwrapRef<Number>> = ref(0);
 
-    const activeVideos: string[] = reactive([]);
-    for (let i: number = 0; i < 1; i++) activeVideos.push(videos[i]);
+    function handleScroll() {
+      /*
+       * When scrolling down, .container should be of infinite height (1,000,000px) and scrollAmount gets incremented according to scrollSpeeds arr. It is unknown how many scrolls will be necessary to get to 100%–varies widely based on screen height, frequency of scrolls, and how the browser interprets numPixelsToScroll based on swipe
+       * When scrolling up however, the num pixels needed to scroll to get to yearZero is known and need to avoid situation where we run out of road before getting back to yearZero. so numPixelsToScrollToYearZero needs to be calculated and the amountToIncrement divided up accordingly
+       * So amountToIncrement has one set of values going down (determined by scrollSpeeds) but another set of values going up
+       * EDGE CASES
+       * Once 100% is reached, scroll values are no longer calculated
+       */
 
-    function updateBottle() {
-      isScrolling.value = true;
-      window.clearTimeout(isScrollingPoll.value);
-      isScrollingPoll.value = setTimeout(function () {
-        isScrolling.value = false;
-      }, 66);
-
-      scrollPosition.value =
+      // get yearDelta based on percent disintegrated
+      const res: ScrollSpeed[] = scrollSpeeds.filter(
+        (x: ScrollSpeed) => x.percentDisintegrated >= percentDisintegrated.value
+      );
+      const yearDelta = res[0]?.speed ? res[0].speed : 0;
+      const currentScrollPosition =
         (window.pageYOffset || document.documentElement.scrollTop) -
         (document.documentElement.clientTop || 0) +
         window.innerHeight;
-      // console.log("SP: " + scrollPosition.value);
-      // console.log("year: " + year + " || currentYear: " + currentYear + " || ytd: " + yearsToDisintegrate);
 
-      const res = scrollSpeeds.filter(
-        // @ts-ignore
-        (x) => x.percentDisintegrated >= disintegrated.value
-      );
+      // set currentScrollPosition and yearDelta
+      stateMachine.set({
+        currentScrollPosition,
+        yearDelta,
+        scrollDirection:
+          currentScrollPosition === stateMachine.state.previousScrollPosition
+            ? stateMachine.state.scrollDirection
+            : currentScrollPosition > stateMachine.state.previousScrollPosition
+            ? SCROLL_DIRECTION.DOWN
+            : SCROLL_DIRECTION.UP,
+      });
 
-      // console.log(res);
-      // console.log("yearIncrementOnScroll: " + yearIncrementOnScroll);
-      let yearIncrementOnScroll = res[0]?.speed ? res[0].speed : 0;
+      const state: ScrollState = stateMachine.state;
 
-      // console.log(
-      //   `BEFORE: ${
-      //     currentYear +
-      //     KONST.YEARS_TILL_DISINTEGRATION -
-      //     year -
-      //     yearIncrementOnScroll
-      //   }`
-      // );
-
-      // eslint-disable-next-line no-use-before-define
-      // console.log(
-      //   currentYear +
-      //     KONST.YEARS_TILL_DISINTEGRATION -
-      //     yearIncrementOnScroll -
-      //     year
-      // );
-      // eslint-disable-next-line no-use-before-define
-      if (
-        year > currentYear &&
-        scrollPosition.value >= previousScrollPosition &&
-        currentYear +
-          KONST.YEARS_TILL_DISINTEGRATION -
-          yearIncrementOnScroll -
-          year <
-          yearIncrementOnScroll
-      ) {
-        yearIncrementOnScroll =
-          currentYear + KONST.YEARS_TILL_DISINTEGRATION - year;
-        // console.log("YS: " + yearIncrementOnScroll);
-      }
-
-      if (!freezeStep1ScrollValues.value) {
+      if (!state.scrollValuesFrozen) {
+        if (state.isInNormalScrollingRange) {
+          // if scrolling down, add delta to current year
+          console.log(1);
+          if (state.scrollDirection === SCROLL_DIRECTION.DOWN)
+            yearAtCurrentScroll += yearDelta;
+          // if scrolling up only subtract delta if not at yearZero
+          else if (
+            state.scrollDirection === SCROLL_DIRECTION.UP &&
+            yearAtCurrentScroll !== state.yearZero
+          ) {
+            yearAtCurrentScroll -= yearDelta;
+          }
+        }
+        // not in normal scrolling range and about to go over 100%
+        else if (
+          state.scrollDirection === SCROLL_DIRECTION.DOWN &&
+          yearAtCurrentScroll + yearDelta > state.yearEnd
+        ) {
+          console.log(2);
+          yearAtCurrentScroll = state.yearEnd;
+        }
+        // not in normal scrolling range – don't let year become < currentYear
+        else if (
+          state.scrollDirection === SCROLL_DIRECTION.UP &&
+          yearAtCurrentScroll - state.yearZero <= 0
+        ) {
+          // disintegrated.value = 0; reset container height
+          console.log(3);
+          yearAtCurrentScroll = state.yearZero;
+          container.value!.style.height = "1000000px";
+        }
+        // only update year and percent if not at beginning or end
         if (
-          year <=
-            currentYear +
-              KONST.YEARS_TILL_DISINTEGRATION -
-              yearIncrementOnScroll &&
-          year - currentYear + yearIncrementOnScroll >= 0
+          yearAtCurrentScroll <= state.yearEnd &&
+          yearAtCurrentScroll >= state.yearZero
         ) {
-          scrollPosition.value >= previousScrollPosition
-            ? (year += yearIncrementOnScroll)
-            : (year -= yearIncrementOnScroll);
-        } else if (
-          year === currentYear + KONST.YEARS_TILL_DISINTEGRATION &&
-          scrollPosition.value < previousScrollPosition
-        ) {
-          year -= yearIncrementOnScroll;
-        }
-        // don't let year become < currentYear
-        if (year - currentYear <= 0) {
-          //          disintegrated.value = 0;
-          year = currentYear;
-        } else {
-          disintegrated.value =
-            ((year - currentYear) / KONST.YEARS_TILL_DISINTEGRATION) * 100;
-          yearAsInt.value = Math.floor(year);
-          currentVideoTime.value = (disintegrated.value * 60) / 100;
+          console.log(4);
+          percentDisintegrated.value =
+            ((yearAtCurrentScroll - state.yearZero) /
+              APP.YEARS_TILL_DISINTEGRATION) *
+            100;
+          yearAsInt.value = Math.floor(yearAtCurrentScroll);
+          currentVideoTime.value = (percentDisintegrated.value * 60) / 100;
         }
       }
-
-      previousScrollPosition = scrollPosition.value;
+      stateMachine.set({
+        yearAtCurrentScroll,
+        previousScrollPosition: state.currentScrollPosition,
+      });
     }
 
     onMounted(() => {
-      if (movieMode) {
-        movieScroll.value += 10;
-
+      if (APP.MOVIE_MODE) {
+        // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
         setInterval(function () {
-          updateBottle();
+          handleScroll();
         }, 100);
       }
-      // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
-      document.addEventListener("scroll", updateBottle);
+      document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
-      isMobile.value = window.innerWidth <= KONST.MOBILE_WIDTH;
+      isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
+
+      stateMachine.set({
+        yearZeroScrollTop:
+          (window.pageYOffset || document.documentElement.scrollTop) -
+          (document.documentElement.clientTop || 0) +
+          window.innerHeight,
+      });
 
       const target = document.querySelector("#container");
 
@@ -314,11 +323,11 @@ export default defineComponent({
         // @ts-ignore
         entries.map((entry) => {
           if (entry.isIntersecting) {
-            // console.log("VISIBLE");
-            freezeStep1ScrollValues.value = false;
+            console.log("VISIBLE");
+            stateMachine.state.scrollValuesFrozen = false;
           } else {
-            // console.log("INVISIBLE");
-            freezeStep1ScrollValues.value = true;
+            console.log("INVISIBLE");
+            stateMachine.state.scrollValuesFrozen = true;
           }
         });
       }
@@ -336,30 +345,34 @@ export default defineComponent({
       windowWidth.value = window.innerWidth;
     });
 
-    watch(disintegrated, (value, oldValue) => {
-      if (value >= KONST.STOP_AT_PERCENTAGE) {
-        container.value!.style.height = scrollPosition.value + "px";
-        freezeStep1ScrollValues.value = true;
+    // once reach 100% do not waste resources calculating new values
+    watch(percentDisintegrated, (value) => {
+      if (value >= APP.STOP_AT_PERCENTAGE) {
+        container.value!.style.height =
+          stateMachine.state.currentScrollPosition + "px";
+        stateMachine.state.scrollValuesFrozen = true;
       }
     });
 
     function handleResize() {
-      isMobile.value = window.innerWidth <= KONST.MOBILE_WIDTH;
+      isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
 
-      console.log("WINDOW CHAG " + windowWidth.value);
+      stateMachine.set({
+        yearZeroScrollTop:
+          (window.pageYOffset || document.documentElement.scrollTop) -
+          (document.documentElement.clientTop || 0) +
+          window.innerHeight,
+      });
     }
 
     return {
       yearAsInt,
-      disintegrated,
-      activeVideos,
-      scrollPosition,
+      percentDisintegrated,
       container,
       currentVideoTime,
-      isScrolling,
       isMobile,
-      KONST,
+      APP,
     };
   },
 });

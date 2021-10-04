@@ -24,7 +24,6 @@ export default defineComponent({
   props: {
     filename: { type: String, default: "" },
     currentVideoTime: { type: Number, default: 0 },
-    isScrolling: { type: Boolean, default: false },
   },
   setup(props, context) {
     const player = ref();

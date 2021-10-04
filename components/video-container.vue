@@ -11,7 +11,6 @@
         v-else
         :filename="filename"
         :current-video-time="currentVideoTime"
-        :is-scrolling="isScrolling"
       ></HTMLVideoEmbed>
     </div>
   </div>
@@ -26,9 +25,7 @@ export default defineComponent({
   name: "VideoContainer",
   components: { VimeoEmbed, HTMLVideoEmbed },
   props: {
-    activeVideos: { type: Array, default: () => [] },
     useVimeo: { type: Boolean, default: false },
-    isScrolling: { type: Boolean, default: false },
     currentVideoTime: { type: Number, default: 0 },
     filename: { type: String, default: "" },
     vimeoId: { type: String, default: "" },

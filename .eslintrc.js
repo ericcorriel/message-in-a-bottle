@@ -11,5 +11,7 @@ module.exports = {
   ],
   plugins: [],
   // add your custom rules here
-  rules: {},
+  rules: {
+    "max-len": [0, 120, 4],
+  },
 };

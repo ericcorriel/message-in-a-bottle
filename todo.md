@@ -12,13 +12,13 @@
 - [x] movie placeholder
 - [x] update description
 - [x] GA integration
-- [] accelerating scroll
+- [x] accelerating scroll
 - [] implement currentYear throughout
 - [x] cannot scroll before current year
 - [x] backwards scroll
 - [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [] overscroll > newsletter
-- [] comments
+- [x] comments
 
 ### The Future
 

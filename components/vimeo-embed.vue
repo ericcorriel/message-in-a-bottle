@@ -20,6 +20,8 @@ import {
   ref,
   toRef,
   watch,
+  Ref,
+  UnwrapRef,
 } from "@nuxtjs/composition-api";
 import vueVimeoPlayer from "~/forks/vue-vimeo-player";
 
@@ -31,16 +33,23 @@ export default defineComponent({
   props: {
     videoId: { type: String, default: "0" },
     currentVideoTime: { type: Number, default: 0 },
-    isScrolling: { type: Boolean, default: false },
   },
   setup(props, context) {
     const player = ref();
+    const isScrollingPoll = ref();
+    const isScrolling: Ref<UnwrapRef<Boolean>> = ref(false);
 
-    // const currentVideoTime = toRef(props.currentVideoTime);
-    onUpdated(() => {
-      // console.log(player.value!.getDuration());
-      // console.log(player.value!.duration);
+    onMounted(() => {
+      document.addEventListener("scroll", handleScroll);
     });
+
+    function handleScroll() {
+      isScrolling.value = true;
+      window.clearTimeout(isScrollingPoll.value);
+      isScrollingPoll.value = setTimeout(function () {
+        isScrolling.value = false;
+      }, 66);
+    }
 
     watch(
       () => props.currentVideoTime,
@@ -53,9 +62,9 @@ export default defineComponent({
       }
     );
     watch(
-      () => props.isScrolling,
+      () => isScrolling,
       (value, oldValue) => {
-        if (value === false) {
+        if (value.value === false) {
           player.value!.pause();
         }
       }
@@ -63,6 +72,7 @@ export default defineComponent({
 
     return {
       player,
+      isScrolling,
     };
   },
 });
@@ -74,6 +84,7 @@ export default defineComponent({
   top: 25vh
   opacity: 1
   height: 50vh
+
   .col
     margin: 0
     padding: 0

@@ -1,17 +1,18 @@
-export const KONST = Object.freeze({
-  YEARS_TILL_DISINTEGRATION: 450,
+export const APP = Object.freeze({
+  YEARS_TILL_DISINTEGRATION: 20,
   STOP_AT_PERCENTAGE: 100,
   MOBILE_WIDTH: 540,
+  MOVIE_MODE: false,
   VIMEO_ID: "607838921",
   VIDEO_FILENAME: "shatter.07-HD 1080p.02.mp4",
 });
 
-export interface scrollSpeed {
+export interface ScrollSpeed {
   percentDisintegrated: number;
   speed: number;
 }
 
-export interface scrollSpeedArr extends Array<scrollSpeed> {}
+export interface scrollSpeedArr extends Array<ScrollSpeed> {}
 
 export const scrollSpeeds: scrollSpeedArr = [
   { percentDisintegrated: 0, speed: 0.01 },
@@ -19,5 +20,10 @@ export const scrollSpeeds: scrollSpeedArr = [
   { percentDisintegrated: 10, speed: 0.15 },
   { percentDisintegrated: 20, speed: 0.2 },
   { percentDisintegrated: 80, speed: 0.25 },
-  { percentDisintegrated: 100, speed: 0.25 },
+  { percentDisintegrated: 110, speed: 0.25 },
 ];
+
+export const SCROLL_DIRECTION = Object.freeze({
+  UP: "UP",
+  DOWN: "DOWN",
+});
