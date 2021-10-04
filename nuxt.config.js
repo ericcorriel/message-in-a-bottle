@@ -15,8 +15,24 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "Message In A Bottle is an interactive film that takes the user on a multi-century journey through the disintegration of a single water bottle.",
+          "An interactive film that takes the user on a multi-century journey through the disintegration of a single water bottle.",
       },
+      { property: "og:title", content: "Message In A Bottle" },
+      {
+        property: "og:description",
+        content:
+          "An interactive film that takes the user on a multi-century journey through the disintegration of a single water bottle.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://messageinabottle.film/img/og/message-in-a-bottle.1.91-1.jpg",
+      },
+      {
+        property: "og:url",
+        content: "https://messageinabottle.film",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/img/icons/favicon.ico" },

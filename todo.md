@@ -6,7 +6,7 @@
 - [x] autoscroll movie mode
 - [x] mailing list/social media links
 - [x] rwd
-- [] open graph/social media
+- [x] open graph/social media
 - [x] alt-text
 - [] tab accessibility
 - [x] movie placeholder
@@ -14,7 +14,7 @@
 - [x] GA integration
 - [x] accelerating scroll
 - [] implement currentYear throughout
-- [x] cannot scroll before current year
+- [x] bug: cannot scroll before current year
 - [x] backwards scroll
 - [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [] overscroll > newsletter
