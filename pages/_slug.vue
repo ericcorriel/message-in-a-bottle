@@ -245,7 +245,7 @@ export default defineComponent({
       });
 
       const state: ScrollState = stateMachine.state;
-      const debug: Boolean = true;
+      const debug: Boolean = false;
 
       if (!state.scrollValuesFrozen) {
         if (state.isInNormalScrollingRange) {
@@ -253,12 +253,12 @@ export default defineComponent({
           debug ? console.log(1) : null;
           if (state.scrollDirection === SCROLL_DIRECTION.DOWN)
             yearAtCurrentScroll += yearDelta;
-          // if scrolling up only subtract delta if not at yearZero
+          // if scrolling up subtract .25 if not at yearZero; want to make sure descend at a quicker rate than ascend to ensure don't run out of road scrolling back down (amountLeftToScroll=0 before getting back to yearZeroScrollTop (typically 700ish pixels)
           else if (
             state.scrollDirection === SCROLL_DIRECTION.UP &&
             yearAtCurrentScroll !== state.yearZero
           ) {
-            yearAtCurrentScroll -= yearDelta;
+            yearAtCurrentScroll -= 0.25;
           }
         }
         // not in normal scrolling range and about to go over 100%
