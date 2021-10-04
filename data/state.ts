@@ -11,7 +11,7 @@ export interface ScrollState {
   debug: boolean;
   scrollDirection: string;
   yearDelta: number;
-  notAtYearZero: boolean;
+  atYearZero: boolean;
   amountLeftToScroll: number;
   scrollValuesFrozen: boolean;
   scrollAmountToEndIsLessThanYearDelta: boolean;

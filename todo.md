@@ -19,6 +19,7 @@
 - [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [] overscroll > newsletter
 - [x] comments
+- [] bug: cannot scroll backwards when congratulations screen comes up
 
 ### The Future
 
