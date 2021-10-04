@@ -245,11 +245,12 @@ export default defineComponent({
       });
 
       const state: ScrollState = stateMachine.state;
+      const debug: Boolean = true;
 
       if (!state.scrollValuesFrozen) {
         if (state.isInNormalScrollingRange) {
           // if scrolling down, add delta to current year
-          console.log(1);
+          debug ? console.log(1) : null;
           if (state.scrollDirection === SCROLL_DIRECTION.DOWN)
             yearAtCurrentScroll += yearDelta;
           // if scrolling up only subtract delta if not at yearZero
@@ -265,7 +266,7 @@ export default defineComponent({
           state.scrollDirection === SCROLL_DIRECTION.DOWN &&
           yearAtCurrentScroll + yearDelta > state.yearEnd
         ) {
-          console.log(2);
+          debug ? console.log(2) : null;
           yearAtCurrentScroll = state.yearEnd;
         }
         // not in normal scrolling range – don't let year become < currentYear
@@ -274,7 +275,7 @@ export default defineComponent({
           yearAtCurrentScroll - state.yearZero <= 0
         ) {
           // disintegrated.value = 0; reset container height
-          console.log(3);
+          debug ? console.log(3) : null;
           yearAtCurrentScroll = state.yearZero;
           container.value!.style.height = "1000000px";
         }
@@ -283,7 +284,7 @@ export default defineComponent({
           yearAtCurrentScroll <= state.yearEnd &&
           yearAtCurrentScroll >= state.yearZero
         ) {
-          console.log(4);
+          debug ? console.log(4) : null;
           percentDisintegrated.value =
             ((yearAtCurrentScroll - state.yearZero) /
               APP.YEARS_TILL_DISINTEGRATION) *
@@ -323,10 +324,10 @@ export default defineComponent({
         // @ts-ignore
         entries.map((entry) => {
           if (entry.isIntersecting) {
-            console.log("VISIBLE");
+            // console.log("VISIBLE");
             stateMachine.state.scrollValuesFrozen = false;
           } else {
-            console.log("INVISIBLE");
+            // console.log("INVISIBLE");
             stateMachine.state.scrollValuesFrozen = true;
           }
         });
