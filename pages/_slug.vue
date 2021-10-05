@@ -181,11 +181,11 @@ export default defineComponent({
     SpacerHalfScreen,
   },
   setup() {
-    // app stuff
+    // routing
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
 
-    // scrolling stuff
+    // scrolling
     let yearAtCurrentScroll: number = slug.value
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
@@ -198,21 +198,22 @@ export default defineComponent({
       previousScrollPosition: 0,
       currentScrollPosition: 0,
       percentDisintegrated: 0,
-      debug: false,
+      debug: true,
     });
 
-    // vfx stuff
+    // for components
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
     const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
     const percentDisintegrated: Ref<UnwrapRef<number>> = ref(0.0);
 
-    // html stuff
+    // html refs
     const container = ref();
 
-    // responsive stuff
+    // responsive vars
     const isMobile: Ref<UnwrapRef<Boolean>> = ref(false);
     const windowWidth: Ref<UnwrapRef<Number>> = ref(0);
 
+    // event handlers
     function handleScroll() {
       /*
        * When scrolling down, .container should be of infinite height (1,000,000px) and scrollAmount gets incremented according to scrollSpeeds arr. It is unknown how many scrolls will be necessary to get to 100%–varies widely based on screen height, frequency of scrolls, and how the browser interprets numPixelsToScroll based on swipe
@@ -309,6 +310,7 @@ export default defineComponent({
       document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
+      windowWidth.value = window.innerWidth;
 
       stateMachine.set({
         yearZeroScrollTop:
@@ -317,6 +319,7 @@ export default defineComponent({
           window.innerHeight,
       });
 
+      // interaction observer
       const target = document.querySelector("#container");
 
       // @ts-ignore
@@ -342,8 +345,6 @@ export default defineComponent({
       const observer = new IntersectionObserver(handleIntersection, options);
       // @ts-ignore
       observer.observe(target);
-
-      windowWidth.value = window.innerWidth;
     });
 
     // once reach 100% do not waste resources calculating new values
@@ -387,7 +388,7 @@ export default defineComponent({
 @import "/assets/styles/v1/app"
 
 .container
-  height: 1000000px
+  height: 500000px
   max-width: 100%
   display: flex
   flex-direction: column

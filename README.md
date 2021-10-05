@@ -27,3 +27,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - copy .github folder from previous project
 - set GitHub pages to display gh-pages branch
 
+## The forked vimeo submodule
+```
+git submodule update --init --recursive
+```
