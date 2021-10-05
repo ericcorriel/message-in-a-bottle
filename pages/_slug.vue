@@ -170,6 +170,12 @@ import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
+import {
+  isMobile,
+  windowWidth,
+  handleResize,
+} from "~/composables/handleResize";
+import { handleIntersection, options } from "~/composables/interactionObserver";
 
 export default defineComponent({
   components: {
@@ -208,10 +214,6 @@ export default defineComponent({
 
     // html refs
     const container = ref();
-
-    // responsive vars
-    const isMobile: Ref<UnwrapRef<Boolean>> = ref(false);
-    const windowWidth: Ref<UnwrapRef<Number>> = ref(0);
 
     // event handlers
     function handleScroll() {
@@ -312,39 +314,15 @@ export default defineComponent({
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
 
+      const observer = new IntersectionObserver(handleIntersection, options);
+      observer.observe(document.querySelector("#container"));
+
       stateMachine.set({
         yearZeroScrollTop:
           (window.pageYOffset || document.documentElement.scrollTop) -
           (document.documentElement.clientTop || 0) +
           window.innerHeight,
       });
-
-      // interaction observer
-      const target = document.querySelector("#container");
-
-      // @ts-ignore
-      function handleIntersection(entries) {
-        // @ts-ignore
-        entries.map((entry) => {
-          if (entry.isIntersecting) {
-            // console.log("VISIBLE");
-            stateMachine.state.scrollValuesFrozen = false;
-          } else {
-            // console.log("INVISIBLE");
-            stateMachine.state.scrollValuesFrozen = true;
-          }
-        });
-      }
-
-      const options = {
-        root: null,
-        rootMargin: "0px 0px 0px 0px",
-        threshold: 0,
-      };
-
-      const observer = new IntersectionObserver(handleIntersection, options);
-      // @ts-ignore
-      observer.observe(target);
     });
 
     // once reach 100% do not waste resources calculating new values
@@ -355,18 +333,6 @@ export default defineComponent({
         stateMachine.state.scrollValuesFrozen = true;
       }
     });
-
-    function handleResize() {
-      isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
-      windowWidth.value = window.innerWidth;
-
-      stateMachine.set({
-        yearZeroScrollTop:
-          (window.pageYOffset || document.documentElement.scrollTop) -
-          (document.documentElement.clientTop || 0) +
-          window.innerHeight,
-      });
-    }
 
     return {
       yearAsInt,
