@@ -2,6 +2,13 @@
   <div class="credits-container">
     <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
+<!--    <div class="credit-row up-1">-->
+<!--      <h4>I hear you, but what can I actually do!?!</h4>-->
+
+<!--      <p>I'll skip the usual stuff about using less plastic and bringing your own bag. Been there, doing that. Time for something new. Look around you, find  put pressure on packaging departments at corporations to be more creative, innovative, and ecological in how they package their products. </p>-->
+
+<!--    </div>-->
+<!--    <SpacerHalfScreen></SpacerHalfScreen>-->
     <div class="credit-row up-1">
       <h3 id="credits">Credits</h3>
     </div>
@@ -17,8 +24,7 @@
         <a href="https://sva.edu" target="_blank">School of Visual Arts</a>.
       </p>
       <p>
-        Sign up for <a href="https://confirmsubscription.com/h/r/DA49024168C89C952540EF23F30FEDED" target='_blank'>his
-        newsletter</a> or follow him on
+        Sign up for <a href="https://confirmsubscription.com/h/r/DA49024168C89C952540EF23F30FEDED" target='_blank'>his newsletter</a> or follow him on
         <a href="https://instagram.com/ericcorriel">Instagram</a> • <a
         href="https://twitter.com/ericcorriel">Twitter</a> •
         <a href="https://facebook.com/ericcorrielartist">Facebook</a>
@@ -84,8 +90,8 @@
             /></a>
           </div>
           <p>
-            <a href="https://www1.nyc.gov/assets/dsny/site/home" target="_blank">NYC’s Department of Sanitation</a> was
-            very gracious in offering me a ride-along during one of their garbage and recycling pickups in Bushwick,
+            <a href="https://www1.nyc.gov/assets/dsny/site/home" target="_blank">NYC Department of Sanitation</a> was
+            very gracious in offering me a ride-along during one of their garbage and recycling pickups in Greenpoint,
             Brooklyn–the first time I ever had to be at a 5:30AM meeting!
           </p>
         </div>
@@ -206,10 +212,6 @@
       <p><small>© 2021 <a href="https://ericcorriel.com" target="_blank">Eric Corriel Studios</a></small></p>
     </div>
     <SpacerFullScreen></SpacerFullScreen>
-    <div class="popup-newsletter">
-
-
-    </div>
   </div>
 </template>
 
@@ -238,6 +240,7 @@ export default defineComponent({
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/base"
+@import "/assets/styles/v1/mixins"
 @import "/assets/styles/v1/app"
 
 .credits-container
@@ -245,15 +248,8 @@ export default defineComponent({
   position: relative
   padding: 0 10px
   width: 100vw
-  font-size: 2.75rem
-  @include media-breakpoint-up(md, $v1-grid-breakpoints)
-    font-size: 6rem
-    padding: 0 40px
-
-  h3, h4, h5, h6
-    text-align: center
-    margin: 20px 0
-    line-height: 1.1em
+  @include credits-baseline-font-sizes
+  @include credits-headers
 
   #credits
     font-size: 2em
@@ -263,23 +259,8 @@ export default defineComponent({
 
   .person-credit
     font-size: .65em
-
-  h4
-    font-size: .85em
-    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      max-width: 80vw
-      margin: auto auto
-
   p
-    font-weight: 300
-    font-size: .5em
-    margin: .75em auto
-    max-width: 90%
-    @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      font-size: .4em
-    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      max-width: 60vw
-
+    @include credits-p
     &.center
       text-align: center
 

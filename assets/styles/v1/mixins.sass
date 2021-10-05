@@ -1,3 +1,32 @@
+@import "/assets/styles/v1/bootstrap/grid"
+@import "/assets/styles/v1/bootstrap/breakpoints"
+
 @mixin fittext-container
   margin: 0 20px
   width: 100vw
+@mixin credits-p
+  font-weight: 300
+  font-size: .5em
+  margin: .75em auto
+  max-width: 90%
+  @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    font-size: .4em
+  @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+    max-width: 60vw
+@mixin credits-baseline-font-sizes
+  font-size: 2.5rem
+  @include media-breakpoint-up(md, $v1-grid-breakpoints)
+    font-size: 6rem
+    padding: 0 40px
+@mixin credits-headers
+  h3, h4, h5, h6
+    text-align: center
+    margin: 20px 0
+    line-height: 1.1em
+  h4
+    font-size: .85em
+    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      max-width: 80vw
+      margin: auto auto
+
+

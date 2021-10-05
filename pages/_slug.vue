@@ -139,6 +139,7 @@
       </div>
     </div>
     <Credits spacer="half"></Credits>
+    <NewsletterSignup />
   </div>
 </template>
 
@@ -176,6 +177,7 @@ import {
   handleResize,
 } from "~/composables/handleResize";
 import { handleIntersection, options } from "~/composables/interactionObserver";
+import NewsletterSignup from "~/components/newsletter-signup.vue";
 
 export default defineComponent({
   components: {
@@ -185,6 +187,7 @@ export default defineComponent({
     FitText,
     Credits,
     SpacerHalfScreen,
+    NewsletterSignup,
   },
   setup() {
     // routing
@@ -204,7 +207,7 @@ export default defineComponent({
       previousScrollPosition: 0,
       currentScrollPosition: 0,
       percentDisintegrated: 0,
-      debug: true,
+      debug: false,
     });
 
     // for components
@@ -315,6 +318,7 @@ export default defineComponent({
       windowWidth.value = window.innerWidth;
 
       const observer = new IntersectionObserver(handleIntersection, options);
+      // @ts-ignore
       observer.observe(document.querySelector("#container"));
 
       stateMachine.set({
