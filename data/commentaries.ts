@@ -160,7 +160,7 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2307,
-    comment: "🌊Sea levels ⤴️ ️40 feet🌊",
+    comment: "🌊Sea levels ⤴️ 40 feet🌊",
     commentSm: "🌊Sea levels🌊<br />⤴️ 40 feet",
   },
   {
@@ -170,8 +170,8 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2354,
-    comment: "🇧🇩Bangladesh🇧🇩 refers to a body of water",
-    commentSm: "🇧🇩Bangladesh🇧🇩<br />refers to<br />a body of water",
+    comment: "🇧🇩Bangladesh🇧🇩 is a body of water",
+    commentSm: "🇧🇩Bangladesh🇧🇩<br />is a<br />body of water",
   },
   {
     year: 2378,
