@@ -151,7 +151,7 @@ export const commentaries: commentariesArr = [
   {
     year: 2260,
     comment: "☠️Water War III☠️",
-    commentSm: "️️Water<br />☠️War III☠️️️",
+    commentSm: "☠️Water War III☠️",
   },
   {
     year: 2284,
