@@ -97,101 +97,100 @@ export const commentaries: commentariesArr = [
     commentSm: "You download<br />your first <br />🌬Air Quality Index app🌬",
   },
   {
-    year: 2042,
+    year: 2041,
     comment: "Your phone alerts you to<br />⚠️Ration Water⚠️",
     commentSm: "Your phone<br />alerts you to<br />⚠️Ration Water⚠️",
   },
   {
-    year: 2055,
-    comment: "You buy your first<br />🍷bottle of Alaskan wine🍷",
-    commentSm: "You buy your<br />first bottle of<br />🍷Alaskan wine🍷",
+    year: 2049,
+    comment: "🔫Water Wars🔫<br />start sprouting up",
+    commentSm: "🔫Water Wars🔫<br />start sprouting up",
   },
   {
     year: 2075,
-    comment: "Ugh–this heat!<br />🥵Temps reach 140°F🥵",
-    commentSm: "Ugh–this heat!<br />Temps reach<br />🥵140°F🥵",
-  },
-  {
-    year: 2093,
     comment: "You vote for the candidate who<br />💧promises cheap water💧",
     commentSm:
       "You vote for<br />the candidate who<br />💧promises cheap water💧",
   },
-  { year: 2120, comment: "🪦You’re dead🪦", commentSm: "🪦You’re dead🪦" },
+  {
+    year: 2098,
+    comment: "🪦You’re dead🪦",
+    commentSm: "🪦You’re dead🪦",
+  },
+  {
+    year: 2123,
+    comment: "Californian farmers<br />🚜move to Alaska🚜",
+    commentSm: "Californian<br />farmers move<br />🚜to Alaska🚜",
+  },
 
   {
-    year: 2141,
-    comment: "🔥“Fire moat”🔥<br />voted phrase of the decade",
-    commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the decade",
+    year: 2150,
+    comment: "Oceans have more<br />plastic than 🐟🐟🐟",
+    commentSm: "Oceans have more<br />plastic than<br />🐟🐟🐟🐟🐟",
   },
   {
     year: 2160,
-    comment: "Oceans have more<br />🐟plastic than fish–yikes!🐟",
-    commentSm: "Oceans have more<br />plastic than fish<br />🐟yikes!🐟",
-  },
-  {
-    year: 2175,
-    comment: "Last polar bear dies and<br />😕humanity barely notices😕",
-    commentSm: "Last polar bear dies<br />and humanity<br />😕barely notices😕",
-  },
-  {
-    year: 2203,
-    comment: "🔫Water Wars🔫 sprout up<br /> between nuclear superpowers",
-    commentSm: "🔫Water Wars🔫<br />sprout up between<br />nuclear superpowers",
-  },
-  {
-    year: 2220,
     comment: "🪦Your kids are dead🪦",
     commentSm: "Your kids<br />🪦are dead🪦",
   },
   {
-    year: 2256,
-    comment: "🌜First moon colony🌛<br />established",
-    commentSm: "First<br />🌜moon colony🌛<br />established",
+    year: 2191,
+    comment: "🔥“Fire moat”🔥<br />voted phrase of the decade",
+    commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the decade",
   },
   {
-    year: 2283,
-    comment: "Miami is 20 ft underwater<br />🐋Free whale watching!🐋",
-    commentSm: "Miami is<br />20 ft underwater<br />🐋Free whale watching!🐋",
+    year: 2214,
+    comment: "Last polar bear dies and<br />😕humanity barely notices😕",
+    commentSm: "Last polar bear dies<br />and humanity<br />😕barely notices😕",
   },
   {
-    year: 2301,
-    comment:
-      "Population is 500 billion and people<br />🏗live in 1,000 floor skyscrapers🏗",
-    commentSm:
-      "Population is 500 billion<br />and people live in<br />🏗 1,000 fl skyscrapers🏗",
-  },
-  {
-    year: 2320,
+    year: 2237,
     comment: "🪦Grandkids ➡ Dead🪦",
     commentSm: "Grandkids ➡<br />🪦Dead🪦",
   },
   {
-    year: 2355,
+    year: 2260,
+    comment: "☠️Water War III☠️",
+    commentSm: "️Water<br />☠️War III☠️️️",
+  },
+  {
+    year: 2284,
+    comment: "🚀Top 1% move to Mars🚀",
+    commentSm: "Top 1%<br />🚀move to Mars🚀",
+  },
+  {
+    year: 2307,
+    comment: "🌊Sea levels ⤴️ ️40 feet🌊",
+    commentSm: "🌊Sea levels🌊<br />⤴️ 40 feet",
+  },
+  {
+    year: 2330,
+    comment: "🦈Sharks swim through Miami🦈",
+    commentSm: "🦈Sharks swim🦈<br />through Miami",
+  },
+  {
+    year: 2354,
+    comment: "🇧🇩Bangladesh🇧🇩 refers to a body of water",
+    commentSm: "🇧🇩Bangladesh🇧🇩<br />refers to<br />a body of water",
+  },
+  {
+    year: 2378,
+    comment: "Great Pacific Garbage Patch<br />💌gets zipcodes💌",
+    commentSm: "Great Pacific<br />Garbage Patch<br />💌gets zipcodes💌",
+  },
+  {
+    year: 2401,
+    comment: "🧊Last glacier melts into the sea🧊",
+    commentSm: "🧊Last glacier🧊<br />melts into the sea",
+  },
+  {
+    year: 2420,
     comment: "A child asks<br />🤔“What was wildlife?”🤔",
     commentSm: "A child asks<br />“What was<br />🤔wildlife?”🤔",
   },
   {
-    year: 2381,
-    comment: "First manned expedition<br />🪐to Saturn🪐",
-    commentSm: "First manned<br />expedition<br />🪐to Saturn🪐",
-  },
-  {
-    year: 2420,
-    comment: "Generation of 2420 voted<br />🥴most messed-up ever🥴",
-    commentSm: "Generation of 2420<br />voted most<br />🥴messed-up ever🥴",
-  },
-  {
-    year: 2444,
-    comment:
-      "All the words thee use today be-eth<br />😶totes freakin’ extinct😶",
-    commentSm:
-      "All the words thee<br />use today be-eth<br />😶totes freakin’ extinct😶",
-  },
-  {
-    year: 2461,
-    comment: "🚀People move to Mars🚀<br />to escape climate change on Earth",
-    commentSm:
-      "People move to<br />🚀Mars to escape🚀<br />climate change on Earth",
+    year: 2453,
+    comment: "👋Last human leaves Earth👋",
+    commentSm: "Last human<br />👋leaves Earth👋",
   },
 ];
