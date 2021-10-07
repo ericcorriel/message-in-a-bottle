@@ -4,7 +4,7 @@ export const APP = Object.freeze({
   MOBILE_WIDTH: 834,
   MOVIE_MODE: false,
   VIMEO_ID: "607838921",
-  VIDEO_FILENAME: "shatter.07-4K",
+  VIDEO_FILENAME: "shatter.07-4K", // assumes both webm and mp4 exist in static/video • [https://cloudconvert.com/mov-to-webm]
 });
 
 export interface ScrollSpeed {
