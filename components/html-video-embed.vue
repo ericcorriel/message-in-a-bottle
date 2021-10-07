@@ -3,7 +3,7 @@
     ref="player"
     muted
     poster="/img/placeholder/bottle.placeholder.jpg"
-    preload="auto"
+    preload="metadata"
     aria-label="Silhouetted used plastic water bottle that explodes into a hundred or so shards"
   >
     <source :src="`/video/${filename}.mp4`" type="video/mp4" class="bg-video" />
