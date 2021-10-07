@@ -3,10 +3,15 @@
     ref="player"
     muted
     poster="/img/placeholder/bottle.placeholder.jpg"
-    preload="metadata"
+    preload="auto"
     aria-label="Silhouetted used plastic water bottle that explodes into a hundred or so shards"
   >
-    <source :src="`/video/${filename}`" type="video/mp4" class="bg-video" />
+    <source :src="`/video/${filename}.mp4`" type="video/mp4" class="bg-video" />
+    <source
+      :src="`/video/${filename}.webm`"
+      type="video/webm"
+      class="bg-video"
+    />
     Your browser does not support the video tag.
   </video>
 </template>

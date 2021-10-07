@@ -8,21 +8,84 @@
 - [x] rwd
 - [x] open graph/social media
 - [x] alt-text
-- [] tab accessibility
 - [x] movie placeholder
 - [x] update description
 - [x] GA integration
 - [x] accelerating scroll
-- [] implement currentYear throughout
 - [x] bug: cannot scroll before current year
 - [x] backwards scroll
-- [] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
-- [] overscroll > newsletter
+- [x] overscroll > newsletter
 - [x] comments
-- [] bug: cannot scroll backwards when congratulations screen comes up
+- [ ] implement currentYear throughout
+- [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
+- [ ] tab accessibility
+- [ ] bug: cannot scroll backwards when congratulations screen comes up
+
+### Final Futures
+```
+    year: 2034,
+    comment: "You download your first<br />🌬Air Quality Index app🌬",
+
+    year: 2041,
+    comment: "Your phone alerts you to<br />⚠️Ration Water⚠️",
+
+    year: 2049,
+    comment: "🔫Water Wars🔫 start sprouting up",
+
+    year: 2075,
+    comment: "You vote for the candidate who<br />💧promises cheap water💧",
+
+    year: 2098,
+    comment: "🪦You’re dead🪦", 
+    
+    year: 2121, 
+    comment: "Californian farmers<br />🚜move to Alaska🚜",
+
+    year: 2145,
+    comment: "Oceans have more<br />🐟plastic than fish–yikes!🐟",
+    
+    year: 2168,
+    comment: "🪦Your kids are dead🪦",
+
+    year: 2191,
+    comment: "🔥“Fire moat”🔥<br />voted phrase of the decade",
+
+    year: 2214,
+    comment: "Last polar bear dies and<br />😕humanity barely notices😕",
+
+    year: 2237,
+    comment: "🪦Grandkids ➡ Dead🪦",
+
+    year: 2260,
+    comment: "☠️Water War III☠️",
+
+    year: 2284,
+    comment: "🚀Top 1% move to Mars🚀",
+
+    year: 2307,
+    comment: "🌊Sea levels🌊<br /> have risen 40 feet",
+
+    year: 2330,
+    comment: "🦈Sharks swim🦈<br />through downtown Miami",
+
+    year: 2354,
+    comment: "🇧🇩Bangladesh🇧🇩 refers to<br />a body of water",
+
+    year: 2378,
+    comment: "Great Pacific Garbage Patch 💌gets zipcodes💌",
+
+    year: 2401,
+    comment: "🧊Last glacier🧊<br />melts into the sea",
+
+    year: 2420,
+    comment: "A child asks<br />🤔“What was wildlife?”🤔",
+
+    year: 2453,
+    comment: "👋Last human leaves Earth👋",
+];
+```
 
 ### The Future
-
 - Your water bill is more<br />than your electricity bill
 - Extreme weather has pushed your<br />home insurance bill to 💸$462/mo💸
 - Phoenix records temperature <br />🔥152°🔥
@@ -44,6 +107,8 @@
 - Miami is 20 feet underwater
 - Super cyclone “Abigale” destroys 43% of Tennessee
 - Half of the words we use today are no longer used
+- Earth used as landfill for space colonies
+
 
 ### Credits
 

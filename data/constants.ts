@@ -4,7 +4,7 @@ export const APP = Object.freeze({
   MOBILE_WIDTH: 834,
   MOVIE_MODE: false,
   VIMEO_ID: "607838921",
-  VIDEO_FILENAME: "shatter.07-HD 1080p.02.mp4",
+  VIDEO_FILENAME: "shatter.07-4K",
 });
 
 export interface ScrollSpeed {
