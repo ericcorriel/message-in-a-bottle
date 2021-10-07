@@ -79,9 +79,8 @@
         </div>
       </div>
     </div>
-    <SpacerQuarterScreen></SpacerQuarterScreen>
+
     <div class="credit-row">
-      <h4>Awesome institutions: Part II</h4>
       <div class="up-2">
         <div class="cell">
           <div class="image-container">

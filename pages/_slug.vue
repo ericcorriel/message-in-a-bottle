@@ -33,7 +33,7 @@
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
-            >Its pieces will<br />never biodegrade...
+            >Though its pieces<br />will never biodegrade...
           </FitText>
         </div>
         <div class="image-container full-width">
