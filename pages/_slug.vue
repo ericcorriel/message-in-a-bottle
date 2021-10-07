@@ -33,7 +33,7 @@
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
-            >Though its pieces will<br />stay with us forever…
+            >Its pieces will<br />never biodegrade...
           </FitText>
         </div>
         <div class="image-container full-width">
@@ -171,6 +171,7 @@ import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
+import SpacerFullScreen from "~/components/spacer/full-screen.vue";
 import {
   isMobile,
   windowWidth,
@@ -187,6 +188,7 @@ export default defineComponent({
     FitText,
     Credits,
     SpacerHalfScreen,
+    SpacerFullScreen,
     NewsletterSignup,
   },
   setup() {
