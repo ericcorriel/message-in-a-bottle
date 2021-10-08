@@ -58,59 +58,29 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2029,
-    comment:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>21</span> released📱",
-    commentSm:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>21</span>📱<br />released",
-  },
-  {
-    year: 2030,
-    comment:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>22</span> released📱",
-    commentSm:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>22</span>📱<br />released",
-  },
-  {
-    year: 2031,
-    comment:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>23</span> released📱",
-    commentSm:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>23</span>📱<br />released",
-  },
-  {
-    year: 2032,
-    comment:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>24</span> released📱",
-    commentSm:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>24</span>📱<br />released",
-  },
-  {
-    year: 2033,
-    comment:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>25</span> released📱",
-    commentSm:
-      "📱️iPhone <span style='font-family: \"Azeret Mono\"'>25</span>📱<br />released",
-  },
-  {
-    year: 2034,
     comment: "You download your first<br />🌬Air Quality Index app🌬",
     commentSm: "You download<br />your first <br />🌬Air Quality Index app🌬",
   },
   {
-    year: 2041,
+    year: 2035,
     comment: "Your phone alerts you to<br />⚠️Ration Water⚠️",
     commentSm: "Your phone<br />alerts you to<br />⚠️Ration Water⚠️",
   },
   {
-    year: 2049,
+    year: 2042,
     comment: "🔫Water Wars🔫<br />start sprouting up",
     commentSm: "🔫Water Wars🔫<br />start sprouting up",
   },
   {
-    year: 2075,
+    year: 2050,
     comment: "You vote for the candidate who<br />💧promises cheap water💧",
     commentSm:
       "You vote for<br />the candidate who<br />💧promises cheap water💧",
+  },
+  {
+    year: 2069,
+    comment: "Californian farmers<br />🚜move to Alaska🚜",
+    commentSm: "Californian<br />farmers move<br />🚜to Alaska🚜",
   },
   {
     year: 2098,
@@ -119,14 +89,14 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2123,
-    comment: "Californian farmers<br />🚜move to Alaska🚜",
-    commentSm: "Californian<br />farmers move<br />🚜to Alaska🚜",
+    comment: "“The Great Migration”<br />🚧displaces 39% of the world🚧",
+    commentSm: "“The Great Migration”<br />🚧displaces 39%🚧<br />of the world",
   },
 
   {
     year: 2150,
-    comment: "Oceans have more<br />plastic than 🐟🐟🐟",
-    commentSm: "Oceans have more<br />plastic than<br />🐟🐟🐟🐟🐟",
+    comment: "Ocean has more plastic than 🐟🐟🐟",
+    commentSm: "Ocean has more<br />plastic than<br />🐟🐟🐟🐟🐟",
   },
   {
     year: 2160,
@@ -135,8 +105,8 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2191,
-    comment: "🔥“Fire moat”🔥<br />voted phrase of the decade",
-    commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the decade",
+    comment: "🔥“Fire moat”🔥<br />voted phrase of the century",
+    commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the century",
   },
   {
     year: 2214,
