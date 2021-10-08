@@ -15,8 +15,8 @@ export interface ScrollSpeed {
 export interface scrollSpeedArr extends Array<ScrollSpeed> {}
 
 export const scrollSpeeds: scrollSpeedArr = [
-  { percentDisintegrated: 0, speed: 0.01 },
-  { percentDisintegrated: 3, speed: 0.05 },
+  { percentDisintegrated: 0, speed: 0.035 },
+  { percentDisintegrated: 3, speed: 0.075 },
   { percentDisintegrated: 10, speed: 0.15 },
   { percentDisintegrated: 20, speed: 0.2 },
   { percentDisintegrated: 80, speed: 0.25 },
