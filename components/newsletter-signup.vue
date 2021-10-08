@@ -1,7 +1,6 @@
 <template>
   <footer>
-    <h4>Eric Corriel Studios Newsletter Sign-up</h4>
-    <p>(A few emails per year)</p>
+    <h4>Eric Corriel Studios Newsletter Sign up</h4>
     <form
       id="subForm"
       class="js-cm-form"
@@ -89,11 +88,13 @@ footer
       text-align: right
       padding-right: 10px
       display: inline-block
-      max-width: 60px
+      max-width: 85px
       @include media-breakpoint-up(lg, $v1-grid-breakpoints)
         max-width: 100px
     input, button
       color: #000000
-      max-width: 50vw
+      max-width: 60vw
       font-size: 1em
+      @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+        max-width: 30vw
 </style>
