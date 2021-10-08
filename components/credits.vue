@@ -24,12 +24,13 @@
         <a href="https://sva.edu" target="_blank">School of Visual Arts</a>.
       </p>
       <p>
-        Sign up for <a href="https://confirmsubscription.com/h/r/DA49024168C89C952540EF23F30FEDED" target='_blank'>his newsletter</a> or follow him on
+        Follow him on
         <a href="https://instagram.com/ericcorriel">Instagram</a> • <a
         href="https://twitter.com/ericcorriel">Twitter</a> •
-        <a href="https://facebook.com/ericcorrielartist">Facebook</a>
+        <a href="https://facebook.com/ericcorrielartist">Facebook</a> or sign up for his newsletter.
       </p>
     </div>
+    <NewsletterSignup />
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row up-1">
       <h4>Human Impacts Institute Environmental Fellow and Collaborator</h4>
@@ -220,6 +221,7 @@ import SpacerQuarterScreen from "~/components/spacer/quarter-screen.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
 import SpacerFullScreen from "~/components/spacer/full-screen.vue";
 import FitText from "~/components/vendor/FitText.vue";
+import NewsletterSignup from "~/components/newsletter-signup.vue";
 
 export default defineComponent({
   name: "Credits",
@@ -228,6 +230,7 @@ export default defineComponent({
     SpacerHalfScreen,
     SpacerFullScreen,
     FitText,
+    NewsletterSignup
   },
   props: {
     spacer: {type: String, default: "half"},

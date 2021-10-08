@@ -1,6 +1,5 @@
 <template>
-  <footer>
-    <h4>Eric Corriel Studios Newsletter Sign up</h4>
+  <aside>
     <form
       id="subForm"
       class="js-cm-form"
@@ -8,15 +7,6 @@
       method="post"
       data-id="5B5E7037DA78A748374AD499497E309EA47CF9D237FF55BD44AEE68271ED68FC542A9038B39DC90FCB5AE04234EBFE4E499E10156D4EEEE4D80100FE26C04F8E"
     >
-      <div class="row">
-        <label>Name </label>
-        <input
-          id="fieldName"
-          aria-label="Name"
-          maxlength="200"
-          name="cm-name"
-        />
-      </div>
       <div class="row">
         <label>Email </label
         ><input
@@ -41,7 +31,7 @@
       src="https://js.createsend1.com/javascript/copypastesubscribeformlogic.js"
     ></script>
     <SpacerFullScreen />
-  </footer>
+  </aside>
 </template>
 
 <script lang="ts">
@@ -61,12 +51,15 @@ export default defineComponent({
 @import "/assets/styles/v1/base"
 @import "/assets/styles/v1/mixins"
 @import "/assets/styles/v1/app"
-footer
+aside
   background-color: $bg-color
   color: $text-color
   position: relative
   z-index: 1
-  padding: 20px 0
+  margin: 0 auto
+  max-width: 90%
+  @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+    max-width: 60vw
   @include credits-baseline-font-sizes
   @include credits-headers
   h3, h4, h5, h6
@@ -77,24 +70,26 @@ footer
     text-align: center
   .row
     @include credits-p
-    margin: 15px auto 15px -10px
+    margin: 15px auto 15px auto
     display: flex
     flex-direction: row
-    justify-content: center
-    align-items: center
-    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-      max-width: 90%
+    justify-content: start
+    align-items: flex-start
+
     label
-      text-align: right
-      padding-right: 10px
+      text-align: left
       display: inline-block
       max-width: 85px
+      padding-left: 0
       @include media-breakpoint-up(lg, $v1-grid-breakpoints)
-        max-width: 100px
+        max-width: 85px
     input, button
       color: #000000
       max-width: 60vw
-      font-size: 1em
+      font-size: .75em
+      text-align: left
       @include media-breakpoint-up(lg, $v1-grid-breakpoints)
         max-width: 30vw
+      @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
+        max-width: 20vw
 </style>
