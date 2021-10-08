@@ -2,7 +2,7 @@
   <video
     ref="player"
     muted
-    poster="/img/placeholder/bottle.placeholder.jpg"
+    poster="/img/placeholder/message-in-a-bottle-placeholder.jpg"
     preload="metadata"
     aria-label="Silhouetted used plastic water bottle that explodes into a hundred or so shards"
   >
