@@ -6,12 +6,7 @@
     preload="metadata"
     aria-label="Silhouetted used plastic water bottle that explodes into a hundred or so shards"
   >
-    <source :src="`/video/${filename}.mp4`" type="video/mp4" class="bg-video" />
-    <source
-      :src="`/video/${filename}.webm`"
-      type="video/webm"
-      class="bg-video"
-    />
+    <source :src="`/video/${filename}`" type="video/mp4" class="bg-video" />
     Your browser does not support the video tag.
   </video>
 </template>
@@ -52,5 +47,5 @@ video
   width: 100%
   height: 100vh
   object-fit: cover
-  opacity: .75
+  opacity: 1
 </style>
