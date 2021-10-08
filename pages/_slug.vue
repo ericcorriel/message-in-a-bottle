@@ -74,7 +74,7 @@
     </div>
     <div class="step bg-black on-top">
       <div class="fittext-container">
-        <FitText>Hey, while we’re on the subject,</FitText>
+        <FitText>While we’re on the subject,</FitText>
       </div>
       <div class="fittext-container">
         <FitText>did you know…</FitText>
@@ -215,7 +215,11 @@ export default defineComponent({
     // for components
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
     const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
-    const percentDisintegrated: Ref<UnwrapRef<number>> = ref(0.0);
+    const percentDisintegrated: Ref<UnwrapRef<number>> = ref(
+      ((yearAtCurrentScroll - stateMachine.state.yearZero) /
+        APP.YEARS_TILL_DISINTEGRATION) *
+        100
+    );
 
     // html refs
     const container = ref();
