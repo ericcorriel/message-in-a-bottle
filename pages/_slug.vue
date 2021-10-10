@@ -33,7 +33,10 @@
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
-            >Though its pieces<br />will never biodegrade...
+            >Though its pieces<br />will never biodegrade<br /><span
+              class="small-fittext"
+              >(even if it’s recycled)</span
+            >
           </FitText>
         </div>
         <div class="image-container full-width">
@@ -313,7 +316,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (APP.MOVIE_MODE) {
-        // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,1)},10)
+        // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,5)},10)
         setInterval(function () {
           handleScroll();
         }, 100);
@@ -434,6 +437,8 @@ export default defineComponent({
         -webkit-text-stroke: 1px black
         @include media-breakpoint-up(lg, $v1-grid-breakpoints)
           -webkit-text-stroke: 3px $bg-color
+        &.small-fittext
+          font-size: .65em
 
     .image-container
       position: absolute
