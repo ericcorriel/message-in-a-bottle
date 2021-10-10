@@ -19,10 +19,7 @@
           required=""
           type="email"
         />
-      </div>
-      <div class="row">
-        <label role="none">&nbsp;</label
-        ><button type="submit">Subscribe</button>
+        <button role="button" type="submit">Subscribe</button>
       </div>
     </form>
 
@@ -70,26 +67,29 @@ aside
     text-align: center
   .row
     @include credits-p
-    margin: 15px auto 15px auto
+    margin: 15px auto
     display: flex
     flex-direction: row
-    justify-content: start
+    justify-content: center
     align-items: flex-start
 
     label
       text-align: left
       display: inline-block
-      max-width: 85px
+      max-width: 55px
       padding-left: 0
-      @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      @include media-breakpoint-up(md, $v1-grid-breakpoints)
         max-width: 85px
     input, button
       color: #000000
-      max-width: 60vw
+      max-width: 30vw
       font-size: .75em
       text-align: left
       @include media-breakpoint-up(lg, $v1-grid-breakpoints)
         max-width: 30vw
       @include media-breakpoint-up(xxl, $v1-grid-breakpoints)
         max-width: 20vw
+    button
+      width: auto
+      margin-left: 10px
 </style>
