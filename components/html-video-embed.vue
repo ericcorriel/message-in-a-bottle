@@ -25,19 +25,19 @@ export default defineComponent({
   },
   setup(props, context) {
     const player = ref();
-    let playheadAt = 0;
+    const playheadAt: number = 0;
 
     watch(
       () => props.currentVideoTime,
-      (value, oldValue) => {
-        playheadAt = value;
-        updateVideoPlayhead();
+      (value) => {
+        player.value.currentTime = parseFloat(value.toFixed(1));
+        // updateVideoPlayhead();
       }
     );
 
     const updateVideoPlayhead = _.debounce(function () {
       player.value.currentTime = playheadAt;
-    }, 30);
+    }, 0);
 
     return {
       player,
