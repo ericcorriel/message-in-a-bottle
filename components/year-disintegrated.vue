@@ -1,10 +1,10 @@
 <template>
   <div class="row-fixed text-container top">
     <h1>
-      <span class="body-copy">It’s </span>
-      <span id="year" class="number-text" aria-live="polite">{{ year }}</span>
+      <span class="body-copy" aria-live="polite">It’s </span>
+      <span id="year" class="number-text">{{ year }}</span>
       <span class="body-copy">and this bottle is </span>
-      <span id="disintegrated-percent" class="number-text" aria-live="polite"
+      <span id="disintegrated-percent" class="number-text"
         >{{ (Math.round(disintegrated * 100) / 100).toFixed(1) }}%</span
       >
       <span id="disintegrated-word" class="body-copy">disintegrated</span>
