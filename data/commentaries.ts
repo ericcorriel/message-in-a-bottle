@@ -9,51 +9,51 @@ export const commentaries: commentariesArr = [
   {
     year: 2022,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>14</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>14</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>14</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>14</span>📱<br />released",
   },
   {
     year: 2023,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>15</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>15</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>15</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>15</span>📱<br />released",
   },
   {
     year: 2024,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>16</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>16</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>16</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>16</span>📱<br />released",
   },
   {
     year: 2025,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>17</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>17</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>17</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>17</span>📱<br />released",
   },
   {
     year: 2026,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>18</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>18</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>18</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>18</span>📱<br />released",
   },
   {
     year: 2027,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>19</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>19</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>19</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>19</span>📱<br />released",
   },
   {
     year: 2028,
     comment:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>20</span> released📱",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>20</span> released📱",
     commentSm:
-      "📱️iPhone <span style='font-family: monspaceNumbers'>20</span>📱<br />released",
+      "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>20</span>📱<br />released",
   },
   {
     year: 2029,
