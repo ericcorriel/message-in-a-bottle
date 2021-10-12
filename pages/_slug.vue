@@ -142,7 +142,6 @@
       </div>
     </div>
     <Credits spacer="half"></Credits>
-    <NewsletterSignup />
   </div>
 </template>
 
