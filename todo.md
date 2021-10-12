@@ -16,10 +16,14 @@
 - [x] backwards scroll
 - [x] overscroll > newsletter
 - [x] comments
+- [x] Live regions
+- [x] Safari font bug
+- [ ] try debouncer for chrome
 - [ ] implement currentYear throughout
 - [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [ ] tab accessibility
 - [ ] bug: cannot scroll backwards when congratulations screen comes up
+- [ ] Press page
 
 ### Final Futures
 ```

@@ -3,11 +3,11 @@
     <h1>
       <span class="body-copy">It’s </span>
       <span id="year" class="number-text" aria-live="polite">{{ year }}</span>
-      <span class="body-copy">and this bottle is</span>
-      <span id="disintegrated" class="number-text" aria-live="polite"
-        >{{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%</span
+      <span class="body-copy">and this bottle is </span>
+      <span id="disintegrated-percent" class="number-text" aria-live="polite"
+        >{{ (Math.round(disintegrated * 100) / 100).toFixed(1) }}%</span
       >
-      <span class="body-copy">disintegrated</span>
+      <span id="disintegrated-word" class="body-copy">disintegrated</span>
     </h1>
   </div>
 </template>
@@ -56,7 +56,8 @@ export default defineComponent({
 
   #year
     font-size: 20vw
-    line-height: 0
+    line-height: .75em
+    letter-spacing: -3px
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
       font-size: 28vw
 
@@ -68,14 +69,15 @@ export default defineComponent({
 
     @include media-breakpoint-up(md, $v1-grid-breakpoints)
       font-size: 20vw
-
+      letter-spacing: -5px
     @include media-breakpoint-up(lg, $v1-grid-breakpoints)
       font-size: 10vw
-
+      letter-spacing: -6px
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
       font-size: 11vw
+      letter-spacing: -8px
 
-  #disintegrated
+  #disintegrated-percent
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
     font-size: 18vw
 
@@ -93,15 +95,18 @@ export default defineComponent({
 
     @include media-breakpoint-up(xl, $v1-grid-breakpoints)
       font-size: 6vw
-
+  #disintegrated-word
+    padding-left: 5px
+    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      padding-left: 11px
   &.top
-    top: 4vh
     @include media-breakpoint-up(xxs, $v1-grid-breakpoints)
-      top: 10vh
-    @include media-breakpoint-up(md, $v1-grid-breakpoints)
-      top: 4vh
+      top: 5vh
+    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      top: 0
     align-items: center
 
   .number-text
-    font-family: "Azeret Mono"
+    font-family: monspaceNumbers
+    display: inline-block
 </style>

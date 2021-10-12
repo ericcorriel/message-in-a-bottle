@@ -87,7 +87,6 @@ export default {
     /* module options */
     families: {
       Oswald: { wght: [300, 500] },
-      "Azeret+Mono": { wght: [600] },
     },
     useStylesheet: true,
   },
