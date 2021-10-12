@@ -1,5 +1,5 @@
 <template>
-  <div class="row-fixed text-container bottom">
+  <div class="row-fixed text-container bottom" aria-live="polite">
     <FitText v-html="commentary"></FitText>
   </div>
 </template>

@@ -2,9 +2,9 @@
   <div class="row-fixed text-container top">
     <h1>
       <span class="body-copy">It’s </span>
-      <span id="year" class="number-text">{{ year }}</span>
+      <span id="year" class="number-text" aria-live="polite">{{ year }}</span>
       <span class="body-copy">and this bottle is</span>
-      <span id="disintegrated" class="number-text"
+      <span id="disintegrated" class="number-text" aria-live="polite"
         >{{ (Math.round(disintegrated * 100) / 100).toFixed(2) }}%</span
       >
       <span class="body-copy">disintegrated</span>
