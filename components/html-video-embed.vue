@@ -13,10 +13,8 @@
 
 <script lang="ts">
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
-// import VueLodash from "vue-lodash";
-// import _ from "lodash";
-
-// Vue.use(VueLodash, { name: "custom", lodash: { map, random } });
+// @ts-ignore
+import _ from "lodash";
 
 export default defineComponent({
   name: "HtmlVideoEmbed",
@@ -27,13 +25,19 @@ export default defineComponent({
   },
   setup(props, context) {
     const player = ref();
+    let playheadAt = 0;
 
     watch(
       () => props.currentVideoTime,
       (value, oldValue) => {
-        player.value.currentTime = value;
+        playheadAt = value;
+        updateVideoPlayhead();
       }
     );
+
+    const updateVideoPlayhead = _.debounce(function () {
+      player.value.currentTime = playheadAt;
+    }, 30);
 
     return {
       player,

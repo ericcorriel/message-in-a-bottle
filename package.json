@@ -43,7 +43,6 @@
     "vue-vimeo-player": "^0.2.2",
     "webpack": "^4.46.0",
     "lodash": "^4.17.21",
-    "vue-lodash": "^2.1.2",
     "vue-gtag": "^1.16.1"
   },
   "devDependencies": {
