@@ -5,7 +5,6 @@ export interface commentary {
 }
 
 export interface commentariesArr extends Array<commentary> {}
-
 export const commentaries: commentariesArr = [
   {
     year: 2022,
@@ -59,7 +58,7 @@ export const commentaries: commentariesArr = [
   {
     year: 2029,
     comment: "You download your first<br />🌬Air Quality Index app🌬",
-    commentSm: "You download<br />your first <br />🌬Air Quality Index app🌬",
+    commentSm: "You download<br />your first <br />🌬Air Quality app🌬",
   },
   {
     year: 2035,
@@ -89,22 +88,23 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2123,
-    comment: "“The Great Migration”<br />🚧displaces 39% of the world🚧",
-    commentSm: "“The Great Migration”<br />🚧displaces 39%🚧<br />of the world",
+    comment: "“The Great Migration”<br />🚧displaces 40% of the population🚧",
+    commentSm:
+      "“The Great Migration”<br />🚧displaces 40%🚧<br />of the population",
   },
-
   {
     year: 2150,
-    comment: "Ocean has more plastic than 🐟🐟🐟",
-    commentSm: "Ocean has more<br />plastic than<br />🐟🐟🐟🐟🐟",
+    comment: "Ocean has more plastic than 🐟fish🐟",
+    commentSm: "Ocean has more<br />plastic than<br />🐟fish🐟",
   },
+
   {
     year: 2160,
     comment: "🪦Your kids are dead🪦",
     commentSm: "Your kids<br />🪦are dead🪦",
   },
   {
-    year: 2191,
+    year: 2186,
     comment: "🔥“Fire moat”🔥<br />voted phrase of the century",
     commentSm: "🔥“Fire moat”🔥<br />voted phrase<br />of the century",
   },
@@ -121,12 +121,13 @@ export const commentaries: commentariesArr = [
   {
     year: 2260,
     comment: "☠️Water War III☠️",
-    commentSm: "☠️Water War III☠️",
+    commentSm: "☠️Water War☠️<br />III",
   },
   {
     year: 2284,
-    comment: "🚀Top 1% move to Mars🚀",
-    commentSm: "Top 1%<br />🚀move to Mars🚀",
+    comment: "🚀Top 1% move to Mars🚀<br />to escape climate change on Earth",
+    commentSm:
+      "Top 1%<br />🚀move to Mars🚀<br />to escape climate<br />change on Earth",
   },
   {
     year: 2307,
@@ -135,8 +136,8 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2330,
-    comment: "🦈Sharks swim through Miami🦈",
-    commentSm: "🦈Sharks swim🦈<br />through Miami",
+    comment: "🦈Sharks swim through downtown Miami🦈",
+    commentSm: "🦈Sharks swim🦈<br />through downtown<br />Miami",
   },
   {
     year: 2354,
@@ -145,22 +146,26 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2378,
-    comment: "Great Pacific Garbage Patch<br />💌gets zipcodes💌",
-    commentSm: "Great Pacific<br />Garbage Patch<br />💌gets zipcodes💌",
-  },
-  {
-    year: 2401,
     comment: "🧊Last glacier melts into the sea🧊",
     commentSm: "🧊Last glacier🧊<br />melts into the sea",
   },
   {
-    year: 2420,
+    year: 2399,
     comment: "A child asks<br />🤔“What was wildlife?”🤔",
     commentSm: "A child asks<br />“What was<br />🤔wildlife?”🤔",
   },
   {
+    year: 2421,
+    comment:
+      "🌪Hurricane Omega obliterates 🌪<br />Florida, Louisiana, Georgia,<br />South Carolina, North Carolina",
+
+    commentSm:
+      "🌪Hurricane Omega 🌪<br />obliterates Florida<br />Louisiana, Georgia,<br />South Carolina,<br />North Carolina",
+  },
+  {
     year: 2453,
-    comment: "👋Last human leaves Earth👋",
-    commentSm: "Last human<br />👋leaves Earth👋",
+    comment: "Planet plagued by super-storms.<br />👋Last human leaves Earth👋",
+    commentSm:
+      "Planet plagued<br />by super-storms.<br />Last human<br />👋leaves Earth👋",
   },
 ];
