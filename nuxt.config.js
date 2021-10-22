@@ -26,7 +26,7 @@ export default {
       {
         property: "og:image",
         content:
-          "https://messageinabottle.film/img/og/message-in-a-bottle.1.91-1.jpg",
+          "https://messageinabottle.film/img/og/2048-water-wars-1-91-1.jpg",
       },
       {
         property: "og:url",
