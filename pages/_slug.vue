@@ -225,6 +225,7 @@ export default defineComponent({
 
     // html refs
     const container = ref();
+    const step1 = ref();
 
     // event handlers
     function handleScroll() {
@@ -272,7 +273,7 @@ export default defineComponent({
             state.scrollDirection === SCROLL_DIRECTION.UP &&
             yearAtCurrentScroll !== state.yearZero
           ) {
-            yearAtCurrentScroll -= 0.25;
+            yearAtCurrentScroll -= 0.66;
           }
         }
         // not in normal scrolling range and about to go over 100%
@@ -350,6 +351,7 @@ export default defineComponent({
       yearAsInt,
       percentDisintegrated,
       container,
+      step1,
       currentVideoTime,
       isMobile,
       APP,
