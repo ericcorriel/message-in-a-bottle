@@ -110,8 +110,9 @@ export const commentaries: commentariesArr = [
   },
   {
     year: 2214,
-    comment: "Last polar bear dies and<br />😕humanity barely notices😕",
-    commentSm: "Last polar bear dies<br />and humanity<br />😕barely notices😕",
+    comment: "Last polar bear dies and<br />😕humanity can’t believe itself😕",
+    commentSm:
+      "Last polar bear dies<br />and humanity<br />😕can’t believe itself😕",
   },
   {
     year: 2237,
