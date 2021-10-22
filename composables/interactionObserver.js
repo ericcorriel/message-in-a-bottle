@@ -1,4 +1,4 @@
-import stateMachine from "~/data/state";
+import stateMachine from "~/data/scrollState";
 
 // @ts-ignore
 function handleIntersection(entries) {

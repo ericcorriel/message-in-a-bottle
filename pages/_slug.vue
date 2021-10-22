@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="container" ref="container" class="container">
-      <div id="step1" ref="step1" class="step">
+      <div id="step1" class="step">
         <VideoContainer
           :current-video-time="currentVideoTime"
           :use-vimeo="false"
@@ -166,21 +166,21 @@ import {
 } from "~/data/constants.ts";
 
 // @ts-ignore
-import stateMachine, { ScrollState } from "~/data/state.ts";
+import scrollMachine, { ScrollState } from "~/data/scrollState.ts";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
-import SpacerFullScreen from "~/components/spacer/full-screen.vue";
+
 import {
   isMobile,
   windowWidth,
   handleResize,
 } from "~/composables/handleResize";
 import { handleIntersection, options } from "~/composables/interactionObserver";
-import NewsletterSignup from "~/components/newsletter-signup.vue";
+import { handleTab } from "~/composables/handleTab";
 
 export default defineComponent({
   components: {
@@ -190,8 +190,6 @@ export default defineComponent({
     FitText,
     Credits,
     SpacerHalfScreen,
-    SpacerFullScreen,
-    NewsletterSignup,
   },
   setup() {
     // routing
@@ -203,9 +201,9 @@ export default defineComponent({
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
 
-    // set initial state values
-    stateMachine.set({
-      yearZero: yearAtCurrentScroll,
+    // set initial scrollState values
+    scrollMachine.set({
+      yearZero: new Date().getFullYear(),
       yearAtCurrentScroll,
       yearEnd: yearAtCurrentScroll + APP.YEARS_TILL_DISINTEGRATION,
       previousScrollPosition: 0,
@@ -218,14 +216,17 @@ export default defineComponent({
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
     const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
     const percentDisintegrated: Ref<UnwrapRef<number>> = ref(
-      ((yearAtCurrentScroll - stateMachine.state.yearZero) /
+      ((yearAtCurrentScroll - scrollMachine.state.yearZero) /
         APP.YEARS_TILL_DISINTEGRATION) *
         100
     );
 
     // html refs
     const container = ref();
-    const step1 = ref();
+
+    function handleTab() {
+      console.log("tab");
+    }
 
     // event handlers
     function handleScroll() {
@@ -248,69 +249,69 @@ export default defineComponent({
         window.innerHeight;
 
       // set currentScrollPosition and yearDelta
-      stateMachine.set({
+      scrollMachine.set({
         currentScrollPosition,
         yearDelta,
         scrollDirection:
-          currentScrollPosition === stateMachine.state.previousScrollPosition
-            ? stateMachine.state.scrollDirection
-            : currentScrollPosition > stateMachine.state.previousScrollPosition
+          currentScrollPosition === scrollMachine.state.previousScrollPosition
+            ? scrollMachine.state.scrollDirection
+            : currentScrollPosition > scrollMachine.state.previousScrollPosition
             ? SCROLL_DIRECTION.DOWN
             : SCROLL_DIRECTION.UP,
       });
 
-      const state: ScrollState = stateMachine.state;
+      const scrollState: ScrollState = scrollMachine.state;
       const debug: Boolean = false;
 
-      if (!state.scrollValuesFrozen) {
-        if (state.isInNormalScrollingRange) {
+      if (!scrollState.scrollValuesFrozen) {
+        if (scrollState.isInNormalScrollingRange) {
           // if scrolling down, add delta to current year
           debug ? console.log(1) : null;
-          if (state.scrollDirection === SCROLL_DIRECTION.DOWN)
+          if (scrollState.scrollDirection === SCROLL_DIRECTION.DOWN)
             yearAtCurrentScroll += yearDelta;
           // if scrolling up subtract .25 if not at yearZero; want to make sure descend at a quicker rate than ascend to ensure don't run out of road scrolling back down (amountLeftToScroll=0 before getting back to yearZeroScrollTop (typically 700ish pixels)
           else if (
-            state.scrollDirection === SCROLL_DIRECTION.UP &&
-            yearAtCurrentScroll !== state.yearZero
+            scrollState.scrollDirection === SCROLL_DIRECTION.UP &&
+            yearAtCurrentScroll !== scrollState.yearZero
           ) {
             yearAtCurrentScroll -= 0.66;
           }
         }
         // not in normal scrolling range and about to go over 100%
         else if (
-          state.scrollDirection === SCROLL_DIRECTION.DOWN &&
-          yearAtCurrentScroll + yearDelta > state.yearEnd
+          scrollState.scrollDirection === SCROLL_DIRECTION.DOWN &&
+          yearAtCurrentScroll + yearDelta > scrollState.yearEnd
         ) {
           debug ? console.log(2) : null;
-          yearAtCurrentScroll = state.yearEnd;
+          yearAtCurrentScroll = scrollState.yearEnd;
         }
         // not in normal scrolling range – don't let year become < currentYear
         else if (
-          state.scrollDirection === SCROLL_DIRECTION.UP &&
-          yearAtCurrentScroll - state.yearZero <= 0
+          scrollState.scrollDirection === SCROLL_DIRECTION.UP &&
+          yearAtCurrentScroll - scrollState.yearZero <= 0
         ) {
           // disintegrated.value = 0; reset container height
           debug ? console.log(3) : null;
-          yearAtCurrentScroll = state.yearZero;
+          yearAtCurrentScroll = scrollState.yearZero;
           container.value!.style.height = "1000000px";
         }
         // only update year and percent if not at beginning or end
         if (
-          yearAtCurrentScroll <= state.yearEnd &&
-          yearAtCurrentScroll >= state.yearZero
+          yearAtCurrentScroll <= scrollState.yearEnd &&
+          yearAtCurrentScroll >= scrollState.yearZero
         ) {
           debug ? console.log(4) : null;
           percentDisintegrated.value =
-            ((yearAtCurrentScroll - state.yearZero) /
+            ((yearAtCurrentScroll - scrollState.yearZero) /
               APP.YEARS_TILL_DISINTEGRATION) *
             100;
           yearAsInt.value = Math.floor(yearAtCurrentScroll);
           currentVideoTime.value = (percentDisintegrated.value * 60) / 100;
         }
       }
-      stateMachine.set({
+      scrollMachine.set({
         yearAtCurrentScroll,
-        previousScrollPosition: state.currentScrollPosition,
+        previousScrollPosition: scrollState.currentScrollPosition,
       });
     }
 
@@ -323,6 +324,7 @@ export default defineComponent({
       }
       document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
+      window.addEventListener("keydown", handleTab);
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
 
@@ -330,7 +332,7 @@ export default defineComponent({
       // @ts-ignore
       observer.observe(document.querySelector("#container"));
 
-      stateMachine.set({
+      scrollMachine.set({
         yearZeroScrollTop:
           (window.pageYOffset || document.documentElement.scrollTop) -
           (document.documentElement.clientTop || 0) +
@@ -342,8 +344,8 @@ export default defineComponent({
     watch(percentDisintegrated, (value) => {
       if (value >= APP.STOP_AT_PERCENTAGE) {
         container.value!.style.height =
-          stateMachine.state.currentScrollPosition + "px";
-        stateMachine.state.scrollValuesFrozen = true;
+          scrollMachine.state.currentScrollPosition + "px";
+        scrollMachine.state.scrollValuesFrozen = true;
       }
     });
 
@@ -351,9 +353,9 @@ export default defineComponent({
       yearAsInt,
       percentDisintegrated,
       container,
-      step1,
       currentVideoTime,
       isMobile,
+      handleTab,
       APP,
     };
   },
