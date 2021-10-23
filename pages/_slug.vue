@@ -198,28 +198,28 @@ export default defineComponent({
     // routing
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
-
-    // scrolling
-    let yearAtCurrentScroll: number = slug.value
+    const yearStart = slug.value
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
 
     // set initial scrollState values
     scrollMachine.set({
       yearZero: new Date().getFullYear(),
-      yearAtCurrentScroll,
-      yearEnd: yearAtCurrentScroll + APP.YEARS_TILL_DISINTEGRATION,
+      yearAtCurrentScroll: yearStart,
+      yearEnd: yearStart + APP.YEARS_TILL_DISINTEGRATION,
       previousScrollPosition: 0,
       currentScrollPosition: 0,
       percentDisintegrated: 0,
       debug: false,
     });
-    console.log("test: " + scrollMachine.get("yearZero"));
+
     // for components
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
-    const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
+    const yearAsInt: Ref<UnwrapRef<number>> = ref(
+      scrollMachine.get("yearAtCurrentScroll")
+    );
     const percentDisintegrated: Ref<UnwrapRef<number>> = ref(
-      calculatePercentDisintegrated(yearAtCurrentScroll)
+      calculatePercentDisintegrated(scrollMachine.get("yearAtCurrentScroll"))
     );
 
     // html refs
@@ -234,9 +234,7 @@ export default defineComponent({
        * EDGE CASES
        * Once 100% is reached, scroll values are no longer calculated
        */
-      console.log(
-        "handling scroll: " + scrollMachine.get("yearAtCurrentScroll")
-      );
+
       // get yearDelta based on percent disintegrated
       const res: ScrollSpeed[] = scrollSpeeds.filter(
         (x: ScrollSpeed) => x.percentDisintegrated >= percentDisintegrated.value
@@ -259,60 +257,79 @@ export default defineComponent({
             : SCROLL_DIRECTION.UP,
       });
 
-      const scrollState: ScrollState = scrollMachine.state;
+      // const scrollState: ScrollState = scrollMachine.state;
       const debug: Boolean = false;
 
-      if (!scrollState.scrollValuesFrozen) {
-        if (scrollState.isInNormalScrollingRange) {
+      if (!scrollMachine.get("scrollValuesFrozen")) {
+        if (scrollMachine.get("isInNormalScrollingRange")) {
           // if scrolling down, add delta to current year
           debug ? console.log(1) : null;
-          if (scrollState.scrollDirection === SCROLL_DIRECTION.DOWN) {
-            yearAtCurrentScroll += yearDelta;
+          if (scrollMachine.get("scrollDirection") === SCROLL_DIRECTION.DOWN) {
+            scrollMachine.set({
+              yearAtCurrentScroll:
+                scrollMachine.get("yearAtCurrentScroll") + yearDelta,
+            });
             // if scrolling up subtract .25 if not at yearZero; want to make sure descend at a quicker rate than ascend to ensure don't run out of road scrolling back down (amountLeftToScroll=0 before getting back to yearZeroScrollTop (typically 700ish pixels)
           } else if (
-            scrollState.scrollDirection === SCROLL_DIRECTION.UP &&
-            yearAtCurrentScroll !== scrollState.yearZero
+            scrollMachine.get("scrollDirection") === SCROLL_DIRECTION.UP &&
+            scrollMachine.get("yearAtCurrentScroll") !==
+              scrollMachine.get("yearZero")
           ) {
-            yearAtCurrentScroll -= 0.66;
+            scrollMachine.set({
+              yearAtCurrentScroll:
+                scrollMachine.get("yearAtCurrentScroll") - 0.66,
+            });
           }
         }
         // not in normal scrolling range and about to go over 100%
         else if (
-          scrollState.scrollDirection === SCROLL_DIRECTION.DOWN &&
-          yearAtCurrentScroll + yearDelta > scrollState.yearEnd
+          scrollMachine.get("scrollDirection") === SCROLL_DIRECTION.DOWN &&
+          scrollMachine.get("yearAtCurrentScroll") + yearDelta >
+            scrollMachine.get("yearEnd")
         ) {
           debug ? console.log(2) : null;
-          yearAtCurrentScroll = scrollState.yearEnd;
+          // yearAtCurrentScroll = scrollState.yearEnd;
+          scrollMachine.set({
+            yearAtCurrentScroll: scrollMachine.get("yearEnd"),
+          });
         }
         // not in normal scrolling range – don't let year become < currentYear
         else if (
-          scrollState.scrollDirection === SCROLL_DIRECTION.UP &&
-          yearAtCurrentScroll - scrollState.yearZero <= 0
+          scrollMachine.get("scrollDirection") === SCROLL_DIRECTION.UP &&
+          scrollMachine.get("yearAtCurrentScroll") -
+            scrollMachine.get("yearZero") <=
+            0
         ) {
           // disintegrated.value = 0; reset container height
           debug ? console.log(3) : null;
-          yearAtCurrentScroll = scrollState.yearZero;
+          // yearAtCurrentScroll = scrollState.yearZero;
+          scrollMachine.set({
+            yearAtCurrentScroll: scrollMachine.get("yearZero"),
+          });
           container.value!.style.height = "1000000px";
         }
         // only update year and percent if not at beginning or end
         if (
-          yearAtCurrentScroll <= scrollState.yearEnd &&
-          yearAtCurrentScroll >= scrollState.yearZero
+          scrollMachine.get("yearAtCurrentScroll") <=
+            scrollMachine.get("yearEnd") &&
+          scrollMachine.get("yearAtCurrentScroll") >=
+            scrollMachine.get("yearZero")
         ) {
           debug ? console.log(4) : null;
-          percentDisintegrated.value =
-            ((yearAtCurrentScroll - scrollState.yearZero) /
-              APP.YEARS_TILL_DISINTEGRATION) *
-            100;
-          yearAsInt.value = Math.floor(yearAtCurrentScroll);
+          percentDisintegrated.value = calculatePercentDisintegrated(
+            scrollMachine.get("yearAtCurrentScroll")
+          );
+
+          yearAsInt.value = Math.floor(
+            scrollMachine.get("yearAtCurrentScroll")
+          );
           currentVideoTime.value = calculateCurrentVideoTime(
             percentDisintegrated.value
           );
         }
       }
       scrollMachine.set({
-        yearAtCurrentScroll,
-        previousScrollPosition: scrollState.currentScrollPosition,
+        previousScrollPosition: scrollMachine.get("currentScrollPosition"),
       });
     }
 
