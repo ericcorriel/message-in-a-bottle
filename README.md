@@ -1,4 +1,4 @@
-# etm2
+# message-in-a-bottle
 
 ## Build Setup
 

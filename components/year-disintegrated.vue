@@ -2,10 +2,10 @@
   <div class="row-fixed text-container top">
     <h1>
       <span class="body-copy" aria-live="polite">It’s </span>
-      <span id="year" class="number-text">{{ year }}</span>
+      <span id="year" class="number-text">{{ mutableYear }}</span>
       <span class="body-copy">and this bottle is </span>
       <span id="disintegrated-percent" class="number-text"
-        >{{ (Math.round(disintegrated * 100) / 100).toFixed(1) }}%</span
+        >{{ (Math.round(mutableDisintegrated * 100) / 100).toFixed(1) }}%</span
       >
       <span id="disintegrated-word" class="body-copy">disintegrated</span>
     </h1>
@@ -13,13 +13,62 @@
 </template>
 
 <script>
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
+import { currentTabIndex } from "~/composables/handleTab";
+import { commentaries } from "~/data/commentaries";
 
+// @ts-ignore
+import scrollMachine from "~/data/scrollState.ts";
+import {
+  APP,
+  // @ts-ignore
+} from "~/data/constants.ts";
+import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 export default defineComponent({
   name: "YearDisintegrated",
   props: {
     year: { type: Number, default: new Date().getFullYear() },
     disintegrated: { type: Number, default: 0 },
+  },
+  setup(props) {
+    const mutableYear = ref(props.year);
+    const mutableDisintegrated = ref(props.disintegrated);
+
+    watch(
+      () => props.year,
+      (value) => {
+        mutableYear.value = value;
+      }
+    );
+
+    watch(
+      () => props.disintegrated,
+      (value) => {
+        mutableDisintegrated.value = value;
+      }
+    );
+
+    watch(
+      () => currentTabIndex.value,
+      (value) => {
+        const res = commentaries.filter(
+          (commentaryType) => commentaryType.tabIndex === value
+        );
+        if (res[0]?.year) {
+          mutableYear.value = res[0].year;
+          mutableDisintegrated.value = calculatePercentDisintegrated(
+            res[0].year
+          );
+          scrollMachine.set({
+            yearAtCurrentScroll: res[0].year,
+          });
+        }
+      }
+    );
+    return {
+      mutableYear,
+      mutableDisintegrated,
+    };
   },
 });
 </script>

@@ -83,16 +83,13 @@ function set(p: ScrollState): void {
   }
 }
 
-function get(key: String): String | Boolean | Number {
-  switch (key) {
-    case "scrollDirection":
-      return scrollState.scrollDirection;
-  }
-  return true;
+function get(key: keyof ScrollState): String | Boolean | Number {
+  return scrollState[key];
 }
 
 const scrollMachine = {
   state: scrollState,
   set,
+  get,
 };
 export default scrollMachine;

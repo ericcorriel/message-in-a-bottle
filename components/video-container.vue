@@ -4,22 +4,26 @@
       <VimeoEmbed
         v-if="useVimeo"
         :video-id="vimeoId"
-        :current-video-time="currentVideoTime"
+        :current-video-time="mutableCurrentVideoTime"
         :is-scrolling="isScrolling"
       ></VimeoEmbed>
       <HTMLVideoEmbed
         v-else
         :filename="filename"
-        :current-video-time="currentVideoTime"
+        :current-video-time="mutableCurrentVideoTime"
       ></HTMLVideoEmbed>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
+import { currentTabIndex } from "~/composables/handleTab";
+import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
+import { commentaries } from "~/data/commentaries";
+import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 
 export default defineComponent({
   name: "VideoContainer",
@@ -29,8 +33,42 @@ export default defineComponent({
     currentVideoTime: { type: Number, default: 0 },
     filename: { type: String, default: "" },
     vimeoId: { type: String, default: "" },
+    percentDisintegrated: { type: Number, default: 0 },
   },
-  setup() {},
+  setup(props) {
+    // need mutableCurrentVideoTime bc it can be mutated in two ways: scroll, tab
+    const mutableCurrentVideoTime = ref(props.currentVideoTime);
+
+    // this watch is called when percentDisintegrated is mutated onScroll
+    watch(
+      () => props.percentDisintegrated,
+      () => {
+        mutableCurrentVideoTime.value = calculateCurrentVideoTime(
+          props.percentDisintegrated
+        );
+      }
+    );
+
+    // on tab, find current commentary by tabIndex, get year, calculate percentDisintegrated, calculate currentVideoTime…
+    watch(
+      () => currentTabIndex.value,
+      (value) => {
+        const res = commentaries.filter(
+          (commentaryType) => commentaryType.tabIndex === value
+        );
+        if (res[0]?.year) {
+          const year = res[0].year;
+          const disintegrated = calculatePercentDisintegrated(year);
+          mutableCurrentVideoTime.value =
+            calculateCurrentVideoTime(disintegrated);
+        }
+      }
+    );
+
+    return {
+      mutableCurrentVideoTime,
+    };
+  },
 });
 </script>
 

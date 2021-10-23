@@ -18,12 +18,18 @@
 - [x] comments
 - [x] Live regions
 - [x] Safari font bug
-- [ ] try debouncer for chrome
+- [x] try debouncer for chrome
+- [x] Chrome video lag bug
 - [ ] implement currentYear throughout
 - [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [ ] tab accessibility
 - [ ] bug: cannot scroll backwards when congratulations screen comes up
 - [ ] Press page
+- [ ] Upload vid YT/Vimeo
+- [ ] after 100% --> display: none 
+
+### Futurizing
+- check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
 
 ### Final Futures
 ```

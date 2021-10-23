@@ -7,6 +7,7 @@
           :use-vimeo="false"
           :vimeo-id="APP.VIMEO_ID"
           :filename="APP.VIDEO_FILENAME"
+          :percent-disintegrated="percentDisintegrated"
         />
         <YearDisintegrated
           :disintegrated="percentDisintegrated"
@@ -181,6 +182,8 @@ import {
 } from "~/composables/handleResize";
 import { handleIntersection, options } from "~/composables/interactionObserver";
 import { handleTab } from "~/composables/handleTab";
+import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
+import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 
 export default defineComponent({
   components: {
@@ -211,22 +214,16 @@ export default defineComponent({
       percentDisintegrated: 0,
       debug: false,
     });
-
+    console.log("test: " + scrollMachine.get("yearZero"));
     // for components
     const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
     const yearAsInt: Ref<UnwrapRef<number>> = ref(yearAtCurrentScroll);
     const percentDisintegrated: Ref<UnwrapRef<number>> = ref(
-      ((yearAtCurrentScroll - scrollMachine.state.yearZero) /
-        APP.YEARS_TILL_DISINTEGRATION) *
-        100
+      calculatePercentDisintegrated(yearAtCurrentScroll)
     );
 
     // html refs
     const container = ref();
-
-    function handleTab() {
-      console.log("tab");
-    }
 
     // event handlers
     function handleScroll() {
@@ -237,7 +234,9 @@ export default defineComponent({
        * EDGE CASES
        * Once 100% is reached, scroll values are no longer calculated
        */
-
+      console.log(
+        "handling scroll: " + scrollMachine.get("yearAtCurrentScroll")
+      );
       // get yearDelta based on percent disintegrated
       const res: ScrollSpeed[] = scrollSpeeds.filter(
         (x: ScrollSpeed) => x.percentDisintegrated >= percentDisintegrated.value
@@ -267,10 +266,10 @@ export default defineComponent({
         if (scrollState.isInNormalScrollingRange) {
           // if scrolling down, add delta to current year
           debug ? console.log(1) : null;
-          if (scrollState.scrollDirection === SCROLL_DIRECTION.DOWN)
+          if (scrollState.scrollDirection === SCROLL_DIRECTION.DOWN) {
             yearAtCurrentScroll += yearDelta;
-          // if scrolling up subtract .25 if not at yearZero; want to make sure descend at a quicker rate than ascend to ensure don't run out of road scrolling back down (amountLeftToScroll=0 before getting back to yearZeroScrollTop (typically 700ish pixels)
-          else if (
+            // if scrolling up subtract .25 if not at yearZero; want to make sure descend at a quicker rate than ascend to ensure don't run out of road scrolling back down (amountLeftToScroll=0 before getting back to yearZeroScrollTop (typically 700ish pixels)
+          } else if (
             scrollState.scrollDirection === SCROLL_DIRECTION.UP &&
             yearAtCurrentScroll !== scrollState.yearZero
           ) {
@@ -306,7 +305,9 @@ export default defineComponent({
               APP.YEARS_TILL_DISINTEGRATION) *
             100;
           yearAsInt.value = Math.floor(yearAtCurrentScroll);
-          currentVideoTime.value = (percentDisintegrated.value * 60) / 100;
+          currentVideoTime.value = calculateCurrentVideoTime(
+            percentDisintegrated.value
+          );
         }
       }
       scrollMachine.set({

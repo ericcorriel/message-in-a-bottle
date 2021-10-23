@@ -13,8 +13,8 @@ import {
   watch,
 } from "@nuxtjs/composition-api";
 import FitText from "~/components/vendor/FitText.vue";
-import { commentaries } from "~/data/commentaries";
-
+import { commentaries, setCommentariesTabIndexes } from "~/data/commentaries";
+import { currentTabIndex } from "~/composables/handleTab";
 export default defineComponent({
   name: "Commentary",
   components: {
@@ -25,33 +25,56 @@ export default defineComponent({
     isMobile: { type: Boolean, default: false },
   },
   setup(props, context) {
+    setCommentariesTabIndexes();
     const commentary: Ref<UnwrapRef<string>> = ref("");
-    commentary.value = getCommentary(props.year);
+    commentary.value = getCommentaryByYear(props.year);
 
-    function getCommentary(year: number): string {
+    function getCommentaryByYear(year: number): string {
       // default condition
       if (!year || year === new Date().getFullYear()) return "~~Scroll Down~~";
       else {
         const res = commentaries.filter(
           (commentaryType) => commentaryType.year === year
         );
-        if (res[0]?.comment)
+
+        if (res[0]?.comment) {
+          // update currentTabIndex every time a new commentary is scrolled to
+          currentTabIndex.value = res[0].tabIndex;
           return props.isMobile ? res[0].commentSm : res[0].comment;
-        else return commentary.value;
+        } else return commentary.value;
       }
+    }
+
+    function getCommentaryByTabIndex(tabIndex: number): string {
+      const res = commentaries.filter(
+        (commentaryType) => commentaryType.tabIndex === tabIndex
+      );
+      if (res[0]?.comment) {
+        // update currentTabIndex every time a new commentary is scrolled to
+        currentTabIndex.value = res[0].tabIndex;
+        return props.isMobile ? res[0].commentSm : res[0].comment;
+      } else return commentary.value;
     }
 
     watch(
       () => props.year,
       (value, oldValue) => {
-        commentary.value = getCommentary(value);
+        commentary.value = getCommentaryByYear(value);
       }
     );
 
     watch(
       () => props.isMobile,
       (value, oldValue) => {
-        if (value !== oldValue) commentary.value = getCommentary(props.year);
+        if (value !== oldValue)
+          commentary.value = getCommentaryByYear(props.year);
+      }
+    );
+
+    watch(
+      () => currentTabIndex.value,
+      (value) => {
+        commentary.value = getCommentaryByTabIndex(value);
       }
     );
 

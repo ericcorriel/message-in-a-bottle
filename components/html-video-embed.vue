@@ -30,7 +30,7 @@ export default defineComponent({
     watch(
       () => props.currentVideoTime,
       (value) => {
-        player.value.currentTime = parseFloat(value.toFixed(1));
+        player.value.currentTime = value;
         // updateVideoPlayhead();
       }
     );
