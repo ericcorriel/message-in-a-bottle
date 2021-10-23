@@ -20,7 +20,7 @@
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
-import { currentTabIndex } from "~/composables/handleTab";
+import { currentTabIndex } from "~/composables/handle/tab";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 import { commentaries } from "~/data/commentaries";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";

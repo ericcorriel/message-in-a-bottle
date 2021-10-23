@@ -14,7 +14,7 @@ import {
 } from "@nuxtjs/composition-api";
 import FitText from "~/components/vendor/FitText.vue";
 import { commentaries, setCommentariesTabIndexes } from "~/data/commentaries";
-import { currentTabIndex } from "~/composables/handleTab";
+import { currentTabIndex } from "~/composables/handle/tab";
 export default defineComponent({
   name: "Commentary",
   components: {

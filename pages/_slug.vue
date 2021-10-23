@@ -179,9 +179,12 @@ import {
   isMobile,
   windowWidth,
   handleResize,
-} from "~/composables/handleResize";
-import { handleIntersection, options } from "~/composables/interactionObserver";
-import { handleTab } from "~/composables/handleTab";
+} from "~/composables/handle/resize";
+import {
+  handleIntersection,
+  options,
+} from "~/composables/handle/interactionObserver";
+import { handleTab } from "~/composables/handle/tab";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 

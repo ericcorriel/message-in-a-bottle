@@ -25,8 +25,9 @@
 - [ ] tab accessibility
 - [ ] bug: cannot scroll backwards when congratulations screen comes up
 - [ ] Press page
-- [ ] Upload vid YT/Vimeo
+- [ ] Upload vid YT/Vimeo; add link
 - [ ] after 100% --> display: none 
+- [ ] add manhattan bridge pics
 
 ### Futurizing
 - check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 

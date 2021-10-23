@@ -14,7 +14,7 @@
 
 <script>
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
-import { currentTabIndex } from "~/composables/handleTab";
+import { currentTabIndex } from "~/composables/handle/tab";
 import { commentaries } from "~/data/commentaries";
 
 // @ts-ignore
