@@ -10,6 +10,12 @@ export interface commentary {
 export interface commentariesArr extends Array<commentary> {}
 export var commentaries: commentariesArr = [
   {
+    year: 2021,
+    comment: "~~~Scroll Down~~~",
+    commentSm: "~~~Scroll Down~~~",
+    tabIndex: 0,
+  },
+  {
     year: 2022,
     comment:
       "📱️iPhone <span style='font-family: \"monspaceNumbers\"'>14</span> released📱",

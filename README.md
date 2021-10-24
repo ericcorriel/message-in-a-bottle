@@ -31,3 +31,10 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ```
 git submodule update --init --recursive
 ```
+## TS notes
+```
+const yearZero: number = Number(scrollMachine.get("yearZero"));
+  const boolTest: string | number | boolean = scrollMachine.get(
+    "isInNormalScrollingRange"
+  );
+```

@@ -12,7 +12,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
+import {
+  defineComponent,
+  watch,
+  ref,
+  onMounted,
+} from "@nuxtjs/composition-api";
 // @ts-ignore
 import _ from "lodash";
 
@@ -23,9 +28,13 @@ export default defineComponent({
     filename: { type: String, default: "" },
     currentVideoTime: { type: Number, default: 0 },
   },
-  setup(props, context) {
+  setup(props) {
     const player = ref();
     const playheadAt: number = 0;
+
+    onMounted(() => {
+      player.value.currentTime = props.currentVideoTime;
+    });
 
     watch(
       () => props.currentVideoTime,

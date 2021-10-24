@@ -16,36 +16,25 @@
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import { currentTabIndex } from "~/composables/handle/tab";
 import { commentaries } from "~/data/commentaries";
-
+import disintegratedStore from "~/data/state/disintegrated";
 // @ts-ignore
-import scrollMachine from "~/data/scrollState.ts";
-import {
-  APP,
-  // @ts-ignore
-} from "~/data/constants.ts";
+import scrollMachine from "~/data/state/scroll.ts";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 export default defineComponent({
   name: "YearDisintegrated",
-  props: {
-    year: { type: Number, default: new Date().getFullYear() },
-    disintegrated: { type: Number, default: 0 },
-  },
-  setup(props) {
-    const mutableYear = ref(props.year);
-    const mutableDisintegrated = ref(props.disintegrated);
-
-    watch(
-      () => props.year,
-      (value) => {
-        mutableYear.value = value;
-      }
+  setup() {
+    const mutableYear = ref(disintegratedStore.get("year"));
+    const mutableDisintegrated = ref(
+      disintegratedStore.get("percentDisintegrated")
     );
 
     watch(
-      () => props.disintegrated,
-      (value) => {
-        mutableDisintegrated.value = value;
-      }
+      () => disintegratedStore.state,
+      (state) => {
+        mutableYear.value = state.year;
+        mutableDisintegrated.value = state.percentDisintegrated;
+      },
+      { deep: true }
     );
 
     watch(

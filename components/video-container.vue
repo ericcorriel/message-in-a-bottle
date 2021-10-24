@@ -17,36 +17,39 @@
 </template>
 
 <script>
-import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
+import {
+  defineComponent,
+  watch,
+  ref,
+  onMounted,
+} from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
 import { currentTabIndex } from "~/composables/handle/tab";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 import { commentaries } from "~/data/commentaries";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
+import disintegratedStore from "~/data/state/disintegrated";
 
 export default defineComponent({
   name: "VideoContainer",
   components: { VimeoEmbed, HTMLVideoEmbed },
   props: {
     useVimeo: { type: Boolean, default: false },
-    currentVideoTime: { type: Number, default: 0 },
     filename: { type: String, default: "" },
     vimeoId: { type: String, default: "" },
-    percentDisintegrated: { type: Number, default: 0 },
   },
-  setup(props) {
+  setup() {
     // need mutableCurrentVideoTime bc it can be mutated in two ways: scroll, tab
-    const mutableCurrentVideoTime = ref(props.currentVideoTime);
+    const mutableCurrentVideoTime = ref(disintegratedStore.get("videoTime"));
 
     // this watch is called when percentDisintegrated is mutated onScroll
     watch(
-      () => props.percentDisintegrated,
-      () => {
-        mutableCurrentVideoTime.value = calculateCurrentVideoTime(
-          props.percentDisintegrated
-        );
-      }
+      () => disintegratedStore.state,
+      (state) => {
+        mutableCurrentVideoTime.value = state.videoTime;
+      },
+      { deep: true }
     );
 
     // on tab, find current commentary by tabIndex, get year, calculate percentDisintegrated, calculate currentVideoTime…

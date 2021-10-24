@@ -3,6 +3,7 @@ export const APP = Object.freeze({
   STOP_AT_PERCENTAGE: 100,
   MOBILE_WIDTH: 834,
   MOVIE_MODE: false,
+  MOVIE_DURATION: 60,
   VIMEO_ID: "607838921",
   VIDEO_FILENAME: "shatter.75.01-1080p.mp4", // assumes both webm and mp4 exist in static/video • [https://cloudconvert.com/mov-to-webm]
 });

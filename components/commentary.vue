@@ -7,6 +7,7 @@
 <script lang="ts">
 import {
   defineComponent,
+  onMounted,
   ref,
   Ref,
   UnwrapRef,
@@ -14,6 +15,7 @@ import {
 } from "@nuxtjs/composition-api";
 import FitText from "~/components/vendor/FitText.vue";
 import { commentaries, setCommentariesTabIndexes } from "~/data/commentaries";
+import disintegratedStore from "~/data/state/disintegrated";
 import { currentTabIndex } from "~/composables/handle/tab";
 export default defineComponent({
   name: "Commentary",
@@ -21,13 +23,15 @@ export default defineComponent({
     FitText,
   },
   props: {
-    year: { type: Number, default: new Date().getFullYear() },
     isMobile: { type: Boolean, default: false },
   },
-  setup(props, context) {
+  setup(props) {
     setCommentariesTabIndexes();
     const commentary: Ref<UnwrapRef<string>> = ref("");
-    commentary.value = getCommentaryByYear(props.year);
+
+    onMounted(() => {
+      commentary.value = getCommentaryByYear(disintegratedStore.get("year"));
+    });
 
     function getCommentaryByYear(year: number): string {
       // default condition
@@ -57,17 +61,20 @@ export default defineComponent({
     }
 
     watch(
-      () => props.year,
-      (value, oldValue) => {
-        commentary.value = getCommentaryByYear(value);
-      }
+      () => disintegratedStore.state,
+      (state) => {
+        commentary.value = getCommentaryByYear(state.year);
+      },
+      { deep: true }
     );
 
     watch(
       () => props.isMobile,
       (value, oldValue) => {
         if (value !== oldValue)
-          commentary.value = getCommentaryByYear(props.year);
+          commentary.value = getCommentaryByYear(
+            disintegratedStore.get("year")
+          );
       }
     );
 

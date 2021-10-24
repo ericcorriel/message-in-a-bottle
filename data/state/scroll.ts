@@ -20,7 +20,7 @@ export interface ScrollState {
 
 const scrollState: ScrollState = reactive({
   scrollValuesFrozen: false,
-  yearZero: 0,
+  yearZero: 2021,
   yearAtCurrentScroll: 0,
   yearZeroScrollTop: 0,
   yearEnd: 0,
@@ -62,28 +62,31 @@ const scrollState: ScrollState = reactive({
   }),
 });
 
-function set(p: ScrollState): void {
-  scrollState.yearZero = p.yearZero ?? scrollState.yearZero;
-  scrollState.yearEnd = p.yearEnd ?? scrollState.yearEnd;
-  scrollState.yearAtCurrentScroll =
-    p.yearAtCurrentScroll ?? scrollState.yearAtCurrentScroll;
-  scrollState.yearZeroScrollTop =
-    p.yearZeroScrollTop ?? scrollState.yearZeroScrollTop;
-  scrollState.yearEnd = p.yearEnd ?? scrollState.yearEnd;
-  scrollState.previousScrollPosition =
-    p.previousScrollPosition ?? scrollState.previousScrollPosition;
-  scrollState.currentScrollPosition =
-    p.currentScrollPosition ?? scrollState.currentScrollPosition;
-  scrollState.debug = p.debug ?? scrollState.debug;
-  scrollState.scrollDirection =
-    p.scrollDirection ?? scrollState.scrollDirection;
-  scrollState.yearDelta = p.yearDelta ?? scrollState.yearDelta;
-  if (scrollState.debug) {
-    console.log(JSON.stringify(scrollState, null, 2));
+function set(key: keyof ScrollState, value: string | number | boolean): void {
+  try {
+    // cannot figure out a generic setter without making things overly complex with Templates (https://stackoverflow.com/questions/62752245/how-do-you-define-a-generic-getter-method-in-typescript-with-multiple-overloads)
+    // also tried overloading: https://www.tutorialsteacher.com/typescript/function-overloading
+    // @ts-ignore
+    scrollState[key] = value;
+  } catch (e) {
+    console.log("ScrollState.set: type error");
   }
 }
 
-function get(key: keyof ScrollState): String | Boolean | Number {
+function get(key: keyof ScrollState): number | string | boolean {
+  /*
+   * actual return type of this function is a union of number, string, boolean – not string or number or boolean
+   * this will lead to errors like :Argument of type 'string | number | boolean' is not assignable to parameter of type 'number'.
+   * when trying to do type-specific operations like math on numbers
+   * in those cases, need to wrap the value return here in Number(), for example:
+   * scrollMachine.set(
+          "yearAtCurrentScroll",
+          Number(scrollMachine.get("yearAtCurrentScroll")) - 0.66
+        );
+  * that will not work unless yearAtCurrentScroll is typecast as Number where as
+  * scrollMachine.get("yearAtCurrentScroll") !== scrollMachine.get("yearZero")
+  * works just fine without typecasting
+   */
   return scrollState[key];
 }
 
