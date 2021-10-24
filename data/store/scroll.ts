@@ -1,5 +1,5 @@
 import { reactive, computed } from "@nuxtjs/composition-api";
-import { SCROLL_DIRECTION } from "~/data/constants";
+import { SCROLL_DIRECTION } from "~/data/constants/app";
 
 export interface ScrollInterface {
   yearZero: number;

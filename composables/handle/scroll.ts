@@ -1,5 +1,9 @@
 import { ref, Ref, UnwrapRef } from "@nuxtjs/composition-api";
-import { SCROLL_DIRECTION, ScrollSpeed, scrollSpeeds } from "~/data/constants";
+import {
+  SCROLL_DIRECTION,
+  ScrollSpeed,
+  scrollSpeeds,
+} from "~/data/constants/app";
 import scrollMachine from "~/data/store/scroll";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";

@@ -1,6 +1,6 @@
 import { reactive, computed } from "@nuxtjs/composition-api";
 import scrollStore from "~/data/store/scroll";
-import { APP } from "~/data/constants";
+import { APP } from "~/data/constants/app";
 
 export interface DisintegratedInterface {
   percentDisintegrated: number;

@@ -1,5 +1,5 @@
 import scrollMachine from "~/data/store/scroll";
-import { APP } from "~/data/constants";
+import { APP } from "~/data/constants/app";
 
 function calculatePercentDisintegrated(yearAtCurrentScroll) {
   return (

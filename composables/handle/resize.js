@@ -1,5 +1,5 @@
 import { ref } from "@nuxtjs/composition-api";
-import { APP } from "~/data/constants";
+import { APP } from "~/data/constants/app";
 import stateMachine from "~/data/store/scroll";
 
 const isMobile = ref(false);

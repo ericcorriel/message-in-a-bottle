@@ -147,7 +147,7 @@ import {
   useRoute,
 } from "@nuxtjs/composition-api";
 
-import { APP } from "~/data/constants.ts";
+import { APP } from "~/data/constants/app.ts";
 
 // @ts-ignore
 import scrollStore from "~/data/store/scroll.ts";

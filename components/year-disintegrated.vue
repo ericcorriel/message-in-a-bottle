@@ -15,7 +15,7 @@
 <script>
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import { currentTabIndex } from "~/composables/handle/tab";
-import { commentaries } from "~/data/commentaries";
+import { commentaries } from "~/data/constants/commentaries";
 import disintegratedStore from "~/data/store/disintegrated";
 // @ts-ignore
 import scrollStore from "~/data/store/scroll.ts";

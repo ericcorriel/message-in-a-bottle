@@ -25,7 +25,7 @@ import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
 import { currentTabIndex } from "~/composables/handle/tab";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
-import { commentaries } from "~/data/commentaries";
+import { commentaries } from "~/data/constants/commentaries";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 import disintegratedStore from "~/data/store/disintegrated";
 

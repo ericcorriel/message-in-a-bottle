@@ -24,7 +24,7 @@ import {
   UnwrapRef,
 } from "@nuxtjs/composition-api";
 import vueVimeoPlayer from "~/forks/vue-vimeo-player";
-import { APP } from "~/data/constants";
+import { APP } from "~/data/constants/app";
 
 export default defineComponent({
   name: "VimeoEmbed",
