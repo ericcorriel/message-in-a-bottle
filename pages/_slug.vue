@@ -243,6 +243,7 @@ export default defineComponent({
           const newContainerHeight =
             parseInt(container.value!.style.height) + window.innerHeight;
           container.value!.style.height = "" + newContainerHeight + "px";
+          // TODO scroll to make a portion of part I visible across all breakpoints; current not happening on wide screens. something like $.scrollTo(#step2, -300px)
         }
       }
     );

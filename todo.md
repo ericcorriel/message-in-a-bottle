@@ -20,14 +20,16 @@
 - [x] Safari font bug
 - [x] try debouncer for chrome
 - [x] Chrome video lag bug
+- [x] tab accessibility
+- [ ] always scroll to top of step2 when shift tabbing back to part I
 - [ ] implement currentYear throughout
 - [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
-- [ ] tab accessibility
 - [ ] bug: cannot scroll backwards when congratulations screen comes up
 - [ ] Press page
 - [ ] Upload vid YT/Vimeo; add link
 - [ ] after 100% --> display: none 
 - [ ] add manhattan bridge pics
+- [ ] extract vue-gl/threejs to diff project
 
 ### Futurizing
 - check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
