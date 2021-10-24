@@ -16,9 +16,9 @@
 import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import { currentTabIndex } from "~/composables/handle/tab";
 import { commentaries } from "~/data/commentaries";
-import disintegratedStore from "~/data/state/disintegrated";
+import disintegratedStore from "~/data/store/disintegrated";
 // @ts-ignore
-import scrollMachine from "~/data/state/scroll.ts";
+import scrollStore from "~/data/store/scroll.ts";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 export default defineComponent({
   name: "YearDisintegrated",
@@ -48,9 +48,7 @@ export default defineComponent({
           mutableDisintegrated.value = calculatePercentDisintegrated(
             res[0].year
           );
-          scrollMachine.set({
-            yearAtCurrentScroll: res[0].year,
-          });
+          scrollStore.set("yearAtCurrentScroll", res[0].year);
         }
       }
     );

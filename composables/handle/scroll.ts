@@ -1,9 +1,9 @@
 import { ref, Ref, UnwrapRef } from "@nuxtjs/composition-api";
 import { SCROLL_DIRECTION, ScrollSpeed, scrollSpeeds } from "~/data/constants";
-import scrollMachine from "~/data/state/scroll";
+import scrollMachine from "~/data/store/scroll";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
-import disintegratedStore from "~/data/state/disintegrated";
+import disintegratedStore from "~/data/store/disintegrated";
 
 function handleScroll() {
   /*
@@ -16,7 +16,7 @@ function handleScroll() {
   // for components
   // const currentVideoTime: Ref<UnwrapRef<number>> = ref(0);
   // const yearAsInt: Ref<UnwrapRef<number>> = ref(
-  //   Number(scrollMachine.get("yearAtCurrentScroll"))
+  //   Number(scrollStore.get("yearAtCurrentScroll"))
   // );
 
   // html refs
@@ -102,11 +102,11 @@ function handleScroll() {
         Number(Number(scrollMachine.get("yearAtCurrentScroll")).toFixed(0))
       );
       // percentDisintegrated.value = calculatePercentDisintegrated(
-      //   scrollMachine.get("yearAtCurrentScroll")
+      //   scrollStore.get("yearAtCurrentScroll")
       // );
 
       // yearAsInt.value = Math.floor(
-      //   Number(scrollMachine.get("yearAtCurrentScroll"))
+      //   Number(scrollStore.get("yearAtCurrentScroll"))
       // );
       // currentVideoTime.value = calculateCurrentVideoTime(
       //   percentDisintegrated.value

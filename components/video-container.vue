@@ -27,7 +27,7 @@ import { currentTabIndex } from "~/composables/handle/tab";
 import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 import { commentaries } from "~/data/commentaries";
 import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
-import disintegratedStore from "~/data/state/disintegrated";
+import disintegratedStore from "~/data/store/disintegrated";
 
 export default defineComponent({
   name: "VideoContainer",

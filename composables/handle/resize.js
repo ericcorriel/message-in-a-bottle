@@ -1,6 +1,6 @@
 import { ref } from "@nuxtjs/composition-api";
 import { APP } from "~/data/constants";
-import stateMachine from "~/data/state/scroll";
+import stateMachine from "~/data/store/scroll";
 
 const isMobile = ref(false);
 const windowWidth = ref(0);

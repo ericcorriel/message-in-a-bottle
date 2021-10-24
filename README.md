@@ -33,8 +33,8 @@ git submodule update --init --recursive
 ```
 ## TS notes
 ```
-const yearZero: number = Number(scrollMachine.get("yearZero"));
-  const boolTest: string | number | boolean = scrollMachine.get(
+const yearZero: number = Number(scrollStore.get("yearZero"));
+  const boolTest: string | number | boolean = scrollStore.get(
     "isInNormalScrollingRange"
   );
 ```

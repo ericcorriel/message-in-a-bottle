@@ -1,5 +1,5 @@
 import { reactive, computed } from "@nuxtjs/composition-api";
-import scrollMachine from "~/data/state/scroll";
+import scrollStore from "~/data/store/scroll";
 import { APP } from "~/data/constants";
 
 export interface DisintegratedInterface {
@@ -18,7 +18,7 @@ const state: DisintegratedInterface = reactive({
   percentDisintegrated: computed(
     () =>
       ((Number(disintegratedStore.get("year")) -
-        Number(scrollMachine.get("yearZero"))) /
+        Number(scrollStore.get("yearZero"))) /
         APP.YEARS_TILL_DISINTEGRATION) *
       100
   ),
@@ -35,6 +35,6 @@ function get(key: keyof DisintegratedInterface): number {
 const disintegratedStore = {
   set,
   get,
-  state, // need to export the state bc can only watch reactive objects (in _slug.vue) and disintegratedStore is not reactive
+  state, // need to export the store bc can only watch reactive objects (in _slug.vue) and disintegratedStore is not reactive
 };
 export default disintegratedStore;
