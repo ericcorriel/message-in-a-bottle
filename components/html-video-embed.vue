@@ -18,8 +18,6 @@ import {
   ref,
   onMounted,
 } from "@nuxtjs/composition-api";
-// @ts-ignore
-import _ from "lodash";
 
 export default defineComponent({
   name: "HtmlVideoEmbed",
@@ -30,7 +28,6 @@ export default defineComponent({
   },
   setup(props) {
     const player = ref();
-    const playheadAt: number = 0;
 
     onMounted(() => {
       player.value.currentTime = props.currentVideoTime;
@@ -40,13 +37,8 @@ export default defineComponent({
       () => props.currentVideoTime,
       (value) => {
         player.value.currentTime = value;
-        // updateVideoPlayhead();
       }
     );
-
-    const updateVideoPlayhead = _.debounce(function () {
-      player.value.currentTime = playheadAt;
-    }, 0);
 
     return {
       player,
