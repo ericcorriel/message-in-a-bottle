@@ -1,5 +1,5 @@
 <template>
-  <div class="credits-container">
+  <div class="credits-container" tabindex="11">
     <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
 <!--    <div class="credit-row up-1">-->

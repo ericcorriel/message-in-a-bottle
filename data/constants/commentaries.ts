@@ -1,4 +1,5 @@
 import commentary from "~/components/commentary.vue";
+import { tabsForPartI } from "~/composables/handle/tab";
 
 export interface commentary {
   year: number;
@@ -206,12 +207,20 @@ export var commentaries: commentariesArr = [
       "Planet plagued<br />by super-storms.<br />Last human<br />👋leaves Earth👋",
     tabIndex: 0,
   },
+  {
+    year: 2471,
+    comment: "Planet plagued by super-storms.<br />👋Last human leaves Earth👋",
+    commentSm:
+      "Planet plagued<br />by super-storms.<br />Last human<br />👋leaves Earth👋",
+    tabIndex: 0,
+  },
 ];
 
 export function setCommentariesTabIndexes(): void {
-  let tabIndex = 1;
+  let tabIndex = 0;
   commentaries.forEach(function (commentary) {
     commentary.tabIndex = tabIndex;
     tabIndex++;
   });
+  tabsForPartI.value = tabIndex - 1;
 }

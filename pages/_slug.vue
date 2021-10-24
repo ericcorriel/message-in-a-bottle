@@ -7,21 +7,21 @@
         <Commentary :is-mobile="isMobile" />
       </div>
     </div>
-    <div ref="step2" class="step bg-black on-top">
+    <div ref="step2" class="step bg-black on-top" tabindex="1">
       <div class="fittext-container">
         <FitText>Congratulations!</FitText>
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
     </div>
-    <div class="step bg-black on-top full-height-and-width">
+    <div class="step bg-black on-top full-height-and-width" tabindex="2">
       <div class="fittext-container">
         <FitText>A bottle made in 2021</FitText>
         <FitText>disintegrates in 2471</FitText>
       </div>
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
-    <div class="step bg-black on-top full-height-and-width">
+    <div class="step bg-black on-top full-height-and-width" tabindex="3">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText style="line-height: 1.1em"
@@ -40,7 +40,10 @@
       </div>
     </div>
 
-    <div class="step bg-black on-top align-text-baseline full-height-and-width">
+    <div
+      class="step bg-black on-top align-text-baseline full-height-and-width"
+      tabindex="4"
+    >
       <div class="fittext-container">
         <FitText>Oh wait–I forgot about these!</FitText>
       </div>
@@ -53,7 +56,7 @@
         />
       </div>
     </div>
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="5">
       <div class="fittext-container">
         <FitText>Hang on, almost done…</FitText>
       </div>
@@ -67,7 +70,7 @@
         />
       </div>
     </div>
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="6">
       <div class="fittext-container">
         <FitText>While we’re on the subject,</FitText>
       </div>
@@ -76,7 +79,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="7">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>200 YEARS</FitText>
@@ -90,7 +93,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="8">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>500 YEARS</FitText>
@@ -104,7 +107,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="9">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>1000 YEARS</FitText>
@@ -118,7 +121,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top">
+    <div class="step bg-black on-top" tabindex="10">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText
@@ -165,9 +168,12 @@ import {
 import {
   handleIntersection,
   options,
+  isPartIVisible,
 } from "~/composables/handle/interactionObserver";
 import { handleTab } from "~/composables/handle/tab";
 import { handleScroll } from "~/composables/handle/scroll";
+
+const container = ref();
 
 export default defineComponent({
   components: {
@@ -196,7 +202,7 @@ export default defineComponent({
     disintegratedStore.set("year", yearStart);
 
     // html refs
-    const container = ref();
+    // const container = ref();
 
     onMounted(() => {
       if (APP.MOVIE_MODE) playMovie();
@@ -228,6 +234,17 @@ export default defineComponent({
         }
       },
       { deep: true }
+    );
+
+    watch(
+      () => isPartIVisible.value,
+      (isPartIVisible, prevIsPartIVisible) => {
+        if (isPartIVisible !== prevIsPartIVisible && isPartIVisible) {
+          const newContainerHeight =
+            parseInt(container.value!.style.height) + window.innerHeight;
+          container.value!.style.height = "" + newContainerHeight + "px";
+        }
+      }
     );
 
     return {

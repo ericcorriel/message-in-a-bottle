@@ -28,3 +28,5 @@ export const SCROLL_DIRECTION = Object.freeze({
   UP: "UP",
   DOWN: "DOWN",
 });
+
+export default APP;
