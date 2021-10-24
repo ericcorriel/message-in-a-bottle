@@ -16,12 +16,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  watch,
-  ref,
-  onMounted,
-} from "@nuxtjs/composition-api";
+import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import APP from "~/data/constants/app";
 
 export default defineComponent({
@@ -32,10 +27,6 @@ export default defineComponent({
   },
   setup(props) {
     const player = ref();
-
-    onMounted(() => {
-      player.value.currentTime = props.currentVideoTime;
-    });
 
     watch(
       () => props.currentVideoTime,
