@@ -22,7 +22,7 @@ import {
   ref,
   onMounted,
 } from "@nuxtjs/composition-api";
-import { APP } from "~/data/constants/app.ts";
+import APP from "~/data/constants/app";
 
 export default defineComponent({
   name: "HtmlVideoEmbed",

@@ -15,12 +15,7 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  watch,
-  ref,
-  onMounted,
-} from "@nuxtjs/composition-api";
+import { defineComponent, watch, ref } from "@nuxtjs/composition-api";
 import VimeoEmbed from "~/components/vimeo-embed.vue";
 import HTMLVideoEmbed from "~/components/html-video-embed.vue";
 import { currentTabIndex } from "~/composables/handle/tab";

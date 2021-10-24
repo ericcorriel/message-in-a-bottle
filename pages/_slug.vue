@@ -146,11 +146,9 @@ import {
   computed,
   useRoute,
 } from "@nuxtjs/composition-api";
-
-import { APP } from "~/data/constants/app.ts";
-
-// @ts-ignore
-import scrollStore from "~/data/store/scroll.ts";
+import { playMovie } from "~/composables/mode/movie";
+import APP from "~/data/constants/app";
+import scrollStore from "~/data/store/scroll";
 import disintegratedStore from "~/data/store/disintegrated";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
