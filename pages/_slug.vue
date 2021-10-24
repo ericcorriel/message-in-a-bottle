@@ -142,9 +142,7 @@ import {
   defineComponent,
   onMounted,
   watch,
-  Ref,
   ref,
-  UnwrapRef,
   computed,
   useRoute,
 } from "@nuxtjs/composition-api";
@@ -152,8 +150,8 @@ import {
 import { APP } from "~/data/constants.ts";
 
 // @ts-ignore
-import scrollMachine from "~/data/state/scroll.ts";
-import disintegratedStore from "~/data/state/disintegrated";
+import scrollStore from "~/data/store/scroll.ts";
+import disintegratedStore from "~/data/store/disintegrated";
 import YearDisintegrated from "~/components/year-disintegrated.vue";
 import VideoContainer from "~/components/video-container.vue";
 import Commentary from "~/components/commentary.vue";
@@ -191,24 +189,19 @@ export default defineComponent({
     const yearStart: number = slug.value
       ? Math.floor(parseInt(slug.value))
       : new Date().getFullYear();
-    scrollMachine.set("yearZero", new Date().getFullYear());
-    scrollMachine.set("yearAtCurrentScroll", yearStart);
-    scrollMachine.set("yearEnd", yearStart + APP.YEARS_TILL_DISINTEGRATION);
-    scrollMachine.set("previousScrollPosition", 0);
-    scrollMachine.set("currentScrollPosition", 0);
-    scrollMachine.set("debug", false);
+    scrollStore.set("yearZero", new Date().getFullYear());
+    scrollStore.set("yearAtCurrentScroll", yearStart);
+    scrollStore.set("yearEnd", yearStart + APP.YEARS_TILL_DISINTEGRATION);
+    scrollStore.set("previousScrollPosition", 0);
+    scrollStore.set("currentScrollPosition", 0);
+    scrollStore.set("debug", false);
     disintegratedStore.set("year", yearStart);
 
     // html refs
     const container = ref();
 
     onMounted(() => {
-      if (APP.MOVIE_MODE) {
-        // movie mode > scroll through credits > when year is complete: console> setInterval(function(){window.scrollBy(0,5)},10)
-        setInterval(function () {
-          handleScroll();
-        }, 100);
-      }
+      if (APP.MOVIE_MODE) playMovie();
       document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
       window.addEventListener("keydown", handleTab);
@@ -218,7 +211,7 @@ export default defineComponent({
       const observer = new IntersectionObserver(handleIntersection, options);
       // @ts-ignore
       observer.observe(document.querySelector("#container"));
-      scrollMachine.set(
+      scrollStore.set(
         "yearZeroScrollTop",
         (window.pageYOffset || document.documentElement.scrollTop) -
           (document.documentElement.clientTop || 0) +
@@ -232,8 +225,8 @@ export default defineComponent({
       (state) => {
         if (state.percentDisintegrated >= APP.STOP_AT_PERCENTAGE) {
           container.value!.style.height =
-            String(scrollMachine.get("currentScrollPosition")) + "px";
-          scrollMachine.set("scrollValuesFrozen", true);
+            String(scrollStore.get("currentScrollPosition")) + "px";
+          scrollStore.set("scrollValuesFrozen", true);
         }
       },
       { deep: true }
