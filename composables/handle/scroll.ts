@@ -1,12 +1,9 @@
-import { ref, Ref, UnwrapRef } from "@nuxtjs/composition-api";
 import {
   SCROLL_DIRECTION,
   ScrollSpeed,
   scrollSpeeds,
 } from "~/data/constants/app";
 import scrollMachine from "~/data/store/scroll";
-import { calculatePercentDisintegrated } from "~/composables/calculate/percentDisintegrated";
-import { calculateCurrentVideoTime } from "~/composables/calculate/currentVideoTime";
 import disintegratedStore from "~/data/store/disintegrated";
 
 function handleScroll() {
@@ -22,9 +19,6 @@ function handleScroll() {
   // const yearAsInt: Ref<UnwrapRef<number>> = ref(
   //   Number(scrollStore.get("yearAtCurrentScroll"))
   // );
-
-  // html refs
-  const container = ref();
 
   // get yearDelta based on percent disintegrated
   const res: ScrollSpeed[] = scrollSpeeds.filter(
@@ -78,7 +72,6 @@ function handleScroll() {
         scrollMachine.get("yearEnd")
     ) {
       debug ? console.log(2) : null;
-      // yearAtCurrentScroll = scrollState.yearEnd;
       scrollMachine.set("yearAtCurrentScroll", scrollMachine.get("yearEnd"));
     }
     // not in normal scrolling range – don't let year become < currentYear
@@ -90,9 +83,7 @@ function handleScroll() {
     ) {
       // disintegrated.value = 0; reset container height
       debug ? console.log(3) : null;
-      // yearAtCurrentScroll = scrollState.yearZero;
       scrollMachine.set("yearAtCurrentScroll", scrollMachine.get("yearZero"));
-      // container.value!.style.height = "1000000px";
     }
     // only update year and percent if not at beginning or end
     if (
@@ -105,16 +96,6 @@ function handleScroll() {
         "year",
         Number(Number(scrollMachine.get("yearAtCurrentScroll")).toFixed(0))
       );
-      // percentDisintegrated.value = calculatePercentDisintegrated(
-      //   scrollStore.get("yearAtCurrentScroll")
-      // );
-
-      // yearAsInt.value = Math.floor(
-      //   Number(scrollStore.get("yearAtCurrentScroll"))
-      // );
-      // currentVideoTime.value = calculateCurrentVideoTime(
-      //   percentDisintegrated.value
-      // );
     }
   }
   scrollMachine.set(
