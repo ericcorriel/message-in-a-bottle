@@ -6,7 +6,11 @@
     preload="metadata"
     aria-label="Silhouetted used plastic water bottle that explodes into a hundred or so shards"
   >
-    <source :src="`/video/${filename}`" type="video/mp4" class="bg-video" />
+    <source
+      :src="`/video/${APP.VIDEO_FILENAME}`"
+      type="video/mp4"
+      class="bg-video"
+    />
     Your browser does not support the video tag.
   </video>
 </template>
@@ -18,12 +22,12 @@ import {
   ref,
   onMounted,
 } from "@nuxtjs/composition-api";
+import { APP } from "~/data/constants.ts";
 
 export default defineComponent({
   name: "HtmlVideoEmbed",
   components: {},
   props: {
-    filename: { type: String, default: "" },
     currentVideoTime: { type: Number, default: 0 },
   },
   setup(props) {
@@ -42,6 +46,7 @@ export default defineComponent({
 
     return {
       player,
+      APP,
     };
   },
 });

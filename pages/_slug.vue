@@ -2,11 +2,7 @@
   <div>
     <div id="container" ref="container" class="container">
       <div id="step1" class="step">
-        <VideoContainer
-          :use-vimeo="false"
-          :vimeo-id="APP.VIMEO_ID"
-          :filename="APP.VIDEO_FILENAME"
-        />
+        <VideoContainer :use-vimeo="false" />
         <YearDisintegrated />
         <Commentary :is-mobile="isMobile" />
       </div>
@@ -153,10 +149,7 @@ import {
   useRoute,
 } from "@nuxtjs/composition-api";
 
-import {
-  APP,
-  // @ts-ignore
-} from "~/data/constants.ts";
+import { APP } from "~/data/constants.ts";
 
 // @ts-ignore
 import scrollMachine from "~/data/state/scroll.ts";

@@ -2,7 +2,7 @@
   <client-only>
     <vueVimeoPlayer
       ref="player"
-      :video-id="videoId"
+      :video-id="`APP.VIMEO_ID`"
       :options="{ muted: 1, background: 0 }"
       :autoplay="false"
       :controls="false"
@@ -24,6 +24,7 @@ import {
   UnwrapRef,
 } from "@nuxtjs/composition-api";
 import vueVimeoPlayer from "~/forks/vue-vimeo-player";
+import { APP } from "~/data/constants";
 
 export default defineComponent({
   name: "VimeoEmbed",
@@ -73,6 +74,7 @@ export default defineComponent({
     return {
       player,
       isScrolling,
+      APP,
     };
   },
 });

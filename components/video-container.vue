@@ -3,13 +3,11 @@
     <div class="col">
       <VimeoEmbed
         v-if="useVimeo"
-        :video-id="vimeoId"
         :current-video-time="mutableCurrentVideoTime"
         :is-scrolling="isScrolling"
       ></VimeoEmbed>
       <HTMLVideoEmbed
         v-else
-        :filename="filename"
         :current-video-time="mutableCurrentVideoTime"
       ></HTMLVideoEmbed>
     </div>
@@ -36,8 +34,6 @@ export default defineComponent({
   components: { VimeoEmbed, HTMLVideoEmbed },
   props: {
     useVimeo: { type: Boolean, default: false },
-    filename: { type: String, default: "" },
-    vimeoId: { type: String, default: "" },
   },
   setup() {
     // need mutableCurrentVideoTime bc it can be mutated in two ways: scroll, tab
