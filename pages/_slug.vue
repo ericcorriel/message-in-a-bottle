@@ -226,6 +226,7 @@ export default defineComponent({
       containerObserver.observe(document.querySelector("#container"));
       // @ts-ignore
       congratulationsObserver.observe(
+        // @ts-ignore
         document.querySelector("#congratulations")
       );
       scrollStore.set(
