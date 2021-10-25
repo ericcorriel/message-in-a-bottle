@@ -22,12 +22,11 @@
 - [x] Chrome video lag bug
 - [x] tab accessibility
 - [x] always scroll to top of step2 when shift tabbing back to part I
+- [x] bug: cannot scroll backwards when congratulations screen comes up
 - [ ] implement currentYear throughout
 - [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
-- [ ] bug: cannot scroll backwards when congratulations screen comes up
 - [ ] Press page
-- [ ] Upload vid YT/Vimeo; add link
-- [ ] after 100% --> display: none 
+- [ ] Upload vid YT/Vimeo; add link 
 - [ ] add manhattan bridge pics
 - [ ] extract vue-gl/threejs to diff project
 - [ ] creative climate award text

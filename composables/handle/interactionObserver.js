@@ -1,30 +1,62 @@
 import { ref } from "@nuxtjs/composition-api";
 import scrollStore from "~/data/store/scroll";
 import { currentTabIndex, tabsForPartI } from "~/composables/handle/tab";
-const isPartIVisible = ref(true);
+import { SCROLL_DIRECTION } from "~/data/constants/app";
+const scrollingUpAndCongratulations100pctVisible = ref(false);
 // @ts-ignore
-function handleIntersection(entries) {
+function handleContainerIntersection(entries) {
+  // want to freeze values when container is no longer visible
+
   // @ts-ignore
   entries.map((entry) => {
-    if (entry.isIntersecting) {
-      scrollStore.set("scrollValuesFrozen", false);
-      // console.log("VISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value);
-      if (currentTabIndex.value === tabsForPartI.value) {
-        currentTabIndex.value = tabsForPartI.value - 1;
-        isPartIVisible.value = true;
-      }
-    } else {
-      // console.log("INVISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value);
+    // if container is fully obscured by Congratulations (part II), freeze scroll values
+    if (!entry.isIntersecting) {
       scrollStore.set("scrollValuesFrozen", true);
-      isPartIVisible.value = false;
+      // console.log("Container invisible" + currentTabIndex.value + " || " + tabsForPartI.value);
+    }
+  });
+}
+// want to freeze values as soon as congratulations appears
+// want to unfreeze values when #congratulations is visible and scroll/tab_direction.up
+function handleCongratulationsIntersection(entries) {
+  entries.map((entry) => {
+    if (entry.isIntersecting) {
+      // as soon as Congratulations appears and user is scrolling down that means 100% has been reached; freeze scroll values
+      // console.log("Congratulations visible; scrolling down" + currentTabIndex.value + " || " + tabsForPartI.value);
+      if (scrollStore.get("scrollDirection") === SCROLL_DIRECTION.DOWN) {
+        scrollStore.set("scrollValuesFrozen", true);
+      }
+      // this use case only entered into if user is tabbing up;  set flag for handle/tab
+      else if (
+        scrollStore.get("scrollDirection") === SCROLL_DIRECTION.UP &&
+        currentTabIndex.value === tabsForPartI.value
+      ) {
+        scrollingUpAndCongratulations100pctVisible.value = true;
+      }
+    }
+    // if scrolling up and congratulations is NOT visible (has left the screen); unfreeze scroll values
+    else if (scrollStore.get("scrollDirection") === SCROLL_DIRECTION.UP) {
+      // console.log("congratulations invisible, scrolling up");
+      scrollStore.set("scrollValuesFrozen", false);
     }
   });
 }
 
-const options = {
+const containerOptions = {
+  root: null,
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 0,
+};
+const congratulationsOptions = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
   threshold: 0,
 };
 
-export { handleIntersection, options, isPartIVisible };
+export {
+  handleContainerIntersection,
+  handleCongratulationsIntersection,
+  containerOptions,
+  congratulationsOptions,
+  scrollingUpAndCongratulations100pctVisible,
+};

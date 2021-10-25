@@ -7,9 +7,9 @@
         <Commentary :is-mobile="isMobile" />
       </div>
     </div>
-    <div ref="step2" class="step bg-black on-top">
+    <div ref="step2" class="step bg-black on-top" tabindex="1">
       <div class="fittext-container">
-        <FitText tabindex="1">Congratulations!</FitText>
+        <FitText id="congratulations">Congratulations!</FitText>
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
@@ -148,7 +148,6 @@ import {
   ref,
   computed,
   useRoute,
-  inject,
 } from "@nuxtjs/composition-api";
 
 import { playMovie } from "~/composables/mode/movie";
@@ -161,7 +160,7 @@ import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
-import { currentTabIndex, handleTab } from "~/composables/handle/tab";
+import { handleTab } from "~/composables/handle/tab";
 
 import {
   isMobile,
@@ -169,9 +168,10 @@ import {
   handleResize,
 } from "~/composables/handle/resize";
 import {
-  handleIntersection,
-  options,
-  isPartIVisible,
+  handleContainerIntersection,
+  handleCongratulationsIntersection,
+  containerOptions,
+  congratulationsOptions,
 } from "~/composables/handle/interactionObserver";
 
 import { handleScroll } from "~/composables/handle/scroll";
@@ -214,9 +214,20 @@ export default defineComponent({
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
 
-      const observer = new IntersectionObserver(handleIntersection, options);
+      const containerObserver = new IntersectionObserver(
+        handleContainerIntersection,
+        containerOptions
+      );
+      const congratulationsObserver = new IntersectionObserver(
+        handleCongratulationsIntersection,
+        congratulationsOptions
+      );
       // @ts-ignore
-      observer.observe(document.querySelector("#container"));
+      containerObserver.observe(document.querySelector("#container"));
+      // @ts-ignore
+      congratulationsObserver.observe(
+        document.querySelector("#congratulations")
+      );
       scrollStore.set(
         "yearZeroScrollTop",
         (window.pageYOffset || document.documentElement.scrollTop) -
@@ -232,28 +243,9 @@ export default defineComponent({
         if (state.percentDisintegrated >= APP.STOP_AT_PERCENTAGE) {
           container.value!.style.height =
             String(scrollStore.get("currentScrollPosition")) + "px";
-          scrollStore.set("scrollValuesFrozen", true);
         }
       },
       { deep: true }
-    );
-
-    watch(
-      () => isPartIVisible.value,
-      (isPartIVisible, prevIsPartIVisible) => {
-        if (isPartIVisible !== prevIsPartIVisible && isPartIVisible) {
-          /*
-          when shift tabbing and transitioning from part II --> part I, need to set container height
-          (which will be at the exact height necessary for part II to appear)
-          to current height + viewport window height so that Congratulations will not be at top of screen
-          so that intersection observer (trained to fire when part I becomes visible) will fire
-          which will adjust tab index and unfreeze scroll values
-          */
-          const newContainerHeight =
-            parseInt(container.value!.style.height) + window.innerHeight;
-          container.value!.style.height = "" + newContainerHeight + "px";
-        }
-      }
     );
 
     return {
