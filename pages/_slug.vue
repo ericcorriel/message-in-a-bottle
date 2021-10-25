@@ -7,9 +7,9 @@
         <Commentary :is-mobile="isMobile" />
       </div>
     </div>
-    <div ref="step2" class="step bg-black on-top" tabindex="1">
+    <div ref="step2" class="step bg-black on-top">
       <div class="fittext-container">
-        <FitText>Congratulations!</FitText>
+        <FitText tabindex="1">Congratulations!</FitText>
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
@@ -148,7 +148,9 @@ import {
   ref,
   computed,
   useRoute,
+  inject,
 } from "@nuxtjs/composition-api";
+
 import { playMovie } from "~/composables/mode/movie";
 import APP from "~/data/constants/app";
 import scrollStore from "~/data/store/scroll";
@@ -159,6 +161,7 @@ import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
+import { currentTabIndex, handleTab } from "~/composables/handle/tab";
 
 import {
   isMobile,
@@ -170,10 +173,8 @@ import {
   options,
   isPartIVisible,
 } from "~/composables/handle/interactionObserver";
-import { handleTab } from "~/composables/handle/tab";
-import { handleScroll } from "~/composables/handle/scroll";
 
-const container = ref();
+import { handleScroll } from "~/composables/handle/scroll";
 
 export default defineComponent({
   components: {
@@ -188,7 +189,7 @@ export default defineComponent({
     // routing
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
-
+    let isMounted = false;
     // set initial scrollState values
     const yearStart: number = slug.value
       ? Math.floor(parseInt(slug.value))
@@ -202,9 +203,10 @@ export default defineComponent({
     disintegratedStore.set("year", yearStart);
 
     // html refs
-    // const container = ref();
+    const container = ref();
 
     onMounted(() => {
+      isMounted = true;
       if (APP.MOVIE_MODE) playMovie();
       document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
@@ -240,10 +242,16 @@ export default defineComponent({
       () => isPartIVisible.value,
       (isPartIVisible, prevIsPartIVisible) => {
         if (isPartIVisible !== prevIsPartIVisible && isPartIVisible) {
+          /*
+          when shift tabbing and transitioning from part II --> part I, need to set container height
+          (which will be at the exact height necessary for part II to appear)
+          to current height + viewport window height so that Congratulations will not be at top of screen
+          so that intersection observer (trained to fire when part I becomes visible) will fire
+          which will adjust tab index and unfreeze scroll values
+          */
           const newContainerHeight =
             parseInt(container.value!.style.height) + window.innerHeight;
           container.value!.style.height = "" + newContainerHeight + "px";
-          // TODO scroll to make a portion of part I visible across all breakpoints; current not happening on wide screens. something like $.scrollTo(#step2, -300px)
         }
       }
     );

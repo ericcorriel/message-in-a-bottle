@@ -8,18 +8,13 @@ function handleIntersection(entries) {
   entries.map((entry) => {
     if (entry.isIntersecting) {
       scrollStore.set("scrollValuesFrozen", false);
-      // console.log(
-      //   "VISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value
-      // );
+      // console.log("VISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value);
       if (currentTabIndex.value === tabsForPartI.value) {
-        // console.log("RESETTING");
         currentTabIndex.value = tabsForPartI.value - 1;
         isPartIVisible.value = true;
       }
     } else {
-      // console.log(
-      //   "INVISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value
-      // );
+      // console.log("INVISIBLE" + currentTabIndex.value + " || " + tabsForPartI.value);
       scrollStore.set("scrollValuesFrozen", true);
       isPartIVisible.value = false;
     }
