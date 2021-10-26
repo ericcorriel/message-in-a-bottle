@@ -5,11 +5,11 @@ import { scrollingUpAndCongratulations100pctVisible } from "~/composables/handle
 const currentTabIndex = ref(0); // keeps tabs on tab
 const tabsForPartI = ref(0); // counts how many tabs in part I
 
-// this is a bit complicated…
+// shift+tab is a bit complicated…
 function handleTab(e) {
-  // shift+tab
   if (e.shiftKey && e.keyCode === 9) {
     // set scroll direction as proxy for "tab direction," used in handle/interactionObserver:handleCongratulationsIntersection > scrollingUpAndCongratulations100ptcVisible
+    // console.log("shift+tab");
     scrollStore.set("scrollDirection", SCROLL_DIRECTION.UP);
     // normal use case: shift tab and not at the beginning; we are in phase I so be sure to preventDefault
     if (currentTabIndex.value < tabsForPartI.value) {
@@ -26,6 +26,8 @@ function handleTab(e) {
       currentTabIndex.value = tabsForPartI.value - 1;
       // need to dismiss Congratulations screen; scroll window by 1.5x height to be sure to dismiss and get back to part I. side-effect: does "overscroll" into part I a bit but it's the only way to ensure Congratulations is dismissed across all breakpoints
       window.scrollBy(0, -window.innerHeight * 1.5);
+      window.document.getElementById("container").focus();
+      e.preventDefault();
     }
   }
   // regular tab
