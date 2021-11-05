@@ -39,37 +39,6 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="step bg-black on-top align-text-baseline full-height-and-width"
-      tabindex="4"
-    >
-      <div class="fittext-container">
-        <FitText>Oh wait–I forgot about these!</FitText>
-      </div>
-    </div>
-    <div class="step bg-black on-top">
-      <div class="full-width-img-container cover">
-        <img
-          src="/img/wall-o-bottles.jpg"
-          alt="Extremely long photo of bales of used plastic bottles smushed together"
-        />
-      </div>
-    </div>
-    <div class="step bg-black on-top" tabindex="5">
-      <div class="fittext-container">
-        <FitText>Hang on, almost done…</FitText>
-      </div>
-    </div>
-    <div class="step bg-black on-top">
-      <div class="full-width-img-container cover">
-        <img
-          src="/img/wall-o-bottles.jpg"
-          style="transform: rotate(180deg)"
-          alt="Same exact photo as above but rotated 180 degrees so the viewer gets to re-experience the photo from a different angle"
-        />
-      </div>
-    </div>
     <div class="step bg-black on-top" tabindex="6">
       <div class="fittext-container">
         <FitText>While we’re on the subject,</FitText>
@@ -258,7 +227,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/base"
