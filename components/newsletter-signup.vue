@@ -27,7 +27,6 @@
       type="text/javascript"
       src="https://js.createsend1.com/javascript/copypastesubscribeformlogic.js"
     ></script>
-    <SpacerFullScreen />
   </aside>
 </template>
 

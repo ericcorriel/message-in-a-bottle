@@ -2,13 +2,19 @@
   <div class="credits-container" tabindex="11">
     <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
-<!--    <div class="credit-row up-1">-->
-<!--      <h4>I hear you, but what can I actually do!?!</h4>-->
+    <div class="credit-row up-1">
+      <h4>I hear you, but what can I actually do?</h4>
+      <h5 class="align-left">Small </h5>
+      <p class="indent">• Follow <a href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a>, <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a>, <a href="https://www.instagram.com/5gyres/" target='_blank' >5 Gyres</a> on Instagram </p>
+      <h5 class="align-left">Medium</h5>
+      <p class="indent">• Donate to the <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a> </p>
+      <h5 class="align-left">Large</h5>
+      <p class="indent">• Volunteer your time with <a href="https://www.surfrider.org/volunteer" target='_blank' >Surfrider</a> </p>
+      <p class="indent">• Learn about and support the <a href="https://govtrackinsider.com/reduce-act-would-tax-single-use-plastics-at-20-cents-per-pound-7eb523395da7" target='_blank' >REDUCE Act</a> in Congress</p>
+      <p class="indent">• Figure out how you can replicate <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target='_blank' >Vermont’s single-use plastic ban</a> in your state</p>
 
-<!--      <p>I'll skip the usual stuff about using less plastic and bringing your own bag. Been there, doing that. Time for something new. Look around you, find  put pressure on packaging departments at corporations to be more creative, innovative, and ecological in how they package their products. </p>-->
-
-<!--    </div>-->
-<!--    <SpacerHalfScreen></SpacerHalfScreen>-->
+    </div>
+    <SpacerHalfScreen></SpacerHalfScreen>
     <div class="credit-row up-1">
       <h3 id="credits">Credits</h3>
     </div>
@@ -38,6 +44,18 @@
       <p class="center">Director of Advocacy &amp; Education, <a href="http://newtowncreekalliance.org" target="_blank">Newtown
         Creek
         Alliance</a></p>
+    </div>
+    <SpacerQuarterScreen></SpacerQuarterScreen>
+    <div class="step bg-black on-top">
+      <div class="text-over-image-container">
+        <div class="image-container">
+          <img
+            src="/img/message-in-a-bottle-projected-on-manhattan-bridge.jpg"
+            alt="Video of the project projected on the Manhattan Bridge at night. Video contents: 'It is the year 2215, Water Wars sprout up everywhere"
+          />
+        </div>
+      </div>
+      <p><em>Message In A Bottle</em> was projected on the Manhattan Bridge as part of the <a href="https://www.humanimpactsinstitute.org/cca2021" target='_blank' >2021 Creative Climate Awards</a>. It won second place.</p>
 
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
@@ -106,7 +124,7 @@
             I am thankful to <a href="https://www.wm.com/" target="_blank">Waste Management</a> for organizing a visit
             to their
             <a href="https://en.wikipedia.org/wiki/Materials_recovery_facility" target="_blank">Materials Recovery
-              Facility (MRF)</a> in Philadelphia, PA. They are working hard to ensure a clean and sustainable future.
+              Facility (MRF)</a> in Philadelphia, PA. The amount of sorting and recycling they do on a daily basis is astounding.
           </p>
         </div>
       </div>
@@ -176,28 +194,28 @@
     <div class="credit-row">
       <h4>Sources</h4>
       <p>
-      <ul>
-        <li>National Oceanic and Atmospheric Administration • <a
+      <ul class="list-sources">
+        <li>National Oceanic and Atmospheric Administration: <a
           href="https://www.noaa.gov/education/resource-collections/climate/climate-change-impact" target="_blank">Climate
           Change Impacts</a></li>
-        <li>World Wildlife Foundation • <a href="https://www.wwf.org.au/news/blogs/the-lifecycle-of-plastics"
+        <li>World Wildlife Foundation: <a href="https://www.wwf.org.au/news/blogs/the-lifecycle-of-plastics"
                                            target="_blank">The Lifecycle of Plastics</a></li>
-        <li>Columbia University • <a
+        <li>Columbia University: <a
           href="https://news.climate.columbia.edu/2019/12/27/climate-change-impacts-everyone/" target="_blank">State of
           the Planet</a></li>
-        <li>Colgate University Sustainability Office • <a
+        <li>Colgate University Sustainability Office: <a
           href="http://blogs.colgate.edu/sustainability/2011/11/10/styrofoam-why-it-is-harmful-alternatives"
           target="_blank">Styrofoam: Why It Is Harmful, And Alternatives</a></li>
-        <li>Time Magazine • <a href="https://time.com/5824295/climate-change-future-possibilities/" target="_blank">What
+        <li>Time Magazine: <a href="https://time.com/5824295/climate-change-future-possibilities/" target="_blank">What
           the World Will Look Like in 2050 If We Don’t Cut Carbon Emissions in Half</a></li>
-        <li>Stacker • <a href="https://stacker.com/stories/2682/how-long-it-takes-50-common-items-decompose"
+        <li>Stacker: <a href="https://stacker.com/stories/2682/how-long-it-takes-50-common-items-decompose"
                          target="_blank">How Long It Takes 50 Common Items To Decompose</a></li>
-        <li>The Awl • <a href="https://www.theawl.com/2012/08/a-timeline-of-future-events/" target="_blank">A Timeline
+        <li>The Awl: <a href="https://www.theawl.com/2012/08/a-timeline-of-future-events/" target="_blank">A Timeline
           Of Future Events</a></li>
-        <li>Information is Beautiful • <a
+        <li>Information is Beautiful: <a
           href="https://www.informationisbeautiful.net/visualizations/timeline-of-the-far-future/" target="_blank">Timeline
           of the Far Future</a></li>
-        <li>Vox • <a href="https://www.youtube.com/watch?v=fsjvwQclGLo" target="_blank">Why 99% of ocean plastic
+        <li>Vox: <a href="https://www.youtube.com/watch?v=fsjvwQclGLo" target="_blank">Why 99% of ocean plastic
           pollution is “missing”</a></li>
       </ul>
       </p>
@@ -266,13 +284,22 @@ export default defineComponent({
     @include credits-p
     &.center
       text-align: center
-
+    &.indent
+      padding-left: 20px
+      margin: 0 auto
+  h5.align-left
+    @include credits-p
+    text-align: left
+    font-size: 1em
+    font-weight: 500
+    margin: 1em auto 0
   ul, dl
     padding: 0
     display: inline-block
     list-style-type: none
     margin: 0 auto
-
+    &.list-sources
+      list-style-type: disc
   .center
     text-align: center
 
