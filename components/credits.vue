@@ -3,7 +3,7 @@
     <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
     <div class="credit-row up-1">
-      <h4>I hear you, but what can I actually do?</h4>
+      <h4>I hear you! But what can I actually do?</h4>
       <h5 class="align-left">Small </h5>
       <p class="indent">• Follow <a href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a>, <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a>, <a href="https://www.instagram.com/5gyres/" target='_blank' >5 Gyres</a> on Instagram </p>
       <h5 class="align-left">Medium</h5>
@@ -46,7 +46,16 @@
         Alliance</a></p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
-
+    <figure class="full-width">
+      <img
+        src="/img/message-in-a-bottle-projected-on-manhattan-bridge.jpg"
+        alt="Video of the project projected on the Manhattan Bridge at night. Video contents: 'It is the year 2215, Water Wars sprout up everywhere"
+      />
+      <figcaption>
+  <em>Message In A Bottle</em> was projected on the Manhattan Bridge as part of the <a href="https://www.humanimpactsinstitute.org/cca2021" target='_blank' >2021 Creative Climate Awards</a>. It won second place.
+      </figcaption>
+    </figure>
+    <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row">
       <h4>
         Awesome institutions without which this would have never been done
@@ -285,7 +294,8 @@ export default defineComponent({
     display: inline-block
     list-style-type: none
     margin: 0 auto
-
+    &.list-sources
+      list-style-type: disc
   .center
     text-align: center
 
@@ -299,6 +309,13 @@ export default defineComponent({
       max-width: 300px
       margin: 0 auto
 
+  figure.full-width
+    width: 100%
+    img
+      width: 100%
+      height: auto
+    figcaption
+      @include credits-p
   .up-2
     display: flex
     flex-direction: column
