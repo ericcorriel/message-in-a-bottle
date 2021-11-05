@@ -3,7 +3,7 @@
     <h1>
       <span class="body-copy" aria-live="polite">It’s </span>
       <span id="year" class="number-text">{{ mutableYear }}</span>
-      <span class="body-copy">and this bottle is </span>
+      <span class="body-copy">and the bottle is </span>
       <span id="disintegrated-percent" class="number-text"
         >{{ (Math.round(mutableDisintegrated * 100) / 100).toFixed(1) }}%</span
       >

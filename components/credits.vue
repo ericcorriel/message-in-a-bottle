@@ -46,7 +46,7 @@
         Alliance</a></p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
-    
+
     <div class="credit-row">
       <h4>
         Awesome institutions without which this would have never been done
@@ -285,8 +285,7 @@ export default defineComponent({
     display: inline-block
     list-style-type: none
     margin: 0 auto
-    &.list-sources
-      list-style-type: disc
+
   .center
     text-align: center
 
