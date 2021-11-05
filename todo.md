@@ -23,13 +23,14 @@
 - [x] tab accessibility
 - [x] always scroll to top of step2 when shift tabbing back to part I
 - [x] bug: cannot scroll backwards when congratulations screen comes up
+- [x] creative climate award text
+- [x] add manhattan bridge pics
 - [ ] implement currentYear throughout
 - [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [ ] Press page
 - [ ] Upload vid YT/Vimeo; add link 
-- [ ] add manhattan bridge pics
 - [ ] extract vue-gl/threejs to diff project
-- [ ] creative climate award text
+- [ ] figure/figcaption for manhattan bridge pic
 
 ### Futurizing
 - check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
