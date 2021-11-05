@@ -46,19 +46,7 @@
         Alliance</a></p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
-    <div class="step bg-black on-top">
-      <div class="text-over-image-container">
-        <div class="image-container">
-          <img
-            src="/img/message-in-a-bottle-projected-on-manhattan-bridge.jpg"
-            alt="Video of the project projected on the Manhattan Bridge at night. Video contents: 'It is the year 2215, Water Wars sprout up everywhere"
-          />
-        </div>
-      </div>
-      <p><em>Message In A Bottle</em> was projected on the Manhattan Bridge as part of the <a href="https://www.humanimpactsinstitute.org/cca2021" target='_blank' >2021 Creative Climate Awards</a>. It won second place.</p>
-
-    </div>
-    <SpacerQuarterScreen></SpacerQuarterScreen>
+    
     <div class="credit-row">
       <h4>
         Awesome institutions without which this would have never been done
@@ -290,7 +278,6 @@ export default defineComponent({
   h5.align-left
     @include credits-p
     text-align: left
-    font-size: 1em
     font-weight: 500
     margin: 1em auto 0
   ul, dl
