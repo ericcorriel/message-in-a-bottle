@@ -227,7 +227,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import "/assets/styles/v1/bootstrap/grid"
 @import "/assets/styles/v1/bootstrap/breakpoints"
 @import "/assets/styles/v1/base"
