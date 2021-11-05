@@ -194,10 +194,10 @@ export var commentaries: commentariesArr = [
   {
     year: 2421,
     comment:
-      "🌪Hurricane Omega obliterates 🌪<br />Florida, Louisiana, Georgia,<br />South Carolina, North Carolina",
+      "🌪Hurricane Omega obliterates 🌪<br />Florida, Louisiana, Georgia,<br />South Carolina",
 
     commentSm:
-      "🌪Hurricane Omega 🌪<br />obliterates Florida<br />Louisiana, Georgia,<br />South Carolina,<br />North Carolina",
+      "🌪Hurricane Omega 🌪<br />obliterates Florida<br />Louisiana, Georgia,<br />South Carolina",
     tabIndex: 0,
   },
   {
