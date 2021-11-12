@@ -9,7 +9,9 @@
     </div>
     <div ref="step2" class="step bg-black on-top" tabindex="1">
       <div class="fittext-container">
-        <FitText id="congratulations">Congratulations!</FitText>
+        <FitText id="congratulations" ref="congratulations"
+          >Congratulations!</FitText
+        >
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
@@ -113,6 +115,7 @@
 import {
   defineComponent,
   onMounted,
+  onUpdated,
   watch,
   ref,
   computed,
@@ -158,7 +161,7 @@ export default defineComponent({
     // routing
     const route = useRoute();
     const slug = computed(() => route.value.params.slug);
-    let isMounted = false;
+
     // set initial scrollState values
     const yearStart: number = slug.value
       ? Math.floor(parseInt(slug.value))
@@ -173,9 +176,9 @@ export default defineComponent({
 
     // html refs
     const container = ref();
+    const congratulations = ref();
 
     onMounted(() => {
-      isMounted = true;
       if (APP.MOVIE_MODE) playMovie();
       document.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
@@ -183,6 +186,15 @@ export default defineComponent({
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
 
+      scrollStore.set(
+        "yearZeroScrollTop",
+        (window.pageYOffset || document.documentElement.scrollTop) -
+          (document.documentElement.clientTop || 0) +
+          window.innerHeight
+      );
+    });
+
+    onUpdated(() => {
       const containerObserver = new IntersectionObserver(
         handleContainerIntersection,
         containerOptions
@@ -191,19 +203,8 @@ export default defineComponent({
         handleCongratulationsIntersection,
         congratulationsOptions
       );
-      // @ts-ignore
-      containerObserver.observe(document.querySelector("#container"));
-      // @ts-ignore
-      congratulationsObserver.observe(
-        // @ts-ignore
-        document.querySelector("#congratulations")
-      );
-      scrollStore.set(
-        "yearZeroScrollTop",
-        (window.pageYOffset || document.documentElement.scrollTop) -
-          (document.documentElement.clientTop || 0) +
-          window.innerHeight
-      );
+      containerObserver.observe(container.value);
+      congratulationsObserver.observe(congratulations.value);
     });
 
     // once reach 100% do not waste resources calculating new values
