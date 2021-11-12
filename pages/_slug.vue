@@ -189,9 +189,7 @@ export default defineComponent({
           (document.documentElement.clientTop || 0) +
           window.innerHeight
       );
-    });
 
-    onUpdated(() => {
       const containerObserver = new IntersectionObserver(
         handleContainerIntersection,
         containerOptions
@@ -201,7 +199,12 @@ export default defineComponent({
         congratulationsOptions
       );
       containerObserver.observe(container.value);
-      congratulationsObserver.observe(congratulations.value);
+
+      // annoyingly need to use query selector here bc cannot affix ref to <Fittext> component; doesn't work; and that's where the id needs to be for back-scrolling purposes when tabbing backwards
+      congratulationsObserver.observe(
+        // @ts-ignore
+        document.querySelector("#congratulations")
+      );
     });
 
     // once reach 100% do not waste resources calculating new values
