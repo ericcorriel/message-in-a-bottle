@@ -1,11 +1,11 @@
 <template>
-  <div class="credits-container" tabindex="11">
+  <div class="credits-container">
     <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
     <div class="credit-row up-1">
       <h4>I hear you! But what can I actually do?</h4>
       <h5 class="align-left">Small </h5>
-      <p class="indent">• Follow <a href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a>, <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a>, <a href="https://www.instagram.com/5gyres/" target='_blank' >5 Gyres</a> on Instagram </p>
+      <p class="indent">• Follow <a tabindex="9" href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a>, <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a>, <a href="https://www.instagram.com/5gyres/" target='_blank' >5 Gyres</a> on Instagram </p>
       <h5 class="align-left">Medium</h5>
       <p class="indent">• Donate to the <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a> </p>
       <h5 class="align-left">Large</h5>

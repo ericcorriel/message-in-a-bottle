@@ -9,9 +9,7 @@
     </div>
     <div ref="step2" class="step bg-black on-top" tabindex="1">
       <div class="fittext-container">
-        <FitText id="congratulations" ref="congratulations"
-          >Congratulations!</FitText
-        >
+        <FitText id="congratulations">Congratulations!</FitText>
         <FitText>You just scrolled through</FitText>
         <FitText>450 YEARS</FitText>
       </div>
@@ -41,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="step bg-black on-top" tabindex="6">
+    <div class="step bg-black on-top" tabindex="4">
       <div class="fittext-container">
         <FitText>While we’re on the subject,</FitText>
       </div>
@@ -50,7 +48,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top" tabindex="7">
+    <div class="step bg-black on-top" tabindex="5">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>200 YEARS</FitText>
@@ -64,7 +62,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top" tabindex="8">
+    <div class="step bg-black on-top" tabindex="6">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>500 YEARS</FitText>
@@ -78,7 +76,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top" tabindex="9">
+    <div class="step bg-black on-top" tabindex="7">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText>1000 YEARS</FitText>
@@ -92,7 +90,7 @@
       </div>
     </div>
     <SpacerHalfScreen />
-    <div class="step bg-black on-top" tabindex="10">
+    <div class="step bg-black on-top" tabindex="8">
       <div class="text-over-image-container">
         <div class="text-container">
           <FitText
@@ -176,7 +174,6 @@ export default defineComponent({
 
     // html refs
     const container = ref();
-    const congratulations = ref();
 
     onMounted(() => {
       if (APP.MOVIE_MODE) playMovie();
