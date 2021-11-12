@@ -3,6 +3,7 @@ import scrollStore from "~/data/store/scroll";
 import { currentTabIndex, tabsForPartI } from "~/composables/handle/tab";
 import { SCROLL_DIRECTION } from "~/data/constants/app";
 const scrollingUpAndCongratulations100pctVisible = ref(false);
+const scrollingUpAndCongratulationsHasLeftTheScreen = ref(false);
 // @ts-ignore
 function handleContainerIntersection(entries) {
   // want to freeze values when container is no longer visible
@@ -34,10 +35,11 @@ function handleCongratulationsIntersection(entries) {
         scrollingUpAndCongratulations100pctVisible.value = true;
       }
     }
-    // if scrolling up and congratulations is NOT visible (has left the screen); unfreeze scroll values
+    // if scrolling up and congratulations is NOT visible (has left the screen); unfreeze scroll values and reset container height
     else if (scrollStore.get("scrollDirection") === SCROLL_DIRECTION.UP) {
       // console.log("congratulations invisible, scrolling up");
       scrollStore.set("scrollValuesFrozen", false);
+      scrollingUpAndCongratulationsHasLeftTheScreen.value = true;
     }
   });
 }
@@ -59,4 +61,5 @@ export {
   containerOptions,
   congratulationsOptions,
   scrollingUpAndCongratulations100pctVisible,
+  scrollingUpAndCongratulationsHasLeftTheScreen,
 };

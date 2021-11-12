@@ -130,7 +130,10 @@ import Commentary from "~/components/commentary.vue";
 import FitText from "~/components/vendor/FitText.vue";
 import Credits from "~/components/credits.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
-import { handleTab } from "~/composables/handle/tab";
+import {
+  handleTab,
+  tabbedTo100pctShortenHeightNow,
+} from "~/composables/handle/tab";
 
 import {
   isMobile,
@@ -226,6 +229,28 @@ export default defineComponent({
       { deep: true }
     );
 
+    // if scrolling backwards and congrats has left the screen, reset container height to default
+    watch(
+      () => scrollingUpAndCongratulationsHasLeftTheScreen.value,
+      (value) => {
+        if (value === true) {
+          // console.log("resetting container to default");
+          container.value!.style.height = "500000px";
+          scrollingUpAndCongratulationsHasLeftTheScreen.value = false;
+        }
+      }
+    );
+    // if tabbed to 100%, shorten container to "reasonable" amount, otherwise chrome freaks the fuck out
+    watch(
+      () => tabbedTo100pctShortenHeightNow.value,
+      (value) => {
+        if (value) {
+          console.log("shortening container from tab ");
+          container.value!.style.height = "2500px";
+          tabbedTo100pctShortenHeightNow.value = false;
+        }
+      }
+    );
     return {
       container,
       isMobile,
