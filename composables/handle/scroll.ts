@@ -31,7 +31,12 @@ function handleScroll() {
     (document.documentElement.clientTop || 0) +
     window.innerHeight;
 
-  // set currentScrollPosition and yearDelta
+  // update state
+  scrollMachine.set("isScrolling", true);
+  scrollMachine.set(
+    "previousScrollPosition",
+    scrollMachine.get("currentScrollPosition")
+  );
   scrollMachine.set("currentScrollPosition", currentScrollPosition);
   scrollMachine.set("yearDelta", yearDelta);
   scrollMachine.set(
@@ -81,7 +86,7 @@ function handleScroll() {
         Number(scrollMachine.get("yearZero")) <=
         0
     ) {
-      // disintegrated.value = 0; reset container height
+      // disintegrated value = 0;
       debug ? console.log(3) : null;
       scrollMachine.set("yearAtCurrentScroll", scrollMachine.get("yearZero"));
     }
@@ -98,10 +103,6 @@ function handleScroll() {
       );
     }
   }
-  scrollMachine.set(
-    "previousScrollPosition",
-    scrollMachine.get("currentScrollPosition")
-  );
 }
 
 export { handleScroll };

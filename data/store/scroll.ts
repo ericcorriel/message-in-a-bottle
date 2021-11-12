@@ -16,6 +16,7 @@ export interface ScrollInterface {
   scrollValuesFrozen: boolean;
   scrollAmountToEndIsLessThanYearDelta: boolean;
   isInNormalScrollingRange: boolean;
+  isScrolling: boolean;
 }
 
 const state: ScrollInterface = reactive({
@@ -29,6 +30,7 @@ const state: ScrollInterface = reactive({
   debug: false,
   scrollDirection: SCROLL_DIRECTION.DOWN,
   yearDelta: 0,
+  isScrolling: false,
   atYearZero: computed(() => state.yearZero === state.yearAtCurrentScroll),
   amountLeftToScroll: computed({
     get() {

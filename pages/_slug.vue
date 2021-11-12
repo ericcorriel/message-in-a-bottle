@@ -182,6 +182,9 @@ export default defineComponent({
       window.addEventListener("keydown", handleTab);
       isMobile.value = window.innerWidth <= APP.MOBILE_WIDTH;
       windowWidth.value = window.innerWidth;
+      window.setInterval(function () {
+        scrollStore.set("isScrolling", false);
+      }, 1000);
 
       scrollStore.set(
         "yearZeroScrollTop",
@@ -211,7 +214,11 @@ export default defineComponent({
     watch(
       disintegratedStore.state,
       (state) => {
-        if (state.percentDisintegrated >= APP.STOP_AT_PERCENTAGE) {
+        if (
+          scrollStore.get("isScrolling") &&
+          state.percentDisintegrated >= APP.STOP_AT_PERCENTAGE
+        ) {
+          // console.log("shortening container via scroll");
           container.value!.style.height =
             String(scrollStore.get("currentScrollPosition")) + "px";
         }
