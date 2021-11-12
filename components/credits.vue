@@ -114,7 +114,7 @@
         <div class="cell">
           <div class="image-container">
             <a href="https://www.wm.com/" target="_blank"
-            ><img src="/img/logos/waste-management.png" alt="Waste Management logo"
+            ><img src="/img/logos/WM_PMS_Logo.png" alt="Waste Management logo"
             /></a>
           </div>
           <p>
@@ -227,6 +227,7 @@
       </div>
       <p><small>© 2021 <a href="https://ericcorriel.com" target="_blank">Eric Corriel Studios</a></small></p>
     </div>
+    <NewsletterSignup />
     <SpacerFullScreen></SpacerFullScreen>
   </div>
 </template>
