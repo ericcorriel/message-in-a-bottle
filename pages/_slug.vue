@@ -113,7 +113,6 @@
 import {
   defineComponent,
   onMounted,
-  onUpdated,
   watch,
   ref,
   computed,
@@ -145,6 +144,7 @@ import {
   handleCongratulationsIntersection,
   containerOptions,
   congratulationsOptions,
+  scrollingUpAndCongratulationsHasLeftTheScreen,
 } from "~/composables/handle/interactionObserver";
 
 import { handleScroll } from "~/composables/handle/scroll";
@@ -213,7 +213,7 @@ export default defineComponent({
       );
     });
 
-    // once reach 100% do not waste resources calculating new values
+    // once reach 100% via scroll, shorten container to currentScrollPosition to bring up Congratulations!
     watch(
       disintegratedStore.state,
       (state) => {
