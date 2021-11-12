@@ -24,9 +24,10 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@master
 
-      # https://github.com/marketplace/actions/checkout-submodules
-      - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.1.2
