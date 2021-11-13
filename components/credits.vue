@@ -5,14 +5,26 @@
     <div class="credit-row up-1">
       <h4>I hear you! But what can I actually do?</h4>
       <h5 class="align-left">Small </h5>
-      <p class="indent">• Follow <a tabindex="9" href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a> and <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a></p>
-      <h5 class="align-left">Medium</h5>
-      <p class="indent">• Donate to <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a> </p>
-      <h5 class="align-left">Large</h5>
-      <p class="indent">• Volunteer with <a href="https://www.surfrider.org/volunteer" target='_blank' >Surfrider</a> </p>
-      <p class="indent">• Support the <a href="https://govtrackinsider.com/reduce-act-would-tax-single-use-plastics-at-20-cents-per-pound-7eb523395da7" target='_blank' >REDUCE Act</a> in Congress</p>
-      <p class="indent">• Replicate <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target='_blank' >Vermont’s single-use plastic ban</a> in your state</p>
+      <p>
+      <ul class="list-sources">
+        <li class="indent">Follow <a tabindex="9" href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a> and <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a></li>
+      </ul>
+      </p>
 
+      <h5 class="align-left">Medium</h5>
+      <p>
+      <ul class="list-sources">
+        <li class="indent">Donate to <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a></li>
+      </ul>
+      </p>
+      <h5 class="align-left">Large</h5>
+      <p>
+      <ul class="list-sources">
+        <li class="indent">Volunteer with <a href="https://www.surfrider.org/volunteer" target='_blank' >Surfrider</a></li>
+        <li class="indent">Support the <a href="https://govtrackinsider.com/reduce-act-would-tax-single-use-plastics-at-20-cents-per-pound-7eb523395da7" target='_blank' >REDUCE Act</a> in Congress</li>
+        <li class="indent">Replicate <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target='_blank' >Vermont’s single-use plastic ban</a> in your state</li>
+      </ul>
+      </p>
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
     <div class="credit-row up-1">
@@ -218,6 +230,16 @@
       </p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
+    <div class="credit-row">
+      <h4>Further Reading</h4>
+      <p>
+      <ul class="list-sources">
+      <li>If you live in a city, you might find NYC’s <a href="https://www.zerowastedesign.org/" target="_blank">Guidelines for Zero Waste Design</a> worth checking out</li>
+      <li>If you’re into Crypto, I’d highly recommend <a href="https://forum.makerdao.com/t/the-case-for-clean-money/10684" target="_blank">The Case for Clean Money</a></li>
+    </ul>
+      </p>
+    </div>
+    <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row no-margin-bottom sig center">
       <p>No plastic bottles were purchased in the making of this film</p>
     </div>
@@ -285,6 +307,10 @@ export default defineComponent({
     &.indent
       padding-left: 20px
       margin: 0 auto
+  li.indent
+    margin-left: 45px
+    @include media-breakpoint-up(lg, $v1-grid-breakpoints)
+      margin-left: 60px
   h5.align-left
     @include credits-p
     text-align: left
