@@ -27,11 +27,10 @@
 - [x] add manhattan bridge pics
 - [x] figure/figcaption for manhattan bridge pic
 - [x] add email sign up at the end
+- [x] extract vue-gl/threejs to diff project
 - [ ] implement currentYear throughout
-- [ ] add [cookie banner](https://www.carlcassar.com/articles/add-google-analytics-to-a-nuxt-js-app)
 - [ ] Press page
 - [ ] Upload vid YT/Vimeo; add link 
-- [ ] extract vue-gl/threejs to diff project
 - [ ] transform list items into real list items
 - [ ] manhattan bridge filmstrip
 - [ ] ~~add gyre reference?~~
