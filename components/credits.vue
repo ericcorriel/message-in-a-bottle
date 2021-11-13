@@ -263,7 +263,7 @@
         million times longer to make
       </h4>
 
-      <ul>
+      <ul class="center">
         <li><a href="https://vuejs.org" target="_blank">Vue.js</a></li>
         <li><a href="https://nuxtjs.org" target="_blank">Nuxt.js</a></li>
         <li><a href="https://webpack.js.org/" target="_blank">Webpack</a></li>
@@ -297,7 +297,7 @@
     <div class="credit-row">
       <h4>Sources</h4>
 
-      <ul class="list-sources center">
+      <ul class="list-sources">
         <li>
           National Oceanic and Atmospheric Administration:
           <a
