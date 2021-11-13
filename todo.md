@@ -29,11 +29,11 @@
 - [x] add email sign up at the end
 - [x] extract vue-gl/threejs to diff project
 - [x] transform list items into real list items
+- [x] 404 page
 - [ ] implement currentYear throughout
 - [ ] Press page
 - [ ] Upload vid YT/Vimeo; add link 
 - [ ] manhattan bridge filmstrip
-- [ ] 404 page
 - [ ] clean up credits styling on mobile
 - [ ] ~~add gyre reference?~~
 
