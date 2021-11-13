@@ -33,6 +33,8 @@
 - [ ] Upload vid YT/Vimeo; add link 
 - [ ] transform list items into real list items
 - [ ] manhattan bridge filmstrip
+- [ ] 404 page
+- [ ] clean up credits styling on mobile
 - [ ] ~~add gyre reference?~~
 
 ### Futurizing

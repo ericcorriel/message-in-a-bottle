@@ -5,13 +5,13 @@
     <div class="credit-row up-1">
       <h4>I hear you! But what can I actually do?</h4>
       <h5 class="align-left">Small </h5>
-      <p class="indent">• Follow <a tabindex="9" href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a>, <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a>, <a href="https://www.instagram.com/5gyres/" target='_blank' >5 Gyres</a> on Instagram </p>
+      <p class="indent">• Follow <a tabindex="9" href="https://www.instagram.com/4ocean/" target='_blank' >4ocean</a> and <a href="https://www.instagram.com/theoceancleanup/" target='_blank' >The Ocean Cleanup</a></p>
       <h5 class="align-left">Medium</h5>
-      <p class="indent">• Donate to the <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a> </p>
+      <p class="indent">• Donate to <a href="https://www.plasticsoupfoundation.org/" target='_blank' >Plastic Soup Kitchen</a> </p>
       <h5 class="align-left">Large</h5>
-      <p class="indent">• Volunteer your time with <a href="https://www.surfrider.org/volunteer" target='_blank' >Surfrider</a> </p>
-      <p class="indent">• Learn about and support the <a href="https://govtrackinsider.com/reduce-act-would-tax-single-use-plastics-at-20-cents-per-pound-7eb523395da7" target='_blank' >REDUCE Act</a> in Congress</p>
-      <p class="indent">• Figure out how you can replicate <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target='_blank' >Vermont’s single-use plastic ban</a> in your state</p>
+      <p class="indent">• Volunteer with <a href="https://www.surfrider.org/volunteer" target='_blank' >Surfrider</a> </p>
+      <p class="indent">• Support the <a href="https://govtrackinsider.com/reduce-act-would-tax-single-use-plastics-at-20-cents-per-pound-7eb523395da7" target='_blank' >REDUCE Act</a> in Congress</p>
+      <p class="indent">• Replicate <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target='_blank' >Vermont’s single-use plastic ban</a> in your state</p>
 
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
