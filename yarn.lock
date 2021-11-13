@@ -8828,11 +8828,6 @@ thread-loader@^3.0.4:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
 
-three@^0.132.2:
-  version "0.132.2"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.132.2.tgz#95eb1856147237c03e887cbbe56f964b6fb40b5e"
-  integrity sha512-0wcR7LxxkXMn6Gi58gEs3QvY8WpTVXA31L2VOvpjm4ZPYFRHCZC13UqynheFoS5OXDYgtBneN0dhbaNBE8iLhQ==
-
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -9267,11 +9262,6 @@ vue-eslint-parser@^7.1.1, vue-eslint-parser@^7.6.0:
     espree "^6.2.1"
     esquery "^1.4.0"
     lodash "^4.17.15"
-
-vue-gl@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/vue-gl/-/vue-gl-1.0.0.tgz#2d79e790d2975e3c24393a80450a6eaaccedce6a"
-  integrity sha512-wHTLqSAYcJBR/hxjkpnAgH449aKJYmZ6nuOI0XVR41/8eMbxkdKmVS9SbtFiyZvngN2XdyvHfemA4Nq4T3ASiQ==
 
 vue-gtag@^1.16.1:
   version "1.16.1"
