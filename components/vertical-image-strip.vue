@@ -2,24 +2,47 @@
   <div class="vertical-image-strip-container">
     <div id="vertical-strip-1">
       <img
+        srcset="
+          /img/fight-back/v1/450-years-sticker-on-poland-spring-bottle.vert.jpg 1024w,
+          /img/fight-back/v1/450-years-sticker-on-poland-spring-bottle.jpg      1800w
+        "
+        sizes="(max-width: 600px) 1024w, 1800w"
         src="/img/fight-back/v1/450-years-sticker-on-poland-spring-bottle.jpg"
-        alt=""
+        alt="A 1.25 inch sticker on a Poland Spring bottle that says: 'This plastic will exist for at least 450 years. Tag this company on social media and tell them we need better options.''"
       />
     </div>
     <div>
       <img
+        srcset="
+          /img/fight-back/v1/450-years-sticker-on-tide-bottle.vert.jpg 1024w,
+          /img/fight-back/v1/450-years-sticker-on-tide-bottle.jpg      1800w
+        "
+        sizes="(max-width: 600px) 1024w, 1800w"
         src="/img/fight-back/v1/450-years-sticker-on-tide-bottle.jpg"
-        alt=""
+        alt="A 1.25 inch sticker on a Tide bottle that says: 'This plastic will exist for at least 450 years. Tag this company on social media and tell them we need better options.'"
       />
     </div>
     <div>
       <img
+        srcset="
+          /img/fight-back/v1/450-years-sticker-on-windex-bottle.vert.jpg 1024w,
+          /img/fight-back/v1/450-years-sticker-on-windex-bottle.jpg      1800w
+        "
+        sizes="(max-width: 600px) 1024w, 1800w"
         src="/img/fight-back/v1/450-years-sticker-on-windex-bottle.jpg"
-        alt=""
+        alt="A 1.25 inch sticker on a Windex bottle that says: 'This plastic will exist for at least 450 years. Tag this company on social media and tell them we need better options.'"
       />
     </div>
     <div>
-      <img src="/img/fight-back/v1/450-years-sticker-sheet.png" alt="" />
+      <img
+        srcset="
+          /img/fight-back/v1/450-years-sticker-sheet.vert.png 1024w,
+          /img/fight-back/v1/450-years-sticker-sheet.png      1800w
+        "
+        sizes="(max-width: 600px) 1024w, 1800w"
+        src="/img/fight-back/v1/450-years-sticker-sheet.png"
+        alt="A mockup of a roughly 30 1.25 inch stickers on a single sheet that say: 'This plastic will exist for at least 450 years. Tag this company on social media and tell them we need better options.'"
+      />
     </div>
   </div>
 </template>

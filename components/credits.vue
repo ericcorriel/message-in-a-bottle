@@ -7,8 +7,9 @@
 
       <h5 class="align-left caps">Fight Back!</h5>
       <p>
-        I'll be releasing "450 years" stickers in early 2022 to give people a
-        socially visible way to ask companies for better options.
+        I'll be releasing 100% biodegradable and compostable “450 years”
+        stickers in early 2022 to give people a socially visible way to ask
+        companies for better options.
       </p>
       <VerticalImageStrip />
       <p class="center">Make your voice heard!<br />Sign-up to get notified</p>
@@ -67,7 +68,7 @@
     <div class="credit-row up-1">
       <h3 id="credits">Credits</h3>
     </div>
-    <SpacerQuarterScreen></SpacerQuarterScreen>
+
     <div class="credit-row up-1">
       <h4 id="concept-design-development">Concept/Design/Development</h4>
       <h5 class="person-credit">

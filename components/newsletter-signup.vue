@@ -32,12 +32,9 @@
 
 <script lang="ts">
 import { defineComponent } from "@nuxtjs/composition-api";
-import SpacerFullScreen from "~/components/spacer/full-screen.vue";
+
 export default defineComponent({
   name: "NewsletterSignup",
-  components: {
-    SpacerFullScreen,
-  },
 });
 </script>
 
@@ -91,4 +88,8 @@ aside
     button
       width: auto
       margin-left: 10px
+      border-radius: 0
+      border: 1px solid $text-color
+      color: $text-color
+      background-color: $bg-color
 </style>
