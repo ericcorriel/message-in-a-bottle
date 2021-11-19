@@ -59,10 +59,11 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "~/assets/styles/v1/fonts-and-colors.sass",
-    "~/assets/styles/v1/bootstrap/overrides.sass",
-    "~/assets/styles/v1/base.sass",
-    "~/assets/styles/v1/app.sass",
+    "@/assets/styles/v1/bootstrap/grid.sass",
+    "@/assets/styles/v1/bootstrap/overrides.sass",
+    "@/assets/styles/v1/base.sass",
+    "@/assets/styles/v1/app.sass",
+    "@/assets/styles/v1/fonts-and-colors.sass",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
