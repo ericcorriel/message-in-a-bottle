@@ -4,6 +4,17 @@
     <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
     <div class="credit-row up-1">
       <h4>I hear you! But what can I actually do?</h4>
+
+      <h5 class="align-left caps">Fight Back!</h5>
+      <p>
+        I'll be releasing "450 years" stickers in early 2022 to give people a
+        socially visible way to ask companies for better options.
+      </p>
+      <VerticalImageStrip />
+      <p class="center">Make your voice heard!<br />Sign-up to get notified</p>
+      <NewsletterSignup />
+      <SpacerQuarterScreen />
+      <h4>Other things you can do</h4>
       <h5 class="align-left">Small</h5>
       <ul class="list-sources">
         <li class="indent">
@@ -49,13 +60,6 @@
             >REDUCE Act</a
           >
           in Congress
-        </li>
-        <li class="indent">
-          Replicate
-          <a href="https://www.youtube.com/watch?v=60P_xEKDTjI" target="_blank"
-            >Vermont’s single-use plastic ban</a
-          >
-          in your state
         </li>
       </ul>
     </div>
@@ -423,8 +427,8 @@ import { defineComponent } from "@nuxtjs/composition-api";
 import SpacerQuarterScreen from "~/components/spacer/quarter-screen.vue";
 import SpacerHalfScreen from "~/components/spacer/half-screen.vue";
 import SpacerFullScreen from "~/components/spacer/full-screen.vue";
-import FitText from "~/components/vendor/FitText.vue";
 import NewsletterSignup from "~/components/newsletter-signup.vue";
+import VerticalImageStrip from "~/components/vertical-image-strip.vue";
 
 export default defineComponent({
   name: "Credits",
@@ -433,6 +437,7 @@ export default defineComponent({
     SpacerHalfScreen,
     SpacerFullScreen,
     NewsletterSignup,
+    VerticalImageStrip,
   },
   props: {
     spacer: { type: String, default: "half" },
@@ -465,8 +470,6 @@ export default defineComponent({
     font-size: .65em
   p
     @include credits-p
-    &.center
-      text-align: center
     &.indent
       padding-left: 20px
       margin: 0 auto
