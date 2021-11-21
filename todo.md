@@ -31,10 +31,11 @@
 - [x] transform list items into real list items
 - [x] 404 page
 - [x] 450 sticker vertical image filmstrip
+- [x] clean up credits styling on mobile
+- [x] optimize for mobile images
 - [ ] implement currentYear throughout
 - [ ] Press page
 - [ ] Upload vid YT/Vimeo; add link 
-- [ ] clean up credits styling on mobile
 - [ ] ~~add gyre reference?~~
 
 ### Futurizing

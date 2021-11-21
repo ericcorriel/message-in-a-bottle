@@ -99,7 +99,12 @@
         </div>
         <div class="image-container">
           <img
-            src="/img/styrofoam.08.png"
+            srcset="
+              /img/styrofoam.08.vert.jpg 1024w,
+              /img/styrofoam.08.jpg      1800w
+            "
+            sizes="(max-width: 600px) 1024w, 1800w"
+            src="/img/styrofoam.08.jpg"
             alt="Open cardboard box filled with white styrofoam packing peanuts"
           />
         </div>

@@ -104,6 +104,11 @@
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <figure class="full-width">
       <img
+        srcset="
+          /img/message-in-a-bottle-projected-on-manhattan-bridge.vert.jpg 1024w,
+          /img/message-in-a-bottle-projected-on-manhattan-bridge.jpg      1800w
+        "
+        sizes="(max-width: 600px) 1024w, 1800w"
         src="/img/message-in-a-bottle-projected-on-manhattan-bridge.jpg"
         alt="Video of the project projected on the Manhattan Bridge at night. Video contents: 'It is the year 2215, Water Wars sprout up everywhere"
       />
