@@ -7,12 +7,14 @@
 
       <h5 class="align-left caps">Fight Back!</h5>
       <p>
-        I'll be releasing 100% biodegradable and compostable “450 years”
-        stickers in early 2022 to give people a socially visible way to ask
-        companies for better options.
+        I’ll be releasing 100% biodegradable and compostable “450 years”
+        stickers in early 2022 to give people a socially visible way to tell
+        companies we need better options.
       </p>
       <VerticalImageStrip />
-      <p class="center">Make your voice heard!<br />Sign-up to get notified</p>
+      <p class="center">
+        <strong>Make your voice heard!</strong><br />Sign-up to get notified
+      </p>
       <NewsletterSignup />
       <SpacerQuarterScreen />
       <h4>Other things you can do</h4>
