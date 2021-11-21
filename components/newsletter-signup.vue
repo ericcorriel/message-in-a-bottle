@@ -87,6 +87,7 @@ aside
         max-width: 20vw
     button
       width: auto
+      padding: 2px 5px
       margin-left: 10px
       border-radius: 0
       border: 1px solid $text-color
