@@ -22,7 +22,7 @@ export const scrollSpeeds: scrollSpeedArr = [
   { percentDisintegrated: 10, speed: 0.15 },
   { percentDisintegrated: 20, speed: 0.2 },
   { percentDisintegrated: 80, speed: 0.25 },
-  { percentDisintegrated: 110, speed: 5.25 },
+  { percentDisintegrated: 110, speed: 0.25 },
 ];
 
 export const SCROLL_DIRECTION = Object.freeze({
