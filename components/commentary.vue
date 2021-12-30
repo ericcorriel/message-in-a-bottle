@@ -44,7 +44,7 @@ export default defineComponent({
           (commentaryType) => commentaryType.year === year
         );
 
-        if (res[0]?.comment) {
+        if (res[0]?.year) {
           // update currentTabIndex every time a new commentary is scrolled to
           currentTabIndex.value = res[0].tabIndex;
           return props.isMobile ? res[0].commentSm : res[0].comment;

@@ -16,8 +16,8 @@
     </div>
     <div class="step bg-black on-top full-height-and-width" tabindex="2">
       <div class="fittext-container">
-        <FitText>A bottle made in 2021</FitText>
-        <FitText>disintegrates in 2471</FitText>
+        <FitText>A bottle made in {{ scrollStore.get("yearZero") }}</FitText>
+        <FitText>disintegrates in {{ scrollStore.get("yearEnd") }}</FitText>
       </div>
     </div>
     <SpacerHalfScreen></SpacerHalfScreen>
@@ -250,7 +250,7 @@ export default defineComponent({
       () => tabbedTo100pctShortenHeightNow.value,
       (value) => {
         if (value) {
-          console.log("shortening container from tab ");
+          // console.log("shortening container from tab ");
           container.value!.style.height = "2500px";
           tabbedTo100pctShortenHeightNow.value = false;
         }
@@ -259,6 +259,7 @@ export default defineComponent({
     return {
       container,
       isMobile,
+      scrollStore,
       APP,
     };
   },

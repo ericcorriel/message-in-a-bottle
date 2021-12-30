@@ -33,13 +33,13 @@
 - [x] 450 sticker vertical image filmstrip
 - [x] clean up credits styling on mobile
 - [x] optimize for mobile images
-- [ ] implement currentYear throughout
+- [x] implement currentYear throughout
+- [ ] Upload vid YT/Vimeo; add link
 - [ ] Press page
-- [ ] Upload vid YT/Vimeo; add link 
 - [ ] ~~add gyre reference?~~
 
 ### Futurizing
-- check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
+- [x] check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
 
 ### Final Futures
 ```
