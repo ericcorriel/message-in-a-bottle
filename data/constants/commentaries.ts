@@ -204,7 +204,7 @@ export var commentaries: commentariesArr = [
   },
   {
     year: 2330,
-    comment: "🦈Sharks swim through downtown Miami🦈",
+    comment: "Sharks swim through<br />🦈downtown Miami🦈",
     commentSm: "🦈Sharks swim🦈<br />through downtown<br />Miami",
     tabIndex: 0,
     isIphone: false,
@@ -212,7 +212,7 @@ export var commentaries: commentariesArr = [
   },
   {
     year: 2354,
-    comment: "🇧🇩Bangladesh🇧🇩 is a body of water",
+    comment: "🇧🇩Bangladesh🇧🇩<br />is a body of water",
     commentSm: "🇧🇩Bangladesh🇧🇩<br />is a<br />body of water",
     tabIndex: 0,
     isIphone: false,
@@ -220,8 +220,8 @@ export var commentaries: commentariesArr = [
   },
   {
     year: 2378,
-    comment: "🧊Last glacier melts into the sea🧊",
-    commentSm: "🧊Last glacier🧊<br />melts into the sea",
+    comment: "Last glacier<br />🧊melts into the sea🧊",
+    commentSm: "Last glacier<br />melts into<br />🧊the sea🧊",
     tabIndex: 0,
     isIphone: false,
     iphoneModel: 0,
