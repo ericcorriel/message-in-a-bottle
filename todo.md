@@ -34,12 +34,12 @@
 - [x] clean up credits styling on mobile
 - [x] optimize for mobile images
 - [x] implement currentYear throughout
-- [ ] Upload vid YT/Vimeo; add link
+- [x] Upload vid YT/Vimeo; add link
+- [x] add gyre reference?
 - [ ] Press page
-- [ ] ~~add gyre reference?~~
 
 ### Futurizing
-- [x] check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
+- [ ] check to see if smooth video playback in chrome desktop when video is shatter.75-opacity.4K.mp4 
 
 ### Final Futures
 ```
