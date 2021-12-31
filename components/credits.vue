@@ -396,7 +396,7 @@
           worth checking out
         </li>
         <li>
-          If you’re into Crypto, I’d highly recommend
+          If you’re into Crypto, I’d recommend
           <a
             href="https://forum.makerdao.com/t/the-case-for-clean-money/10684"
             target="_blank"
@@ -418,10 +418,36 @@
       </div>
       <p>
         <small
-          >© 2021
+          >© {{ new Date().getFullYear() }}
           <a href="https://ericcorriel.com" target="_blank"
             >Eric Corriel Studios</a
           ></small
+        >
+      </p>
+    </div>
+
+    <div class="credit-row no-margin-bottom sig center">
+      <p>
+        <small
+          >You might also like Eric's
+          <em
+            ><a href="https://ericcorriel.com/work/gyre" target="_blank"
+              >Gyre</a
+            ></em
+          >
+          installation, which puts on display all the plastic he consumed in a
+          single year.</small
+        >
+      </p>
+      <p>
+        <small>
+          A video version of this website is available on
+          <a href="https://www.youtube.com/watch?v=tLXOIDs8OkI" target="_blank"
+            >YouTube</a
+          >
+          and
+          <a href="https://vimeo.com/661365800" target="_blank">Vimeo</a
+          >.</small
         >
       </p>
     </div>
