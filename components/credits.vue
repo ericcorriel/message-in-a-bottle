@@ -9,7 +9,7 @@
       <p>
         I’ll be releasing 100% biodegradable and compostable “450 years”
         stickers in early 2022 to give people a socially visible way to tell
-        companies we need better options.
+        companies we need better options!
       </p>
       <VerticalImageStrip />
       <p class="center">
