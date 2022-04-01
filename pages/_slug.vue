@@ -310,7 +310,7 @@ export default defineComponent({
 
   &.full-height-and-width
     height: 100vh
-    width: 100vw
+    width: 100%
 
   .full-width-img-container
     &.cover

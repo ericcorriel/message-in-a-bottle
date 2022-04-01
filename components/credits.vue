@@ -490,7 +490,7 @@ export default defineComponent({
   background-color: $bg-color
   position: relative
   padding: 0 10px
-  width: 100vw
+  width: 100%
   @include credits-baseline-font-sizes
   @include credits-headers
 

@@ -106,7 +106,9 @@ export default defineComponent({
   top: 70vh
   padding-bottom: 3vh
   position: fixed
-  width: 100vw
+  width: 100%
+  margin-left: auto
+  margin-right: auto
   text-align: center
   -webkit-text-stroke: 1px $bg-color
   bottom: 0
@@ -117,4 +119,5 @@ export default defineComponent({
 
   span
     line-height: 1.1em
+
 </style>
