@@ -1,22 +1,22 @@
 <template>
   <div class="credits-container">
-    <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
-    <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
+    <SpacerQuarterScreen />
     <div class="credit-row up-1">
       <h4>I hear you! But what can I actually do?</h4>
 
-      <h5 class="align-left caps">Fight Back!</h5>
-      <p>
-        I’ll be releasing 100% biodegradable and compostable “450 years”
-        stickers in early 2022 to give people a socially visible way to tell
-        companies we need better options!
+      <h5 class="center caps">Fight Back!</h5>
+      <p class="center">
+        I’ll be releasing 100% biodegradable “450 YRS” stickers in mid 2022 to
+        tell companies <strong>we need better options!</strong>
       </p>
       <VerticalImageStrip />
       <p class="center">
         <strong>Make your voice heard!</strong><br />Sign-up to get notified
       </p>
       <NewsletterSignup />
+      <!--
       <SpacerQuarterScreen />
+
       <h4>Other things you can do</h4>
       <h5 class="align-left">Small</h5>
       <ul class="list-sources">
@@ -65,7 +65,9 @@
           in Congress
         </li>
       </ul>
-    </div>
+    --></div>
+    <SpacerQuarterScreen v-if="spacer == 'quarter'"></SpacerQuarterScreen>
+    <SpacerHalfScreen v-if="spacer == 'half'"></SpacerHalfScreen>
     <SpacerHalfScreen></SpacerHalfScreen>
     <div class="credit-row up-1">
       <h3 id="credits">Credits</h3>
@@ -76,12 +78,12 @@
       <h5 class="person-credit">
         <a href="https://ericcorriel.com" target="_blank">Eric Corriel</a>
       </h5>
-      <p>
+      <p class="center">
         Eric is a public installation artist living in New York City where he
-        teaches art and activism at the
+        teaches art and activism at
         <a href="https://sva.edu" target="_blank">School of Visual Arts</a>.
       </p>
-      <p>
+      <p class="center">
         Follow him on
         <a href="https://instagram.com/ericcorriel">Instagram</a> •
         <a href="https://twitter.com/ericcorriel">Twitter</a> •
@@ -384,6 +386,7 @@
       </ul>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
+    <!--
     <div class="credit-row">
       <h4>Further Reading</h4>
 
@@ -406,6 +409,7 @@
       </ul>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
+    -->
     <div class="credit-row no-margin-bottom sig center">
       <p>No plastic bottles were purchased in the making of this film</p>
     </div>
@@ -429,7 +433,7 @@
     <div class="credit-row no-margin-bottom sig center">
       <p>
         <small
-          >You might also like Eric's
+          >You might also like Eric’s
           <em
             ><a href="https://ericcorriel.com/work/gyre" target="_blank"
               >Gyre</a
@@ -524,7 +528,8 @@ export default defineComponent({
     padding: 0
     list-style-type: none
     &.list-sources
-      list-style-type: disc
+      list-style: none
+      text-align: center
   .center
     text-align: center
 
