@@ -53,23 +53,9 @@ import { defineComponent, onMounted, ref } from "@nuxtjs/composition-api";
 export default defineComponent({
   name: "VerticalImageStrip",
   setup() {
-    const verticalFilmStripContainer = ref();
-    let imageHeight = 0;
-
-    onMounted(() => {
-      // since all images are in an overflow scroll container it's not possible to set parent (container) height based on an individual child's height; need to do it via js
-      function setVerticalFilmStripHeight() {
-        imageHeight = document.querySelector(
-          ".vertical-image-strip-container>figure"
-        ).clientHeight;
-        verticalFilmStripContainer.value.style.height = imageHeight * 2 + "px";
-      }
-      // setVerticalFilmStripHeight();
-      window.addEventListener("resize", setVerticalFilmStripHeight);
-    });
-    return {
-      verticalFilmStripContainer,
-    };
+    
+    
+    
   },
 });
 </script>
