@@ -212,8 +212,8 @@ export var commentaries: commentariesArr = [
   },
   {
     year: 2354,
-    comment: "🇧🇩Bangladesh🇧🇩<br />is a body of water",
-    commentSm: "🇧🇩Bangladesh🇧🇩<br />is a<br />body of water",
+    comment: "🇧🇩Bangladesh is water🇧🇩",
+    commentSm: "🇧🇩Bangladesh🇧🇩<br />is water",
     tabIndex: 0,
     isIphone: false,
     iphoneModel: 0,
