@@ -48,15 +48,10 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "@nuxtjs/composition-api";
+import { defineComponent } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "VerticalImageStrip",
-  setup() {
-    
-    
-    
-  },
 });
 </script>
 
@@ -69,9 +64,6 @@ export default defineComponent({
   width: 100%
   position: relative
   display: block
-  //max-height: 1125px
-  //height: 1125px
-  //overflow-y: scroll
   margin: 0 auto
   figure
     position: sticky
