@@ -11,9 +11,9 @@
       </p>
       <VerticalImageStrip />
       <p class="center">
-        <strong>Make your voice heard!</strong><br />Sign-up to get notified
+          <strong>Make your voice heard!<br /><a href="https://shop.ericcorrielstudios.com/products/450yrs-stickers" target="_blank">Get <em>450YRS</em> stickers now</a></strong>
       </p>
-      <NewsletterSignup />
+
       <!--
       <SpacerQuarterScreen />
 
