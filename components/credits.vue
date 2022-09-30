@@ -119,7 +119,7 @@
         part of the
         <a href="https://www.humanimpactsinstitute.org/cca2021" target="_blank"
           >2021 Creative Climate Awards</a
-        >. It won second place.
+        >.
       </figcaption>
     </figure>
     <SpacerQuarterScreen></SpacerQuarterScreen>
@@ -411,7 +411,7 @@
     <SpacerQuarterScreen></SpacerQuarterScreen>
     -->
     <div class="credit-row no-margin-bottom sig center">
-      <p>No plastic bottles were purchased in the making of this film</p>
+      <p>No plastic bottles were purchased in the making of this website</p>
     </div>
     <SpacerQuarterScreen></SpacerQuarterScreen>
     <div class="credit-row no-margin-bottom sig center">
