@@ -6,12 +6,25 @@
 
       <h5 class="center caps">Fight Back!</h5>
       <p class="center">
-        I’ll be releasing 100% biodegradable “450 YRS” stickers in mid 2022 to
-        tell companies <strong>we need better options!</strong>
+        I’ve released 100% biodegradable
+        <a
+          href="https://shop.ericcorrielstudios.com/products/450yrs-stickers"
+          target="_blank"
+        >
+          “450 YRS”</a
+        >
+        stickers to tell companies
+        <strong>we need better options!</strong>
       </p>
       <VerticalImageStrip />
       <p class="center">
-        <strong>Make your voice heard!</strong><br />Sign-up to get notified
+        <strong>Make your voice heard!</strong><br /><a
+          href="https://shop.ericcorrielstudios.com/products/450yrs-stickers"
+          target="_blank"
+        >
+          Get stickers</a
+        >
+        or sign-up for updates
       </p>
       <NewsletterSignup />
       <!--
