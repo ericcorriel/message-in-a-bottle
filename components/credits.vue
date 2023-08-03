@@ -25,8 +25,8 @@
           Get stickers</a
         >
         or sign-up for updates
+        <NewsletterSignup />
       </p>
-      <NewsletterSignup />
       <!--
       <SpacerQuarterScreen />
 
